@@ -13,7 +13,7 @@ class Frank < Sinatra::Base
   end
 
   get '/' do
-    json Record.all
+    "Hello, benchmarker."
   end
 end
 
