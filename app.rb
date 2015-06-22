@@ -13,8 +13,7 @@ class Frank < Sinatra::Base
   end
 
   get '/' do
-    records = Record.all
-    json records
+    json Record.all
   end
 end
 
