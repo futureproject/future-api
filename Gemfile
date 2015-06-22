@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-gem 'sinatra'
-gem 'sinatra-contrib'
+ruby '2.1.4'
+gem 'sinatra', require: 'sinatra/base'
+gem 'sinatra-contrib', require: false
 gem 'sequel'
 gem 'puma'
 gem 'rake'
