@@ -6,7 +6,6 @@ gem 'sinatra-sequel', require: 'sinatra/sequel'
 gem 'puma'
 gem 'rake'
 gem 'pg'
-gem 'haml', require: 'tilt/haml'
 group :development, :test do
   gem 'sinatra-reloader'
 end

@@ -1,0 +1,22 @@
+<h1>Edit a nice-looking link:</h1>
+<% @redirect.errors.each do |error, msg| %>
+  <p class='destroy'><%= "#{error} #{msg.first}" %></p>
+<% end %>
+<% action = @redirect.exists? ? "/redirects/#{@redirect.id}" : "/redirects" %>
+<form action="<%= action %>" method="POST">
+  <p>
+    <b>If I visit</b>
+    http://go.dream.org/
+    <input name='redirect[shortcut]' type='text' placeholder='awesomeness' value="<%= @redirect.shortcut %>">
+  </p>
+  <p>
+    <b>... then I should be redirected to</b>
+    <input name='redirect[url]' type='text' placeholder='http://chrisfrank.fm' value="<%= @redirect.url %>">
+  </p>
+  <p>
+    <input type='submit' value='Make it so.'>
+  </p>
+</form>
+<p>
+  <a class='destroy'>← Never mind</a>
+</p>

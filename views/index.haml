@@ -11,7 +11,7 @@
       .shortcut
         %a{href:"/#{redirect.shortcut}"}
           = "http://go.dream.org/#{redirect.shortcut}"
-      .url= redirect.url
+      .url
       .actions
         %a.edit{href: "/redirects/#{redirect.id}/edit"} Edit
         %a.destroy{href: "/redirects/#{redirect.id}/destroy"} Delete

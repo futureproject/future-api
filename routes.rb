@@ -11,17 +11,17 @@ class Frank < Sinatra::Base
 
   get '/' do
     @redirects = Redirect.reverse_order(:id)
-    haml :index
+    erb :index
   end
 
   get '/redirects/new' do
     @redirect = Redirect.new
-    haml :form
+    erb :form
   end
 
   get '/redirects/:id/edit' do
     get_redirect
-    haml :form
+    erb :form
   end
 
   post '/redirects' do
@@ -30,7 +30,7 @@ class Frank < Sinatra::Base
       @redirect.save
       redirect '/'
     rescue Sequel::ValidationFailed
-      haml :form
+      erb :form
     end
   end
 
@@ -40,7 +40,7 @@ class Frank < Sinatra::Base
       @redirect.update allowed_params
       redirect '/'
     rescue Sequel::ValidationFailed
-      haml :form
+      erb :form
     end
   end
 
