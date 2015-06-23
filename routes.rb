@@ -15,7 +15,7 @@ class Frank < Sinatra::Base
   end
   get '/redirects' do
     @redirects = Redirect.reverse_order(:id)
-    json @redirects
+    json @redirects.to_json
   end
 
   get '/redirects/new' do

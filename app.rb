@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/json'
 require 'bundler/setup'
 class Frank < Sinatra::Base
   Bundler.require(:default, settings.environment)
