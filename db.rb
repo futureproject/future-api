@@ -6,7 +6,7 @@ class Frank < Sinatra::Base
     when 'development'
       set :database, Sequel.postgres(database: 'tfp_redirects_development', host: 'localhost')
     else
-      set :database, Sequel.connect(ENV['DATABASE_URL'])
+      set :database, Sequel.connect(url: ENV['DATABASE_URL'], max_connections: ENV['MAX_DB_CONNECTIONS'] || 16)
     end
   end
 end
