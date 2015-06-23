@@ -1,15 +1,13 @@
 ENV['RACK_ENV'] ||= 'development'
 
-class Frank < Sinatra::Application
-  def self.set_database
+class Frank < Sinatra::Base
+  configure do
     case ENV["RACK_ENV"]
     when 'development'
-      set :database, {adapter: 'postgres', database: 'tfp_redirects_development', host: 'localhost'}
+      set :database, Sequel.postgres(database: 'tfp_redirects_development', host: 'localhost')
     else
-      set :database, ENV['DATABASE_URL']
+      set :database, Sequel.connect(ENV['DATABASE_URL'])
     end
   end
 end
-
-Frank.set_database
 

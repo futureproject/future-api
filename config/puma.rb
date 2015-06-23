@@ -9,5 +9,5 @@ port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do
-  Frank.set_database
+  #Frank.set_database
 end
