@@ -13,7 +13,11 @@ class Frank < Sinatra::Base
   end
 
   get '/' do
-    "Hello, benchmarker."
+    json settings.database[:records].all
+  end
+
+  get '/redirects/:id' do
+    json Record.find(id: params[:id]).values
   end
 end
 

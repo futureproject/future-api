@@ -1,4 +1,4 @@
-SITE="http://tfp-rb-test.herokuapp.com/"
+SITE="http://10.0.1.50:5000/redirects/2"
 TRIALS=1000
 CONCURRENCY=100
 ab -n $TRIALS -c $CONCURRENCY $SITE

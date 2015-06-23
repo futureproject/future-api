@@ -1,11 +1,16 @@
 ENV['RACK_ENV'] ||= 'development'
-DB = case ENV["RACK_ENV"]
-when 'test' then
-  DataMapper.setup(:default, 'sqlite::memory:')
-when 'development'
-  DataMapper.setup(:default, "sqlite://#{Dir.pwd}/db/development.sqlite")
-else
-  DataMapper.setup(:default, ENV['DATABASE_URL'])
+
+class Frank < Sinatra::Base
+  def self.set_database
+    case ENV["RACK_ENV"]
+    when 'development'
+      set :database, Sequel.postgres('dbrb_development', host: 'localhost')
+    else
+      set :database, Sequel.connect(ENV['DATABASE_URL'])
+    end
+  end
 end
+
+Frank.set_database
 require_relative 'record'
 
