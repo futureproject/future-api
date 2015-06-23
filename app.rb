@@ -1,4 +1,4 @@
-require 'sinatra/base'
+require 'sinatra'
 require 'bundler/setup'
 class Frank < Sinatra::Application
   Bundler.require(:default, settings.environment)
