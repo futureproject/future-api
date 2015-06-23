@@ -14,8 +14,7 @@ class Frank < Sinatra::Base
     erb :index
   end
   get '/redirects' do
-    @redirects = Redirect.reverse_order(:id)
-    json @redirects.to_json
+    json settings.database[:redirects].all
   end
 
   get '/redirects/new' do
