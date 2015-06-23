@@ -1,4 +1,4 @@
-class Frank < Sinatra::Base
+class Frank < Sinatra::Application
 
   def get_redirect
     @redirect = Redirect.find(id: params[:id]) || halt(404, "Not Found")

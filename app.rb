@@ -1,8 +1,9 @@
 require 'sinatra/base'
 require 'bundler/setup'
-class Frank < Sinatra::Base
+class Frank < Sinatra::Application
   Bundler.require(:default, settings.environment)
-  require 'sinatra/json'
+  require 'tilt'
+  require 'tilt/erb'
   configure :development do
     register Sinatra::Reloader
   end
