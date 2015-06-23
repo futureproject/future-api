@@ -1,13 +1,10 @@
 !!!
 %html{lang: "en"}
   %head
-    %title="#{(@title + ' | ') if @title }#{settings.app_name}"
+    %title Go
     %link{rel: 'stylesheet', href: "/stylesheets/application.css?v#{settings.last_boot}"}
     %meta{name: "viewport", content:"width=device-width"}
     %link(rel="icon" type="image/png" href="/images/favicon.png")
   %body
-    #header
-      %h1= link_to settings.app_name, "/"
-
     #yield= yield
 

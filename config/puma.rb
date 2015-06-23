@@ -1,5 +1,5 @@
 workers Integer(ENV['WEB_CONCURRENCY'] || 4)
-threads_count = Integer(ENV['MAX_THREADS'] || 4)
+threads_count = Integer(ENV['MAX_THREADS'] || 12)
 threads threads_count, threads_count
 
 preload_app!

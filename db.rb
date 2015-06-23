@@ -12,5 +12,4 @@ class Frank < Sinatra::Base
 end
 
 Frank.set_database
-require_relative 'record'
 

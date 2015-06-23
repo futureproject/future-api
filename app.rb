@@ -3,21 +3,22 @@ require 'bundler/setup'
 class Frank < Sinatra::Base
   Bundler.require(:default, settings.environment)
   require 'sinatra/json'
-  require_relative 'models/init'
-  configure do
-    enable :logging
-  end
-
   configure :development do
     register Sinatra::Reloader
   end
-
-  get '/' do
-    json settings.database[:records].all
+  configure do
+    enable :logging
+    register 
+    set :last_boot, Time.now.to_i
+    set :default_redirect, ENV['DEFAULT_REDIRECT'] || 'http://www.thefutureproject.org/404.html'
   end
 
-  get '/redirects/:id' do
-    json Record.find(id: params[:id]).values
-  end
+  #initialize the database
+  require './db'
+  # require all models
+  Dir["./models/*.rb"].each{|model| require model }
+  #load routes
+  require './routes'
+
 end
 

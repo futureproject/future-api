@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.6.4)
+    haml (4.0.6)
+      tilt
     multi_json (1.11.1)
     pg (0.17.1)
     puma (2.11.3)
@@ -35,6 +37,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   pg
   puma
   rake
