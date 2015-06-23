@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.1.4'
 gem 'sinatra', require: false
 gem 'sinatra-contrib', require: false
 gem 'sinatra-sequel', require: 'sinatra/sequel'
