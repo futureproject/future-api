@@ -4,7 +4,7 @@ class Frank < Sinatra::Base
   def self.set_database
     case ENV["RACK_ENV"]
     when 'development'
-      set :database, Sequel.postgres('dbrb_development', host: 'localhost')
+      set :database, Sequel.postgres('tfp_redirects_development', host: 'localhost')
     else
       set :database, Sequel.connect(ENV['DATABASE_URL'])
     end
