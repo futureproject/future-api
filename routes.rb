@@ -13,6 +13,10 @@ class Frank < Sinatra::Base
     @redirects = Redirect.reverse_order(:id)
     erb :index
   end
+  get '/redirects' do
+    @redirects = Redirect.reverse_order(:id)
+    json @redirects
+  end
 
   get '/redirects/new' do
     @redirect = Redirect.new
