@@ -1,4 +1,7 @@
 class Frank < Sinatra::Base
+  before '/redirects/*' do
+    authenticate!
+  end
 
   def get_redirect
     @redirect = Redirect.find(id: params[:id]) || halt(404, "Not Found")
@@ -10,9 +13,11 @@ class Frank < Sinatra::Base
   end
 
   get '/' do
+    authenticate!
     @redirects = Redirect.reverse_order(:id)
     erb :index
   end
+
   get '/redirects' do
     json settings.database[:redirects].all
   end

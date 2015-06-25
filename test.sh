@@ -1,4 +1,4 @@
-SITE="http://go.dream.org/apply"
+SITE="http://go.dream.org/"
 TRIALS=1000
-CONCURRENCY=50
+CONCURRENCY=200
 ab -n $TRIALS -c $CONCURRENCY $SITE

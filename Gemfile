@@ -5,6 +5,8 @@ gem 'sinatra-sequel', require: 'sinatra/sequel'
 gem 'puma'
 gem 'rake'
 gem 'pg'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 group :development, :test do
   gem 'sinatra-reloader'
 end
