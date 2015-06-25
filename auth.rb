@@ -1,6 +1,6 @@
 class Frank < Sinatra::Base
   use OmniAuth::Builder do
-    provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {}
+    provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {hd: 'thefutureproject.org', access_type: 'online'}
   end
 
   get '/auth/:provider/callback' do
