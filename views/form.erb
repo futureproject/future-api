@@ -1,4 +1,4 @@
-<h1>Not-so-nice-looking Form for making a nice-looking link:</h1>
+<h1>Tell me about this link.</h1>
 <% @redirect.errors.each do |error, msg| %>
   <p class='destroy'><%= "#{error} #{msg.first}" %></p>
 <% end %>
@@ -10,8 +10,8 @@
     <input name='redirect[shortcut]' type='text' placeholder='awesomeness' value="<%= @redirect.shortcut %>">
   </p>
   <p>
-    <b>... then I should be redirected to</b>
-    <input name='redirect[url]' type='text' placeholder='http://chrisfrank.fm' value="<%= @redirect.url %>">
+    <b>... then I will be redirected to</b>
+    <input name='redirect[url]' type='text' placeholder='http://thefutureproject.org' value="<%= @redirect.url %>">
   </p>
   <p>
     <input type='submit' value='Make it so.'>
