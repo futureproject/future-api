@@ -1,4 +1,4 @@
-<h1>Edit a nice-looking link:</h1>
+<h1>Not-so-nice-looking Form for making a nice-looking link:</h1>
 <% @redirect.errors.each do |error, msg| %>
   <p class='destroy'><%= "#{error} #{msg.first}" %></p>
 <% end %>
@@ -18,5 +18,5 @@
   </p>
 </form>
 <p>
-  <a class='destroy'>← Never mind</a>
+  <a class='destroy' href="/">← Never mind</a>
 </p>
