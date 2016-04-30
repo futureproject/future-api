@@ -7,6 +7,7 @@ gem 'rake'
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'require_all'
 group :development, :test do
   gem 'sinatra-reloader'
 end

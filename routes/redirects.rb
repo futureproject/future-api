@@ -3,15 +3,6 @@ class Frank < Sinatra::Base
     authenticate!
   end
 
-  def get_redirect
-    @redirect = Redirect.find(id: params[:id]) || halt(404, "Not Found")
-  end
-
-  def allowed_params
-    whitelist = [:shortcut, :url]
-    params[:redirect].select{|k,v| whitelist.include? k.to_sym }
-  end
-
   get '/' do
     authenticate!
     @redirects = Redirect.reverse_order(:id)
@@ -62,5 +53,15 @@ class Frank < Sinatra::Base
     url = Redirect.find(shortcut: params[:shortcut]).url rescue settings.default_redirect
     redirect url
   end
+
+  private
+    def get_redirect
+      @redirect = Redirect.find(id: params[:id]) || halt(404, "Not Found")
+    end
+
+    def allowed_params
+      whitelist = [:shortcut, :url]
+      params[:redirect].select{|k,v| whitelist.include? k.to_sym }
+    end
 
 end

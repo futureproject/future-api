@@ -22,7 +22,7 @@ class Frank < Sinatra::Base
   # require all models
   Dir["./models/*.rb"].each{|model| require model }
   #load routes
-  require './routes'
+  require_all "routes"
 
 end
 
