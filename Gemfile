@@ -9,11 +9,11 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "require_all"
 gem "sass"
+gem "rspec"
 group :development, :test do
   gem "sinatra-reloader"
   gem "factory_girl"
   gem "capybara"
-  gem "rspec"
   gem "pry"
   gem "database_cleaner"
 end
