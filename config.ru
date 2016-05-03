@@ -1,2 +1,2 @@
 require_relative 'app'
-run Frank.new
+run Sinatra::Application

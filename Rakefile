@@ -1,27 +1,24 @@
 require_relative 'app'
+
 namespace :db do
-  desc "seed the database"
-  task :seed do
-    if !Frank.database.table_exists?(:redirects)
-      Frank.database.create_table :redirects do
-        primary_key :id
-        text :name
-        timestamp :created_at
-        timestamp :updated_at
-      end
+  desc "migrate to the latest db version"
+  task :migrate, [:version] do |t, args|
+    Sequel.extension :migration
+    if args[:version]
+      puts "Migrating to version #{args[:version]}..."
+      Sequel::Migrator.run(settings.database, "db/migrations", target: args[:version].to_i)
+      puts "done."
+    else
+      puts "Migrating to latest..."
+      Sequel::Migrator.run settings.database, "db/migrations"
+      puts "done."
     end
-    100.times do |i|
-      Frank.database[:records].insert(name: "Number #{i}", updated_at: Time.now, created_at: Time.now)
-    end
-  end
-  desc "import the data from heroku"
-  task :import do
-    begin
-      %x(dropdb dbrb_development)
-    end
-    %x(createdb dbrb_development)
-    %x(pg_dump -t go_redirects dreamos_development | psql dbrb_development)
-    Frank.database.rename_table :go_redirects, :redirects
   end
 end
 
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = Dir.glob('spec/**/*_spec.rb')
+  t.rspec_opts = '--format documentation'
+end
+task :default => :spec

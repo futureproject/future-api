@@ -1,11 +1,23 @@
-ENV["RACK_ENV"] = 'test'
-require 'pry'
-require 'capybara'
-require 'capybara/rspec'
-require 'capybara/dsl'
-require_relative '../app'
-require_relative 'factories'
+ENV["RACK_ENV"] = "test"
+require "pry"
+require "capybara"
+require "capybara/rspec"
+require "capybara/dsl"
+require_relative "../app"
 require_all "#{Dir.pwd}/spec/support"
-Capybara.app = Frank
+Capybara.app = Sinatra::Application
 Capybara.default_selector = :css
-
+FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
+FactoryGirl.find_definitions
+Sequel::Model.send :alias_method, :save!, :save
+DatabaseCleaner.strategy = :transaction
+RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+  config.color = true
+end
