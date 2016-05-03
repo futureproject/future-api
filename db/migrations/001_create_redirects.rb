@@ -10,10 +10,10 @@ Sequel.migration do
       end
     end
     if table_exists?(:go_redirects)
-      drop_table :go_redirects
+      drop_table :go_redirects, cascade: true
     end
   end
   down do
-    drop_table :redirects
+    drop_table :redirects, cascade: true
   end
 end
