@@ -15,7 +15,7 @@ get '/auth/failure' do
 end
 get '/auth/sign_out' do
   session['user'] = nil
-  text "You are now logged out."
+  "You are now logged out."
 end
 
 module AuthHelpers
