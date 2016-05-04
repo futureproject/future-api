@@ -1,4 +1,4 @@
-require_relative 'app'
+require_relative 'main'
 
 namespace :db do
   desc "migrate to the latest db version"

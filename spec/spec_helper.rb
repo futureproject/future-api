@@ -3,13 +3,16 @@ require "pry"
 require "capybara"
 require "capybara/rspec"
 require "capybara/dsl"
-require_relative "../app"
+require_relative "../main"
 require_all "#{Dir.pwd}/spec/support"
 Capybara.app = Sinatra::Application
 Capybara.default_selector = :css
 FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
 FactoryGirl.find_definitions
+
+# monkeypatch FactoryGirl to be compatible with Sequel
 Sequel::Model.send :alias_method, :save!, :save
+
 DatabaseCleaner.strategy = :transaction
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

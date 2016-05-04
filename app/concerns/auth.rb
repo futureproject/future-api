@@ -2,7 +2,7 @@ use OmniAuth::Builder do
   provider :google_oauth2,
     ENV['GOOGLE_KEY'],
     ENV['GOOGLE_SECRET'],
-    {hd: 'thefutureproject.org', access_type: 'online'}
+    { hd: 'thefutureproject.org', access_type: 'online' }
 end
 
 get '/auth/:provider/callback' do
@@ -14,7 +14,7 @@ end
 
 get '/auth/failure' do
   content_type 'text/plain'
-  request.env['omniauth.auth'].to_hash.inspect
+  request.env['omniauth.auth'].to_s || "No data"
 end
 get '/auth/sign_out' do
   session['user'] = nil

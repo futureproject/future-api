@@ -9,7 +9,7 @@ module Database
     when "test"
       Sequel.postgres(database: "go_test", host: "localhost")
     else
-      Sequel.connect(ENV["DATABASE_URL"], max_connections: ENV["MAX_DB_CONNECTIONS"] || 4, single_threaded: false)
+      Sequel.connect(ENV["DATABASE_URL"])
     end
   end
 end

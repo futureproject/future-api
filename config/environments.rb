@@ -1,11 +1,11 @@
 configure do
   Sass::Plugin.options[:style] = :compressed
   use Sass::Plugin::Rack
+  use Rack::Session::Cookie, expire_after: 259200, secret: ENV["SESSION_SECRET"]
   enable :logging
-  enable :sessions
   set :last_boot, Time.now.to_i
   set :default_redirect, ENV["DEFAULT_REDIRECT"] || "http://www.thefutureproject.org/404.html"
-  set :cache, Dalli::Client.new
+  set :views, Proc.new { File.join(root, "app/views") }
 end
 configure :development do
   require "sinatra/reloader"
