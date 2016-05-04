@@ -5,7 +5,7 @@ end
 get '/' do
   authenticate!
   @redirects = Redirect.reverse_order(:id)
-  erb :index
+  erb :"redirects/index"
 end
 
 get '/redirects' do
@@ -14,12 +14,12 @@ end
 
 get '/redirects/new' do
   @redirect = Redirect.new
-  erb :form
+  erb :"redirects/form"
 end
 
 get '/redirects/:id/edit' do
   get_redirect
-  erb :form
+  erb :"redirects/form"
 end
 
 post '/redirects' do
@@ -28,7 +28,7 @@ post '/redirects' do
     @redirect.save
     redirect '/'
   rescue Sequel::ValidationFailed
-    erb :form
+    erb :"redirects/form"
   end
 end
 
@@ -38,7 +38,7 @@ post '/redirects/:id' do
     @redirect.update allowed_params
     redirect '/'
   rescue Sequel::ValidationFailed
-    erb :form
+    erb :"redirects/form"
   end
 end
 
