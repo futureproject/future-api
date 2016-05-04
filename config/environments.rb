@@ -5,6 +5,7 @@ configure do
   enable :sessions
   set :last_boot, Time.now.to_i
   set :default_redirect, ENV["DEFAULT_REDIRECT"] || "http://www.thefutureproject.org/404.html"
+  set :cache, Dalli::Client.new
 end
 configure :development do
   require "sinatra/reloader"
