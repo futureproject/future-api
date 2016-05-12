@@ -4,7 +4,7 @@ end
 
 get '/' do
   authenticate!
-  @redirects = Redirect.reverse_order(:id)
+  @resources = Redirect.reverse_order(:id)
   erb :"redirects/index"
 end
 
@@ -13,19 +13,21 @@ get '/redirects' do
 end
 
 get '/redirects/new' do
-  @redirect = Redirect.new
+  @resource = Redirect.new
+  @form_action = "/redirects"
   erb :"redirects/form"
 end
 
 get '/redirects/:id/edit' do
-  get_redirect
+  set_redirect
+  @form_action = "/redirects/#{@resource.id}"
   erb :"redirects/form"
 end
 
 post '/redirects' do
-  @redirect = Redirect.new(allowed_params)
+  @resource = Redirect.new(allowed_params)
   begin
-    @redirect.save
+    @resource.save
     redirect '/'
   rescue Sequel::ValidationFailed
     erb :"redirects/form"
@@ -33,9 +35,9 @@ post '/redirects' do
 end
 
 post '/redirects/:id' do
-  get_redirect
+  set_redirect
   begin
-    @redirect.update allowed_params
+    @resource.update allowed_params
     redirect '/'
   rescue Sequel::ValidationFailed
     erb :"redirects/form"
@@ -43,8 +45,8 @@ post '/redirects/:id' do
 end
 
 get '/redirects/:id/destroy' do
-  @redirect = Redirect.find(id: params[:id])
-  @redirect.delete
+  @resource = Redirect.find(id: params[:id])
+  @resource.delete
   redirect '/'
 end
 
@@ -54,8 +56,8 @@ get '/:shortcut' do
 end
 
 private
-  def get_redirect
-    @redirect = Redirect.find(id: params[:id]) || halt(404, "Not Found")
+  def set_redirect
+    @resource = Redirect.find(id: params[:id]) || halt(404, "Not Found")
   end
 
   def allowed_params

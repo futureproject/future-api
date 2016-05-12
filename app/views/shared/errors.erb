@@ -1,0 +1,8 @@
+<% if @resource.errors.any? %>
+  <h4>Fail!</h4>
+  <ul class="errors">
+    <% @resource.errors.each do |error, msg| %>
+      <li class='destroy'><%= "#{error} #{msg.first}" %></li>
+    <% end %>
+  </ul>
+<% end %>
