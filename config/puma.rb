@@ -9,6 +9,8 @@ port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do
-  Sinatra::Application.settings.database.disconnect
-  Sinatra::Application.settings.database = Database.connect
+  #close database connections
+  App.settings.database.disconnect
+  #re-establish
+  App.set :database, Database.connect
 end

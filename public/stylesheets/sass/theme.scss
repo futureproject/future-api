@@ -8,10 +8,7 @@ $base-highlight-color: $blue;
 
 h1, h2 {
   letter-spacing: -.1rem;
-}
-
-a {
-  color: $base-highlight-color;
+  background: rgba(255,0,0,.05);
 }
 
 main {
@@ -43,6 +40,11 @@ th, tr:nth-child(even) {
   background-color: rgba(0,0,0,.05);
 }
 
-.destroy {
+a {
+  color: $base-highlight-color;
+}
+
+a[data-method=delete], a[href*="destroy"], .error {
   color: $red;
 }
+

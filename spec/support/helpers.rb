@@ -2,9 +2,11 @@ module IntegrationHelpers
 end
 
 module OmniauthSupport
+
   def login_with_oauth(service = :google_oauth2)
     visit "/auth/#{service}"
   end
+
   OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
     provider: "google_oauth2",
     uid: "123456789",

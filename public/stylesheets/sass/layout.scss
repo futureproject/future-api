@@ -1,7 +1,9 @@
 html {
   margin: 0;
   padding: 0;
+  font-size: 12px;
 }
+
 body {
   background: -webkit-linear-gradient(rgba(0,100,200,.05) 1px, white 1px);
   background-color: white;
@@ -10,9 +12,27 @@ body {
   margin: 0;
   padding: 0;
 }
+
 header, main, footer {
   display: block;
 }
+
+header {
+  padding: 2rem;
+  background: rgba(0,0,255,.1);
+}
+
 main {
   padding: 2rem;
+}
+
+footer {
+  background: rgba(0,255,255,.05);
+  padding: 2rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }

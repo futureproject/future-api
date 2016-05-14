@@ -1,13 +1,8 @@
-require "sinatra"
+require "sinatra/base"
 require "bundler/setup"
-Bundler.require(:default, settings.environment)
-require "tilt/erb"
-require "sass/plugin/rack"
 
-require "./config/environments"
+class App < Sinatra::Base
+  require_relative "config/environments"
+  Dir["#{settings.root}/{models,helpers,routes}/*.rb"].each{|f| require f}
+end
 
-# set up google auth
-require "./db/init"
-require_all "app/models"
-require_all "app/concerns"
-require_all "app/controllers"

@@ -5,7 +5,7 @@ require "capybara/rspec"
 require "capybara/dsl"
 require_relative "../main"
 require_all "#{Dir.pwd}/spec/support"
-Capybara.app = Sinatra::Application
+Capybara.app = App
 Capybara.default_selector = :css
 FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
 FactoryGirl.find_definitions
