@@ -1,12 +1,18 @@
 class App < Sinatra::Base
 
+  before "/redirects*" do
+    authenticate!
+  end
+
   get '/' do
-    @resources = Redirect.reverse_order(:id)
+    authenticate!
+    @resources = Redirect.all
     erb :"redirects/index"
   end
 
   get '/redirects' do
-    json settings.database[:redirects].all
+    @resources = Redirect.all
+    json @resources
   end
 
   get '/redirects/new' do

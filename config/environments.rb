@@ -3,6 +3,7 @@ class App < Sinatra::Base
   require "tilt/erb"
   require "sass/plugin/rack"
   require "#{settings.root}/db/init"
+  require "sinatra/json"
   configure do
     Sass::Plugin.options[:style] = :compressed
     use Sass::Plugin::Rack

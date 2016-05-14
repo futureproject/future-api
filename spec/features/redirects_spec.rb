@@ -10,6 +10,23 @@ feature "Redirects" do
     should_see_redirects
   end
 
+  scenario "creating" do
+    visit "/"
+    click_link "Add Link"
+    fill_in "redirect[shortcut]", with: "echobase"
+    fill_in "redirect[url]", with: "http://www.starwars.com/"
+    click_button "Make it so."
+    expect(page).to have_content "/echobase"
+  end
+
+  scenario "updating" do
+    visit "/"
+    click_link "Edit", match: :first
+    fill_in "redirect[shortcut]", with: "topsecret"
+    click_button "Make it so."
+    expect(page).to have_content "/topsecret"
+  end
+
   def should_see_redirects
     expect(page).to have_content "You look nice today, links"
   end
