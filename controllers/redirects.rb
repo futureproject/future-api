@@ -4,24 +4,19 @@ class RedirectsController < ApplicationController
   end
 
   get '/' do
-    @resources = Redirect.all
+    @resources = Redirect.reverse_order(:id)
     erb :"redirects/index"
-  end
-
-  get '/' do
-    @resources = Redirect.all
-    json @resources
   end
 
   get '/new' do
     @resource = Redirect.new
-    @form_action = "/redirects"
+    @form_action = url("")
     erb :"redirects/form"
   end
 
   get '/:id/edit' do
     set_redirect
-    @form_action = "/redirects/#{@resource.id}"
+    @form_action = url("/#{@resource.id}")
     erb :"redirects/form"
   end
 
@@ -29,7 +24,7 @@ class RedirectsController < ApplicationController
     @resource = Redirect.new(allowed_params)
     begin
       @resource.save
-      redirect '/'
+      redirect to('/')
     rescue Sequel::ValidationFailed
       erb :"redirects/form"
     end
@@ -39,7 +34,7 @@ class RedirectsController < ApplicationController
     set_redirect
     begin
       @resource.update allowed_params
-      redirect '/'
+      redirect to('/')
     rescue Sequel::ValidationFailed
       erb :"redirects/form"
     end
@@ -48,7 +43,7 @@ class RedirectsController < ApplicationController
   get '/:id/destroy' do
     @resource = Redirect.find(id: params[:id])
     @resource.delete
-    redirect '/'
+    redirect to('/')
   end
 
   private

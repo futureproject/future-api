@@ -7,7 +7,7 @@
     <input name='redirect[shortcut]' type='text' placeholder='awesomeness' value="<%= @resource.shortcut %>">
   </p>
   <p>
-    <b>... then I will be resourceed to</b>
+    <b>... then I will be redirected to</b>
     <input name='redirect[url]' type='text' placeholder='http://thefutureproject.org' value="<%= @resource.url %>">
   </p>
   <p>
@@ -16,5 +16,5 @@
 </form>
 
 <p>
-  <a class='destroy' href="/">← Never mind</a>
+  <a class='destroy' href="<%= url('/') %>">← Never mind</a>
 </p>

@@ -1,1 +1,7 @@
-# switch OpenID from memory-store to memcache store, e.g. http://naildrivin5.com/blog/2013/04/29/getting-omniauth-with-google-apps-to-work-on-heroku.html
+- try using url() and to() helpers instead of hard-coding paths
+- write a homepage view
+- style it
+- style a table for the redirects list
+- make tests pass
+- push to production
+- test DB config under load
