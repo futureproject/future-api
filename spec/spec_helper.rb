@@ -5,7 +5,7 @@ require "capybara/rspec"
 require "capybara/dsl"
 require_relative "../main"
 require_all "#{Dir.pwd}/spec/support"
-Capybara.app = App
+Capybara.app = Rack::Builder.parse_file(File.expand_path('../../config.ru', __FILE__)).first
 Capybara.default_selector = :css
 FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
 FactoryGirl.find_definitions

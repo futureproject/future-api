@@ -1,2 +1,4 @@
-require_relative "main"
-run App.new
+require "./main"
+map("/auth") { run AuthController }
+map("/redirects") { run RedirectsController }
+map("/") { run ApplicationController }

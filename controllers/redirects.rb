@@ -1,33 +1,31 @@
-class App < Sinatra::Base
-
-  before "/redirects*" do
+class RedirectsController < ApplicationController
+  before do
     authenticate!
   end
 
   get '/' do
-    authenticate!
     @resources = Redirect.all
     erb :"redirects/index"
   end
 
-  get '/redirects' do
+  get '/' do
     @resources = Redirect.all
     json @resources
   end
 
-  get '/redirects/new' do
+  get '/new' do
     @resource = Redirect.new
     @form_action = "/redirects"
     erb :"redirects/form"
   end
 
-  get '/redirects/:id/edit' do
+  get '/:id/edit' do
     set_redirect
     @form_action = "/redirects/#{@resource.id}"
     erb :"redirects/form"
   end
 
-  post '/redirects' do
+  post '/' do
     @resource = Redirect.new(allowed_params)
     begin
       @resource.save
@@ -37,7 +35,7 @@ class App < Sinatra::Base
     end
   end
 
-  post '/redirects/:id' do
+  post '/:id' do
     set_redirect
     begin
       @resource.update allowed_params
@@ -47,15 +45,10 @@ class App < Sinatra::Base
     end
   end
 
-  get '/redirects/:id/destroy' do
+  get '/:id/destroy' do
     @resource = Redirect.find(id: params[:id])
     @resource.delete
     redirect '/'
-  end
-
-  get '/:shortcut' do
-    url = Redirect.find(shortcut: params[:shortcut]).url rescue settings.default_redirect
-    redirect url
   end
 
   private

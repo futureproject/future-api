@@ -6,11 +6,11 @@ namespace :db do
     Sequel.extension :migration
     if args[:version]
       puts "Migrating to version #{args[:version]}..."
-      Sequel::Migrator.run(settings.database, "db/migrations", target: args[:version].to_i)
+      Sequel::Migrator.run(DB, "db/migrations", target: args[:version].to_i)
       puts "done."
     else
       puts "Migrating to latest..."
-      Sequel::Migrator.run settings.database, "db/migrations"
+      Sequel::Migrator.run DB, "db/migrations"
       puts "done."
     end
   end

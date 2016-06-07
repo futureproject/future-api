@@ -13,3 +13,4 @@ module Database
   end
 end
 
+DB = Database.connect
