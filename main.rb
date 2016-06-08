@@ -1,12 +1,13 @@
 require "sinatra/base"
 require "bundler/setup"
 
+
 class App < Sinatra::Base
   Bundler.require(:default, settings.environment)
   require "tilt/erb"
   require "sass/plugin/rack"
-  require "#{settings.root}/db/init"
   require "sinatra/json"
+  require "./db/init"
   configure do
     Sass::Plugin.options[:style] = :compressed
     use Sass::Plugin::Rack
@@ -22,7 +23,27 @@ class App < Sinatra::Base
   configure :production do
     set :static_cache_control, [:public, :max_age => 7200]
   end
+  Dir["#{settings.root}/{models,helpers}/*.rb"].each{|f| require f}
+end
 
-  Dir["#{settings.root}/{models,helpers,controllers}/*.rb"].each{|f| require f}
+class ApplicationController < App
+
+  helpers AuthHelper
+
+  Dir["#{settings.root}/controllers/*.rb"].each{|f| require f}
+
+  get "/" do
+    erb :"application/home"
+  end
+
+  get '/:shortcut' do
+    @redirect = params[:shortcut] ? Redirect.find(shortcut: params[:shortcut]) : nil
+    if @redirect
+      redirect @redirect.url
+    else
+      redirect settings.default_redirect
+    end
+  end
+
 end
 
