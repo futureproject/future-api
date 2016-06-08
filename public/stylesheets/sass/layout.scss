@@ -42,26 +42,3 @@ section {
   }
 }
 
-#launchpad {
-  ul {
-    margin: 0 0 -2rem;
-    padding: 0;
-    list-style: none;
-    @include clearfix;
-  }
-  li {
-    text-align: center;
-    width: 25%;
-    float: left;
-    margin-bottom: 2rem;
-  }
-  img {
-    display: block;
-    height: 4rem;
-    width: 4rem;
-    margin: 0 auto;
-  }
-  label {
-    @include oneline;
-  }
-}

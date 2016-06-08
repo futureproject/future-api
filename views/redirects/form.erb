@@ -16,5 +16,10 @@
 </form>
 
 <p>
-  <a class='destroy' href="<%= url('/') %>">← Never mind</a>
+  <a href="<%= url('/') %>">← Never mind</a>
 </p>
+<% if @resource.exists? %>
+  <p>
+  <a href="<%= url("/#{@resource.id}/destroy") %>"class='destroy'>Delete Redirect</a>
+  </p>
+<% end %>

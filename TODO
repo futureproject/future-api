@@ -1,4 +1,8 @@
-- style a table for the redirects list
 - make tests pass
 - push to production
 - test DB config under load
+- drop framesets from db
+- add quotes to db
+- fill quotes database with good stuff
+- show random quote on home page
+- change random quote to daily quote

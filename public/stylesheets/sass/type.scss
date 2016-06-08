@@ -53,6 +53,7 @@ h5 {
 p, ul, ol, pre, table, blockquote, q {
   margin-top: 0rem;
   margin-bottom: 2rem;
+  overflow: hidden;
 }
 ul ul, ol ol, ul ol, ol ul {
   margin-top: 0;

@@ -6,12 +6,13 @@ feature "Redirects" do
   end
 
   scenario "listing" do
-    visit "/"
+    visit "/redirects"
     should_see_redirects
   end
 
   scenario "creating" do
     visit "/"
+    click_link "Redirects"
     click_link "Add Link"
     fill_in "redirect[shortcut]", with: "echobase"
     fill_in "redirect[url]", with: "http://www.starwars.com/"
@@ -20,7 +21,7 @@ feature "Redirects" do
   end
 
   scenario "updating" do
-    visit "/"
+    visit "/redirects"
     click_link "Edit", match: :first
     fill_in "redirect[shortcut]", with: "topsecret"
     click_button "Make it so."

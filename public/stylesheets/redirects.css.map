@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,6BAAc,CACZ,OAAO,CAAE,KAAK,CACd,UAAU,CAAE,KAAK",
+"sources": ["sass/redirects.scss"],
+"names": [],
+"file": "redirects.css"
+}

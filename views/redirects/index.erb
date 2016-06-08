@@ -2,23 +2,15 @@
   You look nice today, links.
   <a href="<%= url('/new') %>">Add Link →</a>
 </h1>
-<ul>
-  <li>
-    <div class='shortcut header'>Shortcut</div>
-    <div class='url header'>Full URL</div>
-  </li>
+<section id="redirects-list">
   <% @resources.each do |redirect| %>
-    <li>
-      <div class='shortcut'>
-        <a href="/<%= redirect.shortcut %>">
-          <%= "http://go.dream.org/#{redirect.shortcut}" %>
-        </a>
-      </div>
-      <div class='url'><%= redirect.url %></div>
-      <div class='actions'>
-        <a href="<%= url("/#{redirect.id}/edit") %>" class='edit'>Edit</a>
-        <a href="<%= url("/#{redirect.id}/destroy") %>"class='destroy'>Delete</a>
-      </div>
-    </li>
+    <p>
+      <a href="/<%= redirect.shortcut %>">
+        <%= "http://go.dream.org/#{redirect.shortcut}" %>
+      </a>
+      →
+      <%= redirect.url %>
+      <a href="<%= url("/#{redirect.id}/edit") %>" class='edit'>Edit</a>
+    </p>
   <% end %>
-</ul>
+</section>
