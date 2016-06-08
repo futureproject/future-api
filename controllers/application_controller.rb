@@ -1,8 +1,10 @@
 class ApplicationController < App
   helpers AuthHelper
+
   get "/" do
-    "ApplicationController#home"
+    erb :"application/home"
   end
+
   get '/:shortcut' do
     @redirect = params[:shortcut] ? Redirect.find(shortcut: params[:shortcut]) : nil
     if @redirect

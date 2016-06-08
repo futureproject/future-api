@@ -1,6 +1,3 @@
-- try using url() and to() helpers instead of hard-coding paths
-- write a homepage view
-- style it
 - style a table for the redirects list
 - make tests pass
 - push to production

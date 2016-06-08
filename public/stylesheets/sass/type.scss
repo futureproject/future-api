@@ -50,13 +50,20 @@ h5 {
   margin-top: 2rem;
   margin-bottom: 0rem;
 }
-p, ul, ol, pre, table, blockquote {
+p, ul, ol, pre, table, blockquote, q {
   margin-top: 0rem;
   margin-bottom: 2rem;
 }
 ul ul, ol ol, ul ol, ol ul {
   margin-top: 0;
   margin-bottom: 0;
+}
+q {
+  display: block;
+  @extend h3;
+  position: relative;
+  &:before, &:after { position: absolute; }
+  &:before { left: -1rem; }
 }
 hr {
   border: none;
