@@ -32,8 +32,13 @@ footer {
   text-align: center;
 }
 
-section {
+section, article {
   margin: 2rem auto;
+  p, q, blockquote {
+    max-width: 51rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (min-width: 768px) {

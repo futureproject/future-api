@@ -15,7 +15,18 @@ main {
   background: rgba(0,0,0,.05);
 }
 
-p { background: rgba(255,255,0,.05); }
+p {
+  overflow: hidden;
+  background: rgba(255,255,0,.05);
+}
+
+q {
+  display: block;
+  @extend h3;
+  position: relative;
+  &:before, &:after { position: absolute; opacity: .5; }
+  &:before { left: -1rem; }
+}
 
 
 input[type=text], input[type=email], input[type=password], input[type=phone] {

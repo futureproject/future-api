@@ -1,4 +1,5 @@
 ENV["RACK_ENV"] ||= "development"
+
 module Database
   def self.connect
     Sequel::Model.plugin :timestamps

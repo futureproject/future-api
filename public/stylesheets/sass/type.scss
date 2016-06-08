@@ -53,18 +53,10 @@ h5 {
 p, ul, ol, pre, table, blockquote, q {
   margin-top: 0rem;
   margin-bottom: 2rem;
-  overflow: hidden;
 }
 ul ul, ol ol, ul ol, ol ul {
   margin-top: 0;
   margin-bottom: 0;
-}
-q {
-  display: block;
-  @extend h3;
-  position: relative;
-  &:before, &:after { position: absolute; }
-  &:before { left: -1rem; }
 }
 hr {
   border: none;
