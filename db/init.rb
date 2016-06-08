@@ -1,6 +1,7 @@
 ENV["RACK_ENV"] ||= "development"
 
 module Database
+
   def self.connect
     Sequel::Model.plugin :timestamps
     case ENV["RACK_ENV"]
@@ -12,6 +13,7 @@ module Database
       Sequel.connect(ENV["DATABASE_URL"])
     end
   end
+
 end
 
-DB = Database.connect
+DB ||= Database.connect
