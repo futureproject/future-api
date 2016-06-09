@@ -1,5 +1,9 @@
-- drop framesets from db
-- add quotes to db
-- fill quotes database with good stuff
-- show random quote on home page
-- change random quote to daily quote
+- Fork Airtable API to not be dependent on active_support
+
+- create employee directory with TFPIDs
+  - Employees
+  - Teams
+  - Schools
+  - Cities
+- Write rake task to sync employees
+- Run task via cron every hour
