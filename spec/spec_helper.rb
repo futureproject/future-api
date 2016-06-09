@@ -1,4 +1,5 @@
 ENV["RACK_ENV"] = "test"
+ENV["SESSION_SECRET"] ||= "12345"
 require "pry"
 require "capybara"
 require "capybara/rspec"

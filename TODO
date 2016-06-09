@@ -1,5 +1,3 @@
-- push to production
-- test DB config under load
 - drop framesets from db
 - add quotes to db
 - fill quotes database with good stuff
