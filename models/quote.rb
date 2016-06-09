@@ -13,7 +13,7 @@ class Quote < Sequel::Model
   def self.daily(manual_offset = 0)
     count = self.count
     if count > 0
-      self.offset((Date.today.yday + manual_offset) % count)
+      self.offset((Date.today.yday + manual_offset) % count).first
     else
       self.default
     end
