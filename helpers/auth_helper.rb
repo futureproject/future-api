@@ -14,9 +14,13 @@ module AuthHelper
   end
 
   def create_session_via_oauth
-    user_info = request.env["omniauth.auth"].info
-    session["user"] = Array(user_info.email).first.downcase
-    true
+    user_info = request.env["omniauth.auth"]["info"]
+    if user_info && user_info["email"]
+      session["user"] = Array(user_info["email"]).first.downcase
+      true
+    else
+      false
+    end
   end
 
 end

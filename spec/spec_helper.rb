@@ -19,6 +19,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.before(:each) do
     DatabaseCleaner.start
+    enable_automatic_auth
   end
   config.append_after(:each) do
     DatabaseCleaner.clean

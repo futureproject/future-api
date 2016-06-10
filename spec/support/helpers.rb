@@ -7,17 +7,28 @@ module OmniauthSupport
     visit "/auth/#{service}"
   end
 
-  OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
-    provider: "google_oauth2",
-    uid: "123456789",
-    info: {
-        :name => "Bruce Waynce",
-        :email => "bruce.wayne@thefutureproject.org",
-        :first_name => "Bruce",
-        :last_name => "Wayne",
-        :image => "https://lh3.googleusercontent.com/url/photo.jpg"
-    },
-  })
+  def disable_automatic_auth
+    OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
+      provider: "google_oauth2",
+      uid: "123456789",
+      info: {}
+    })
+  end
+
+  def enable_automatic_auth
+    OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
+      provider: "google_oauth2",
+      uid: "123456789",
+      info: {
+          :name => "Bruce Waynce",
+          :email => "bruce.wayne@thefutureproject.org",
+          :first_name => "Bruce",
+          :last_name => "Wayne",
+          :image => "https://lh3.googleusercontent.com/url/photo.jpg"
+      },
+    })
+  end
+
 end
 
 RSpec.configure do |config|

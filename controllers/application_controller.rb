@@ -1,6 +1,7 @@
 class ApplicationController < App
 
   get "/" do
+    authenticate!
     @quote = Quote.daily
     erb :"application/home"
   end
