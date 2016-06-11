@@ -34,11 +34,10 @@ footer {
 
 section, article {
   margin: 2rem auto;
-  p, q, blockquote {
-    max-width: 51rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+}
+
+article {
+  max-width: 51rem;
 }
 
 @media (min-width: 768px) {

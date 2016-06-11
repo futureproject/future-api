@@ -1,8 +1,7 @@
-<h1>
-  You look nice today, links.
-  <a href="<%= url('/new') %>">Add Link →</a>
-</h1>
-<section id="redirects-list">
+<article id="redirects-list">
+  <h1>
+    <a href="<%= url('/new') %>">Add Redirect →</a>
+  </h1>
   <% @resources.each do |redirect| %>
     <p>
       <a href="/<%= redirect.shortcut %>">
@@ -13,4 +12,4 @@
       <a href="<%= url("/#{redirect.id}/edit") %>" class='edit'>Edit</a>
     </p>
   <% end %>
-</section>
+</article>

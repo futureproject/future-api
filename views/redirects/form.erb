@@ -1,25 +1,27 @@
-<h1>What will happen??</h1>
-<%= erb :"shared/errors" if @resource.errors.any? %>
-<form action="<%= @form_action %>" method="POST">
-  <p>
-    <b>If I visit</b>
-    http://go.dream.org/
-    <input name='redirect[shortcut]' type='text' placeholder='awesomeness' value="<%= @resource.shortcut %>">
-  </p>
-  <p>
-    <b>... then I will be redirected to</b>
-    <input name='redirect[url]' type='text' placeholder='http://thefutureproject.org' value="<%= @resource.url %>">
-  </p>
-  <p>
-    <input type='submit' value='Make it so.'>
-  </p>
-</form>
+<article>
+  <h1>What will happen??</h1>
+  <%= erb :"shared/errors" if @resource.errors.any? %>
+  <form action="<%= @form_action %>" method="POST">
+    <p>
+      <b>If I visit</b>
+      http://go.dream.org/
+      <input name='redirect[shortcut]' type='text' placeholder='awesomeness' value="<%= @resource.shortcut %>">
+    </p>
+    <p>
+      <b>... then I will be redirected to</b>
+      <input name='redirect[url]' type='text' placeholder='http://thefutureproject.org' value="<%= @resource.url %>">
+    </p>
+    <p>
+      <input type='submit' value='Make it so.'>
+    </p>
+  </form>
 
-<p>
-  <a href="<%= url('/') %>">← Never mind</a>
-</p>
-<% if @resource.exists? %>
   <p>
-  <a href="<%= url("/#{@resource.id}/destroy") %>"class='destroy'>Delete Redirect</a>
+    <a href="<%= url('/') %>">← Never mind</a>
   </p>
-<% end %>
+  <% if @resource.exists? %>
+    <p>
+    <a href="<%= url("/#{@resource.id}/destroy") %>"class='destroy'>Delete Redirect</a>
+    </p>
+  <% end %>
+</article>
