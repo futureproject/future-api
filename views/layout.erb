@@ -12,8 +12,11 @@
       <%= yield %>
     </main>
     <footer>
-      <p><%= current_user %><br>
-      <a href="/auth/log_out">Log Out</a></p>
+      <p>
+        <%= current_user.split("@").first %>
+        //
+        <a href="/auth/log_out">Log Out</a>
+      </p>
     </footer>
 
   </body>

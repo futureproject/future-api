@@ -16,6 +16,10 @@
     height: 4rem;
     width: 4rem;
     margin: 0 auto;
+    @include desaturate(75%);
+    &:hover {
+      @include desaturate(0);
+    }
   }
   label {
     @include oneline;

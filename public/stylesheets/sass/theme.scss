@@ -24,7 +24,7 @@ q {
   display: block;
   @extend h3;
   position: relative;
-  &:before, &:after { position: absolute; opacity: .5; }
+  &:before, &:after { position: absolute; }
   &:before { left: -1rem; }
 }
 
@@ -53,6 +53,7 @@ th, tr:nth-child(even) {
 
 a {
   color: $base-highlight-color;
+  text-decoration: none;
 }
 
 a[data-method=delete], a[href*="destroy"], .error {

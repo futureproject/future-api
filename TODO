@@ -1,5 +1,4 @@
 - Use actual icons
-- Fork Airtable API to not be dependent on active_support
 - create employee directory with TFPIDs
   - Employees
   - Teams

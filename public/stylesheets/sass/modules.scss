@@ -17,3 +17,11 @@
   margin: 0 auto;
   padding: 0;
 }
+
+@mixin desaturate($pct) {
+  -webkit-filter: grayscale($pct);
+  -moz-filter: grayscale($pct);
+  -ms-filter: grayscale($pct);
+  filter: grayscale($pct);
+}
+
