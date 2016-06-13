@@ -13,7 +13,7 @@ feature "Redirects" do
   scenario "creating" do
     visit "/"
     click_link "Redirects"
-    click_link "Add Link"
+    click_link "Add Redirect"
     fill_in "redirect[shortcut]", with: "echobase"
     fill_in "redirect[url]", with: "http://www.starwars.com/"
     click_button "Make it so."
@@ -29,7 +29,7 @@ feature "Redirects" do
   end
 
   def should_see_redirects
-    expect(page).to have_content "You look nice today, links"
+    expect(page).to have_content "Add Redirect"
   end
 
 end

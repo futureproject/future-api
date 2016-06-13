@@ -13,9 +13,11 @@
     </main>
     <footer>
       <p>
-        <%= current_user.split("@").first %>
-        //
-        <a href="/auth/log_out">Log Out</a>
+        <% if current_user %>
+          <%= current_user.split("@").first %>
+          //
+          <a href="/auth/log_out">Log Out</a>
+        <% end %>
       </p>
     </footer>
 

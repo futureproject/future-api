@@ -31,7 +31,7 @@ class AuthController < ApplicationController
 
   get '/log_out' do
     session.clear
-    "You are now logged out."
+    erb :"auth/goodbye"
   end
 
 end
