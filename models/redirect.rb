@@ -3,22 +3,21 @@ class Redirect
   @@table = airtable("Redirects")
 
   # expensive API call to airtable for all records
-  # caches response for an hour
   def self.all
     puts "RUNNING EXPENSIVE QUERY"
-    records = @@table.all
-    App.cache.set("redirects", records, 3600)
-    records
+    @@table.all
   end
 
-  # inexpensive cache-backed version of all
+  # less expensive cache-backed version of Redirect.all
+  # only caches for 60 seconds because any found redirects
+  # get cached aggressively by rack-cache
   def self.all_cached
-    App.cache.fetch("redirects", 3600) { all }
+    App.cache.fetch("redirects", 60) { all }
   end
 
-  # looks for a shortcut in cache, then falls back to an API call
+  # looks for a shortcut in cache
   def self.find_by_shortcut(shortcut)
-    all_cached.find{|r| r[:shortcut] == shortcut } || all.find {|r| r[:shortcut] == shortcut }
+    all_cached.find{|r| r[:shortcut] == shortcut }
   end
 
 end
