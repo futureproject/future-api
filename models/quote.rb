@@ -2,8 +2,8 @@ class Quote
   extend Airtabled
   @@table = airtable("Quotes")
 
-  # fetches a random quote from Airtable, caches it
-  def self.get_and_cache_quotes
+  # fetches a random quote from Airtable API, caches it for 24 hours
+  def self.fetch_and_cache_quotes
     quotes = @@table.records
     App.cache.set("quotes", quotes, 86400) if quotes.length > 0
     quotes
@@ -18,18 +18,26 @@ class Quote
   end
 
   # rate-limited API call to airtable for 100 most recent records
-  def all
+  def self.all
     @@table.records
   end
 
   # cached alias of above
-  def all_cached
+  def self.all_cached
     App.cache.get("quotes") || fetch_and_cache_quotes
   end
 
-  # quote of the day!
-  def self.daily
-    App.cache.get("DAILY_QUOTE") || self.fetch_and_cache_quote
+  # cycles through the quotes in cache, returning one each day
+  def self.daily(manual_offset = 0)
+    quotes = all_cached
+    count = quotes.size
+    if count > 0
+      index = (Date.today.yday + manual_offset) % count
+      quotes[index]
+    else
+      self.default
+    end
   end
+
 
 end
