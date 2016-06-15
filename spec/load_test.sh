@@ -1,4 +1,4 @@
-SITE="http://go.dream.org/redirects"
+SITE="http://cf.dream.org:5000/"
 TRIALS=10000
 CONCURRENCY=200
 ab -n $TRIALS -c $CONCURRENCY $SITE

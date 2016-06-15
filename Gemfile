@@ -8,6 +8,10 @@ gem "pg"
 gem "omniauth-google-oauth2"
 gem "require_all"
 gem "sass"
+gem "airtable"
+gem "memcachier"
+gem "dalli"
+gem "rack-cache"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"
@@ -16,3 +20,5 @@ group :development, :test do
   gem "pry"
   gem "database_cleaner"
 end
+# temporary, until Airtable removes activesupport dependency
+gem "activesupport", require: "active_support/all"
