@@ -1,8 +1,6 @@
+- Move redirects to Airtable
 - create employee directory with TFPIDs
   - Employees
   - Teams
   - Schools
   - Cities
-- Write rake task to sync employees
-- Run task via cron every hour
-- write a rake task to create slack reminders from commitments
