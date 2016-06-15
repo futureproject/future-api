@@ -1,35 +1,13 @@
 require "spec_helper"
 feature "Redirects" do
 
-  before do
-    FactoryGirl.create_list :redirect, 10
+  scenario " to thefutureproject.org by default" do
+    visit "/#{SecureRandom.uuid}"
+    expect(current_url).to eq App.settings.default_redirect
   end
 
-  scenario "listing" do
-    visit "/redirects"
-    should_see_redirects
+  scenario "to a defined redirect" do
+    visit "/directory"
+    expect(current_url).to include "google.com"
   end
-
-  scenario "creating" do
-    visit "/"
-    click_link "Redirects"
-    click_link "Add Redirect"
-    fill_in "redirect[shortcut]", with: "echobase"
-    fill_in "redirect[url]", with: "http://www.starwars.com/"
-    click_button "Make it so."
-    expect(page).to have_content "/echobase"
-  end
-
-  scenario "updating" do
-    visit "/redirects"
-    click_link "Edit", match: :first
-    fill_in "redirect[shortcut]", with: "topsecret"
-    click_button "Make it so."
-    expect(page).to have_content "/topsecret"
-  end
-
-  def should_see_redirects
-    expect(page).to have_content "Add Redirect"
-  end
-
 end

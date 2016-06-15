@@ -9,7 +9,7 @@ port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do
-  defined?(DB) and
-    DB.disconnect
-  DB = Database.connect
+  #defined?(DB) and
+    #DB.disconnect
+  #DB = Database.connect
 end

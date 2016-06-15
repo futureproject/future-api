@@ -8,21 +8,13 @@ require_relative "../main"
 require_all "#{Dir.pwd}/spec/support"
 Capybara.app = Rack::Builder.parse_file(File.expand_path('../../config.ru', __FILE__)).first
 Capybara.default_selector = :css
-FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
-FactoryGirl.find_definitions
 
-# monkeypatch FactoryGirl to be compatible with Sequel
-Sequel::Model.send :alias_method, :save!, :save
+#set default redirect to tfp.org, so that it doesn't 404 in tests
+App.set :default_redirect, "http://www.thefutureproject.org/"
 
-DatabaseCleaner.strategy = :transaction
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
   config.before(:each) do
-    DatabaseCleaner.start
     enable_automatic_auth
-  end
-  config.append_after(:each) do
-    DatabaseCleaner.clean
   end
   config.color = true
 end

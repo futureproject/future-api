@@ -7,12 +7,9 @@ class ApplicationController < App
   end
 
   get '/:shortcut' do
-    @redirect = params[:shortcut] ? Redirect.find(shortcut: params[:shortcut]) : nil
-    if @redirect
-      redirect @redirect.url
-    else
-      redirect settings.default_redirect
-    end
+    @redirect = Redirect.find_by_shortcut(params[:shortcut])
+    url = @redirect ? @redirect.url : settings.default_redirect
+    redirect url
   end
 
 end

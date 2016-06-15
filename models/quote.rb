@@ -2,13 +2,6 @@ class Quote
   extend Airtabled
   @@table = airtable("Quotes")
 
-  # fetches a random quote from Airtable API, caches it for 24 hours
-  def self.fetch_and_cache_quotes
-    quotes = @@table.records
-    App.cache.set("quotes", quotes, 86400) if quotes.length > 0
-    quotes
-  end
-
   #returns a hard-coded default quote
   def self.default
     Airtable::Record.new(
@@ -17,14 +10,18 @@ class Quote
     )
   end
 
-  # rate-limited API call to airtable for 100 most recent records
+  # expensive API call to airtable for all records
+  # caches response for 24 hours
   def self.all
-    @@table.records
+    puts "RUNNING EXPENSIVE QUERY"
+    records = @@table.all
+    App.cache.set("quotes", records, 86400)
+    records
   end
 
-  # cached alias of above
+  # inexpensive cache-backed version of all
   def self.all_cached
-    App.cache.get("quotes") || fetch_and_cache_quotes
+    App.cache.fetch("quotes", 86400) { all }
   end
 
   # cycles through the quotes in cache, returning one each day
