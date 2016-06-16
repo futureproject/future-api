@@ -1,4 +1,4 @@
-SITE="http://cf.dream.org:5000/directory"
+SITE="http://go.dream.org/directory"
 TRIALS=10000
 CONCURRENCY=200
 ab -n $TRIALS -c $CONCURRENCY $SITE
