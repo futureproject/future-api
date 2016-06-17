@@ -6,6 +6,8 @@ class App < Sinatra::Base
   require "tilt/erb"
   require "sass/plugin/rack"
   require "sinatra/json"
+  require "sinatra/config_file"
+
   configure do
     Sass::Plugin.options[:style] = :compressed
     use Sass::Plugin::Rack
@@ -16,16 +18,20 @@ class App < Sinatra::Base
     set :default_redirect, ENV["DEFAULT_REDIRECT"] || "http://www.thefutureproject.org/404.html"
     set :cache, Dalli::Client.new
   end
+
   configure :production do
     set :static_cache_control, [:public, :max_age => 7200]
   end
+
   configure :development do
     require "sinatra/reloader"
     register Sinatra::Reloader
   end
+
   configure :test do
     Dotenv.load
   end
+
   Dir["#{settings.root}/{helpers,models}/*.rb"].each{|f| require f}
 end
 
@@ -34,7 +40,6 @@ class ApplicationController < App
   helpers AuthHelper
 
   Dir["#{settings.root}/controllers/*.rb"].each{|f| require f}
-
 
 end
 

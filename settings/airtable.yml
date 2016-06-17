@@ -1,0 +1,14 @@
+:development: &default
+  :quotes:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Quotes
+  :redirects:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Redirects
+
+:test:
+  <<: *default
+
+:production:
+  <<: *default
+
