@@ -17,4 +17,5 @@ RSpec.configure do |config|
     enable_automatic_auth
   end
   config.color = true
+  App.cache.flush
 end
