@@ -14,7 +14,7 @@ class Quote
   # caches response for 24 hours
   def self.all
     puts "RUNNING EXPENSIVE QUERY"
-    records = @@table.all
+    records = @@table.all(view: "Main View")
     App.cache.set("quotes", records, 86400)
     records
   end
