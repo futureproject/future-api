@@ -5,7 +5,7 @@ class ApplicationController < App
   get "/" do
     authenticate!
     @quote = Quote.daily
-    @commitments = Commitment.undone_for_user(current_user)
+    @commitments = Commitment.undone_for_user_cached(current_user)
     erb :"application/launchpad"
   end
 
