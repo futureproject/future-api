@@ -8,21 +8,22 @@ $base-highlight-color: $blue;
 
 h1, h2 {
   letter-spacing: -.1rem;
-  background: rgba(255,0,0,.05);
+  //background: rgba(255,0,0,.05);
 }
 
 main {
-  background: rgba(0,0,0,.05);
+  //background: rgba(0,0,0,.05);
 }
 
 p {
-  overflow: hidden;
-  background: rgba(255,255,0,.05);
+  //overflow: hidden;
+  //background: rgba(255,255,0,.05);
 }
 
 q {
   display: block;
   @extend h3;
+  margin-bottom: 0;
   position: relative;
   &:before, &:after { position: absolute; }
   &:before { left: -1rem; }

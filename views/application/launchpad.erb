@@ -29,7 +29,7 @@
 
 <article id="quote">
   <q><%= @quote.body %></q>
-  <p> - <%= @quote.source %></p>
+  <div> - <%= @quote.source %></div>
 </article>
 
 <article id="commitments">
@@ -37,17 +37,18 @@
     <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
   </header>
   <% if @commitments.any? %>
-    <ol>
-      <% @commitments.each do |commitment| %>
-        <li>
-          <time datetime="<%= commitment.due %>">
-            <%= Date.parse(commitment.due).strftime("%a, %m/%d") %>
-          </time>
-          <p><%= commitment.commitment %></p>
-        </li>
-      <% end %>
-    </ol>
+    <% @commitments.group_by{|c| c.due}.each do |day, commitments| %>
+      <section>
+        <h4><%= Date.parse(day).strftime("%A, %m/%d") %></h4>
+        <ol>
+          <% commitments.each do |commitment| %>
+          <li><%= commitment.commitment %></li>
+          <% end %>
+        </ol>
+      </section>
+    <% end %>
   <% else %>
-    <p>You're currently 100% commitment-free. Nice work.</p>
+    <h4>You're currently 100% commitment-free. Nice work.</h4>
+  </header>
   <% end %>
 </article>
