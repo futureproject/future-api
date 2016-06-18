@@ -27,8 +27,9 @@ main {
 
 footer {
   //background: rgba(0,255,255,.05);
-  padding: 2rem;
-  text-align: right;
+  padding: 0 2rem;
+  max-width: 51rem;
+  margin: 0 auto;
 }
 
 section, article {

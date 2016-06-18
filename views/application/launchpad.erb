@@ -35,8 +35,8 @@
 <article id="commitments">
   <header>
     <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
-  </header>
   <% if @commitments.any? %>
+    </header>
     <% @commitments.group_by{|c| c.due}.each do |day, commitments| %>
       <section>
         <h4><%= Date.parse(day).strftime("%A, %m/%d") %></h4>
@@ -48,7 +48,7 @@
       </section>
     <% end %>
   <% else %>
-    <h4>You're currently 100% commitment-free. Nice work.</h4>
-  </header>
+    <p>You're currently 100% commitment-free.</p>
+    </header>
   <% end %>
 </article>
