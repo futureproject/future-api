@@ -1,9 +1,12 @@
 class ApplicationController < App
+  helpers AuthHelper
+  helpers AppHelper
 
   get "/" do
     authenticate!
     @quote = Quote.daily
-    erb :"application/home"
+    @commitments = Commitment.undone_for_user(current_user)
+    erb :"application/launchpad"
   end
 
   get '/:shortcut' do

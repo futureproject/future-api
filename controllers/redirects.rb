@@ -4,7 +4,7 @@ class RedirectsController < ApplicationController
   end
 
   get '/' do
-    @resources = Redirect.reverse_order(:id)
+    @resources = Redirect.all_cached
     erb :"redirects/index"
   end
 

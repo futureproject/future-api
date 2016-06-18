@@ -1,10 +1,15 @@
+DB = YAML.load_file("#{App.root}/settings/airtable.yml")[App.environment]
+
 module Airtabled
   @@client = Airtable::Client.new(ENV["AIRTABLE_API_KEY"])
-  @@tables = YAML.load_file("#{App.root}/settings/airtable.yml")[App.environment]
 
+  # return an Airtable::Table object, backed by a base defined in DB
   def airtable(table_name)
-    locator = @@tables[table_name.downcase.to_sym]
-    @@client.table(locator[:base_id], locator[:table_name])
+    data_locator = DB[table_name.downcase.to_sym] || raise(NoSuchBase)
+    @@client.table(data_locator[:base_id], data_locator[:table_name])
   end
 
+  class NoSuchBase < StandardError
+  end
 end
+

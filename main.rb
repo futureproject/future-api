@@ -37,8 +37,6 @@ end
 
 class ApplicationController < App
 
-  helpers AuthHelper
-
   Dir["#{settings.root}/controllers/*.rb"].each{|f| require f}
 
 end

@@ -58,6 +58,24 @@ ul ul, ol ol, ul ol, ol ul {
   margin-top: 0;
   margin-bottom: 0;
 }
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+  time {
+    float: right;
+    margin-left: 1rem;
+  }
+  li {
+    overflow: visible;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
 hr {
   border: none;
   border-top: 1px solid #e3e3e3;

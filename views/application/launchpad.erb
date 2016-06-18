@@ -31,3 +31,23 @@
   <q><%= @quote.body %></q>
   <p> - <%= @quote.source %></p>
 </article>
+
+<article id="commitments">
+  <header>
+    <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
+  </header>
+  <% if @commitments.any? %>
+    <ol>
+      <% @commitments.each do |commitment| %>
+        <li>
+          <time datetime="<%= commitment.due %>">
+            <%= Date.parse(commitment.due).strftime("%a, %m/%d") %>
+          </time>
+          <p><%= commitment.commitment %></p>
+        </li>
+      <% end %>
+    </ol>
+  <% else %>
+    <p>You're currently 100% commitment-free. Nice work.</p>
+  <% end %>
+</article>

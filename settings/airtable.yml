@@ -5,6 +5,12 @@
   :redirects:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Redirects
+  :users:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Employees
+  :commitments:
+    :base_id: appCkPo8BqJASORS9
+    :table_name: Commitments
 
 :test:
   <<: *default
