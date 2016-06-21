@@ -36,8 +36,7 @@ class App < Sinatra::Base
 end
 
 class ApplicationController < App
-
   Dir["#{settings.root}/controllers/*.rb"].each{|f| require f}
-
 end
 
+require "./dreamo/bot"
