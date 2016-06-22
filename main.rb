@@ -7,6 +7,7 @@ class App < Sinatra::Base
   require "sass/plugin/rack"
   require "sinatra/json"
   require "sinatra/config_file"
+  require "./dreamo/bot"
 
   configure do
     Sass::Plugin.options[:style] = :compressed
@@ -39,4 +40,3 @@ class ApplicationController < App
   Dir["#{settings.root}/controllers/*.rb"].each{|f| require f}
 end
 
-require "./dreamo/bot"

@@ -5,7 +5,7 @@ module Dreamo
       match /[^\S*](tasks|commitments).*?/i
 
       def self.call client, data, match
-        msg = "You're 100% commitment-free"
+        msg = "You're currently 100% commitment-free."
         client.say channel: data.channel, text: msg
       end
     end

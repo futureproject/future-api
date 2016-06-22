@@ -3,7 +3,7 @@ module Dreamo
   end
 end
 
-Dir["#{File.dirname(__FILE__)}/commands/*.rb"].each do |file|
+Dir["#{File.dirname(__FILE__)}/{commands,controllers}/*.rb"].each do |file|
   require file
 end
 
