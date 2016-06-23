@@ -2,7 +2,7 @@ module Dreamo
   module Commands
     class Commitments < SlackRubyBot::Commands::Base
 
-      match /[^\S*](tasks|commitments).*?/i
+      triggers "commitments", "tasks"
 
       def self.call client, data, match
         msg = "You're currently 100% commitment-free."

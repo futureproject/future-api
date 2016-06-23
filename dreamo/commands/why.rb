@@ -2,7 +2,7 @@ module Dreamo
   module Commands
     class Why < SlackRubyBot::Commands::Base
 
-      match /^(why)/i
+      triggers "why"
 
       def self.possible_responses
         [

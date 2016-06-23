@@ -1,7 +1,8 @@
 module Dreamo
   module Commands
     class Demo < SlackRubyBot::Commands::Base
-      match /ready for a demo/i
+
+      triggers "ready for a demo"
 
       def self.call client, data, match
         msg = "Ready, <@#{data.user}>. I think."
