@@ -9,7 +9,7 @@ module SlackRubyBot
       # matches phrases by word boundary, and requires that
       # the bot be menitoned by name in a channel
       def self.triggers(*phrases)
-        match /^(?<bot>[[:alnum:][:punct:]@<>]*).*(?<expression>\b(#{phrases.join("|")})\b)/
+        match /^(?<bot>[[:alnum:][:punct:]@<>]*).*(?<expression>\b(#{phrases.join("|")})\b)/i
       end
     end
   end
