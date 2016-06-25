@@ -162,7 +162,6 @@ GEM
       hitimes
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    verbal_expressions (0.1.5)
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -193,7 +192,6 @@ DEPENDENCIES
   sinatra-contrib
   sinatra-reloader
   slack-ruby-bot
-  verbal_expressions
 
 BUNDLED WITH
    1.12.5

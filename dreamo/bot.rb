@@ -1,11 +1,10 @@
 module Dreamo
+
   class Bot < SlackRubyBot::Bot
   end
-end
 
-module SlackRubyBot
   module Commands
-    class Base
+    class Base < SlackRubyBot::Commands::Base
       # matches phrases by word boundary, and requires that
       # the bot be menitoned by name in a channel
       def self.triggers(*phrases)
@@ -13,6 +12,7 @@ module SlackRubyBot
       end
     end
   end
+
 end
 
 SlackRubyBot.configure do |config|

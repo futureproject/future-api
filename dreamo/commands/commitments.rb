@@ -1,6 +1,6 @@
 module Dreamo
   module Commands
-    class Commitments < SlackRubyBot::Commands::Base
+    class Commitments < Base
 
       triggers "commitments", "tasks"
 

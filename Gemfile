@@ -13,7 +13,6 @@ gem "dalli"
 gem "rack-cache"
 gem "slack-ruby-bot"
 gem "celluloid-io"
-gem "verbal_expressions"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"

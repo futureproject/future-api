@@ -1,6 +1,6 @@
 module Dreamo
   module Commands
-    class Demo < SlackRubyBot::Commands::Base
+    class Demo < Base
 
       triggers "ready for a demo"
 

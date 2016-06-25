@@ -1,8 +1,10 @@
 module Dreamo
   module Commands
-    class Why < SlackRubyBot::Commands::Base
+    class Why < Base
 
-      triggers "why"
+      # anytime someone asks "why", but not "why not"
+      # negative lookaheads, who knew??
+      match /\b(why)(?! not)\b/i
 
       def self.possible_responses
         [
