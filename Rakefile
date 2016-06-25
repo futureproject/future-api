@@ -1,20 +1,9 @@
-require_relative 'main'
-
-namespace :db do
-  desc "migrate to the latest db version"
-  task :migrate, [:version] do |t, args|
-    Sequel.extension :migration
-    if args[:version]
-      puts "Migrating to version #{args[:version]}..."
-      Sequel::Migrator.run(DB, "db/migrations", target: args[:version].to_i)
-      puts "done."
-    else
-      puts "Migrating to latest..."
-      Sequel::Migrator.run DB, "db/migrations"
-      puts "done."
-    end
-  end
+require "./main"
+task :environment do
+  Dotenv.load
 end
+
+Dir["lib/tasks/*.rake"].each {|f| load f }
 
 if defined?(RSpec)
   require 'rspec/core/rake_task'

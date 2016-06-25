@@ -29,7 +29,7 @@ class App < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  configure :test do
+  configure :test, :development do
     Dotenv.load
   end
 
