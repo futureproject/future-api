@@ -19,6 +19,8 @@ group :development, :test do
   gem "capybara"
   gem "pry"
   gem "dotenv"
+  gem "vcr"
+  gem "webmock"
 end
 # temporary, until Airtable removes activesupport dependency
 gem "activesupport", require: "active_support/all"
