@@ -1,0 +1,46 @@
+<article>
+  <h2>Excellent. Almost there.</h2>
+  <p>Complete the form below and you'll be set up for project mangement, Logbook, and everything else we do in Airtable.</p>
+
+  <form action="/registration" method="POST">
+    <p>
+      <label>Full Name</label>
+      <input required="" name="employee[name]" type="text" value="Chris Frank">
+    </p>
+    <p>
+      <label>Job Title</label>
+      <input required="" name="employee[phone]" type="text" value="Technology Director">
+    </p>
+    <p>
+      <label>Email</label>
+      <input size="30" required="" name="employee[email]" type="text" value="chris.frank@thefutureproject.org">
+    </p>
+    <p>
+      <label>Phone</label>
+      <input name="employee[phone]" type="text" value="607-351-5173">
+    </p>
+    <fieldset>
+      <p>If you work in the field:</p>
+      <p>
+        <label>City</label>
+        <select name="employee[city]">
+          <option value=""></option>
+          <% @cities.each do |city| %>
+            <option value="<%= city.id %>"><%= city.name %></option>
+          <% end %>
+        </select>
+      </p>
+      <p>
+        <label>School</label>
+        <select name="employee[school]">
+          <option value=""></option>
+          <% @schools.each do |school| %>
+            <option value="<%= school.id %>"><%= school.label %></option>
+          <% end %>
+        </select>
+    </fieldset>
+    <p>
+      <input type="submit" value="Let's do this." />
+    </p>
+  </form>
+</article>

@@ -1,7 +1,6 @@
 require "./main"
 map("/api") { run ApiController }
 map("/auth") { run AuthController }
-map("/redirects") { run RedirectsController }
 map("/registration") { run RegistrationController }
 map("/") { run ApplicationController }
 

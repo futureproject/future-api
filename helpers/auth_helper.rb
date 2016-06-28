@@ -16,7 +16,7 @@ module AuthHelper
 
   def create_session_via_oauth
     email = get_email_from_auth_hash
-    registered_employee = Employee.find_by_email(email)
+    registered_employee = Employee.find_by(email: email)
     if email && registered_employee
       session[:auth_token] = registered_employee.slack_id
       true

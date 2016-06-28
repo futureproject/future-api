@@ -9,6 +9,10 @@ module Airtabled
     @@client.table(data_locator[:base_id], data_locator[:table_name])
   end
 
+  def find_by(attrs)
+    all.select{|e| e[attrs.keys[0]] == attrs.values[0] }.first
+  end
+
   class NoSuchBase < StandardError
   end
 end
