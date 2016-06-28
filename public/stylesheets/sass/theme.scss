@@ -5,6 +5,7 @@ $purple: #3b79fe;
 $red: #ff0000;
 $base-font-color: #333;
 $base-highlight-color: $blue;
+$base-border-color: #eee;
 
 h1, h2 {
   letter-spacing: -.1rem;
@@ -29,6 +30,17 @@ q {
   &:before { left: -1rem; }
 }
 
+
+label {
+  font-weight: bold;
+}
+
+fieldset {
+  border: none;
+  outline: 1px dashed $light-blue;
+  padding: 2rem;
+  margin: 2rem 0;
+}
 
 input[type=text], input[type=email], input[type=password], input[type=phone] {
   border-radius: 0;

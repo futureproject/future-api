@@ -10,27 +10,28 @@ module AuthHelper
   end
 
   def current_user
-    session['user'] || ENV["AUTH_HACK"]
+    token = session[:auth_token] || ENV["AUTH_HACK"]
+    token ? Employee.find_by_auth_token(token) : nil
   end
 
   def create_session_via_oauth
-    user_id = generate_user_id_from_auth_hash(request.env["omniauth.auth"]["info"])
-    if user_id
-      session["user"] = user_id
+    email = get_email_from_auth_hash
+    registered_employee = Employee.find_by_email(email)
+    if email && registered_employee
+      session[:auth_token] = registered_employee.slack_id
       true
     else
       false
     end
   end
 
-  private
-    def generate_user_id_from_auth_hash(hash)
-      if hash["email"]
-        Array(hash["email"]).first.to_s.downcase
-      else
-        nil
-      end
+  def get_email_from_auth_hash(hash=request.env["omniauth.auth"]["info"])
+    if hash["email"]
+      Array(hash["email"]).first.to_s.downcase
+    else
+      nil
     end
+  end
 
 end
 

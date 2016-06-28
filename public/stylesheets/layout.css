@@ -5,7 +5,7 @@ Use "@extend h3 !optional" if the extend should be able to fail.
 
 
 Backtrace:
-./public/stylesheets/sass/layout.scss:39
+./public/stylesheets/sass/layout.scss:40
 /Users/chrisfrank/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/extend.rb:62:in `block in check_extends_fired!'
 /Users/chrisfrank/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/util/subset_map.rb:105:in `block in each_value'
 /Users/chrisfrank/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/sass-3.4.22/lib/sass/util/subset_map.rb:105:in `each'

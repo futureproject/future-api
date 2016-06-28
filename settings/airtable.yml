@@ -5,12 +5,18 @@
   :redirects:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Redirects
-  :users:
+  :employees:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Employees
   :commitments:
     :base_id: appCkPo8BqJASORS9
     :table_name: Commitments
+  :schools:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Schools
+  :cities:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Cities
 
 :test:
   <<: *default

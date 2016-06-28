@@ -16,11 +16,12 @@ class AuthController < ApplicationController
   end
 
   get '/:provider/callback' do
-    if create_session_via_oauth #this is an AuthHelper method
+    if create_session_via_oauth
       url = session['google-auth-redirect'] || "/"
       redirect url
     else
-      "Auth error"
+      session[:registration_token] = get_email_from_auth_hash
+      redirect "/registration"
     end
   end
 
@@ -30,6 +31,7 @@ class AuthController < ApplicationController
   end
 
   get '/log_out' do
+    App.cache.delete Employee.cache_key_for_employee(current_user[:auth_token])
     session.clear
     erb :"auth/goodbye"
   end

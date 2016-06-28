@@ -14,7 +14,7 @@
     <footer>
       <article>
         <% if current_user %>
-          <%= current_user.split("@").first %>
+          <%= current_user.email %>
           //
           <a href="/auth/log_out">Log Out</a>
         <% end %>
