@@ -14,4 +14,22 @@ class RegistrationController < ApplicationController
     end
   end
 
+  post "/" do
+    if @user ||= Employee.update(employee_params)
+      session[:registration_token] = nil
+      sign_in @user
+      redirect "/"
+    else
+      "It didn't work"
+    end
+  end
+
+  private
+    def employee_params
+      params[:employee].merge({
+        "City": [params[:employee]["City"]],
+        "School": [params[:employee]["School"]]
+      })
+    end
+
 end

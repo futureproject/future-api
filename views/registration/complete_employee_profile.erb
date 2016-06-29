@@ -1,29 +1,30 @@
 <article>
-  <h2>Excellent. Almost there.</h2>
-  <p>Complete the form below and you'll be set up for project mangement, Logbook, and everything else we do in Airtable.</p>
+  <h2>Almost there.</h2>
+  <p>We pulled in all your Slack profile information.</p>
+  <p>Now just complete the form below, and you'll be all set.</p>
 
   <form action="/registration" method="POST">
     <p>
       <label>Full Name</label>
-      <input required="" name="employee[name]" type="text" value="Chris Frank">
+      <input required="" name="employee[Name]" type="text" value="Chris Frank">
     </p>
     <p>
       <label>Job Title</label>
-      <input required="" name="employee[phone]" type="text" value="Technology Director">
+      <input required="" name="employee[Title]" type="text" value="Technology Director">
     </p>
     <p>
       <label>Email</label>
-      <input size="30" required="" name="employee[email]" type="text" value="chris.frank@thefutureproject.org">
+      <input size="30" required="" name="employee[Email]" type="text" value="chris.frank@thefutureproject.org">
     </p>
     <p>
       <label>Phone</label>
-      <input name="employee[phone]" type="text" value="607-351-5173">
+      <input name="employee[Phone]" type="text" value="607-351-5173">
     </p>
     <fieldset>
       <p>If you work in the field:</p>
       <p>
         <label>City</label>
-        <select name="employee[city]">
+        <select name="employee[City]">
           <option value=""></option>
           <% @cities.each do |city| %>
             <option value="<%= city.id %>"><%= city.name %></option>
@@ -32,7 +33,7 @@
       </p>
       <p>
         <label>School</label>
-        <select name="employee[school]">
+        <select name="employee[School]">
           <option value=""></option>
           <% @schools.each do |school| %>
             <option value="<%= school.id %>"><%= school.label %></option>
@@ -40,6 +41,7 @@
         </select>
     </fieldset>
     <p>
+      <input type="hidden" name="employee[id]" value="<%= @employee.id %>">
       <input type="submit" value="Let's do this." />
     </p>
   </form>

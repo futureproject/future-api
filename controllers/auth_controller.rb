@@ -31,8 +31,7 @@ class AuthController < ApplicationController
   end
 
   get '/log_out' do
-    App.cache.delete Employee.cache_key_for_employee(current_user[:auth_token])
-    session.clear
+    sign_out current_user
     erb :"auth/goodbye"
   end
 

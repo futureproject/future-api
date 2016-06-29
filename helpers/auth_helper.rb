@@ -18,11 +18,21 @@ module AuthHelper
     email = get_email_from_auth_hash
     registered_employee = Employee.find_by(email: email)
     if email && registered_employee
-      session[:auth_token] = registered_employee.slack_id
+      sign_in registered_employee
       true
     else
       false
     end
+  end
+
+  def sign_in user
+    App.cache.set(Employee.cache_key_for(user), user)
+    session[:auth_token] = user[:slack_id]
+  end
+
+  def sign_out user
+    App.cache.delete Employee.cache_key_for(user)
+    session[:auth_token] = nil
   end
 
   def get_email_from_auth_hash(hash=request.env["omniauth.auth"]["info"])
