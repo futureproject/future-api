@@ -12,7 +12,7 @@ class Employee
 
   def self.update(attrs)
     id = attrs[:id] || attrs["id"]
-    record = Airtable::Record.new("id" => id)
+    record = table.find(id)
     attrs.each { |k,v| record[k] = v }
     if self.table.update(record)
       record
