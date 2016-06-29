@@ -1,24 +1,20 @@
 class Employee
   extend Airtabled
-  @@table = airtable(:employees)
 
-  def self.table
-    @@table
-  end
-
-  def self.all
-    @@table.all(sort: ["Name", :asc])
+  def self.default_sort
+    ["Email", :asc]
   end
 
   def self.find_or_create_by_slack_id(id, &block)
-    u = find_by(slack_id: id) || @@table.create(Airtable::Record.new(slack_id: id))
+    u = find_by(slack_id: id) || self.table.create(Airtable::Record.new(slack_id: id))
     block ? block.call(u) : u
   end
 
   def self.update(attrs)
-    record = find(attrs[:id])
+    id = attrs[:id] || attrs["id"]
+    record = Airtable::Record.new("id": id)
     attrs.each { |k,v| record[k] = v }
-    if @@table.update(record)
+    if self.table.update(record)
       record
     else
       false

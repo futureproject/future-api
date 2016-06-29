@@ -16,9 +16,9 @@ module AuthHelper
 
   def create_session_via_oauth
     email = get_email_from_auth_hash
-    registered_employee = Employee.find_by(email: email)
-    if email && registered_employee
-      sign_in registered_employee
+    user = Employee.find_by(email: email)
+    if email && user
+      sign_in user
       true
     else
       false

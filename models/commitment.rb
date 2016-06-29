@@ -1,16 +1,14 @@
 class Commitment
   extend Airtabled
-  @@table = airtable(:commitments)
 
-  def self.undone_for_user(email)
-    puts "RUNNING EXPENSIVE QUERY on table COMMITMENTS"
-    airtable_formula = "AND(FIND('#{email}', {user_id}) > 0, {Status} = 'Ongoing')"
-    @@table.records(sort: ["Due", :asc], filterByFormula: airtable_formula)
+  def self.undone_for_user(user)
+    airtable_formula = "AND(FIND('#{user.email}', {user_id}) > 0, {Status} = 'Ongoing')"
+    self.records(sort: ["Due", :asc], filterByFormula: airtable_formula)
   end
 
-  def self.undone_for_user_cached(email)
-    App.cache.fetch("commitments_undone_for_user_#{email}", 60) {
-      undone_for_user(email)
+  def self.undone_for_user_cached(user)
+    App.cache.fetch("commitments_undone_for_user_#{user.email}", 60) {
+      undone_for_user(user)
     }
   end
 

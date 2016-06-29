@@ -1,9 +1,8 @@
 class School
   extend Airtabled
-  @@table = airtable(:schools)
 
-  def self.all
-    @@table.all(sort: ["Label", :asc])
+  def self.default_sort
+    ["Label", :asc]
   end
 
   def self.all_cached

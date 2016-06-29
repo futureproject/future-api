@@ -1,12 +1,5 @@
 class Redirect
   extend Airtabled
-  @@table = airtable("Redirects")
-
-  # expensive API call to airtable for all records
-  def self.all
-    puts "RUNNING EXPENSIVE QUERY"
-    @@table.all
-  end
 
   # less expensive cache-backed version of Redirect.all
   # only caches for 60 seconds because any found redirects

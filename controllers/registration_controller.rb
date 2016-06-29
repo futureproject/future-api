@@ -26,10 +26,7 @@ class RegistrationController < ApplicationController
 
   private
     def employee_params
-      params[:employee].merge({
-        "City": [params[:employee]["City"]],
-        "School": [params[:employee]["School"]]
-      })
+      Employee.airtable_formatted_hash(params[:employee])
     end
 
 end

@@ -1,6 +1,5 @@
 class Quote
   extend Airtabled
-  @@table = airtable("Quotes")
 
   #returns a hard-coded default quote
   def self.default
@@ -10,13 +9,8 @@ class Quote
     )
   end
 
-  # expensive API call to airtable for all records
-  # caches response for 24 hours
   def self.all
-    puts "RUNNING EXPENSIVE QUERY on table Quotes"
-    records = @@table.all(view: "Main View")
-    App.cache.set("quotes", records, 86400)
-    records
+    table.all(view: "Main View")
   end
 
   # inexpensive cache-backed version of all

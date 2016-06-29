@@ -3,10 +3,27 @@ DB = YAML.load_file("#{App.root}/settings/airtable.yml")[App.environment]
 module Airtabled
   @@client = Airtable::Client.new(ENV["AIRTABLE_API_KEY"])
 
-  # return an Airtable::Table object, backed by a base defined in DB
-  def airtable(table_name)
+  # return an Airtable::Table object, backed by a base defined in DB yaml file
+  def table(table_name=self.name.pluralize.downcase.to_sym)
     data_locator = DB[table_name.downcase.to_sym] || raise(NoSuchBase)
     @@client.table(data_locator[:base_id], data_locator[:table_name])
+  end
+
+  # returns all records in the database, making as many calls as necessary
+  # to work around Airtable's 100-record per page design
+  def all(args={sort: default_sort})
+    puts "RUNNING EXPENSIVE API QUERY TO AIRTABLE (#{self.name})"
+    table.all(args)
+  end
+
+  # returns up to 100 records from Airtable
+  def records(args={sort: default_sort})
+    puts "RUNNING EXPENSIVE API QUERY TO AIRTABLE (#{self.name})"
+    table.records(args)
+  end
+
+  def default_sort
+    nil
   end
 
   def find(id)
@@ -17,8 +34,21 @@ module Airtabled
     all.select{|e| e[attrs.keys[0]] == attrs.values[0] }.first
   end
 
+  # convert blank strings to nil, and [""] to []
+  def airtable_formatted_hash(hash)
+    h = hash.dup
+    h.each{|k,v|
+      if v == [""]
+        h[k] = []
+      elsif v == ""
+        h[k] = nil
+      end
+    }
+  end
+
   class NoSuchBase < StandardError
   end
+
 end
 
 module Airtable

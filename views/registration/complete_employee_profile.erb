@@ -1,7 +1,7 @@
 <article>
-  <h2>Almost there.</h2>
-  <p>We pulled in all your Slack profile information.</p>
-  <p>Now just complete the form below, and you'll be all set.</p>
+  <h2>Hi <%= @slack_user[:profile][:first_name] %>,</h2>
+  <p>So you have a Slack accout, which is great.</p>
+  <p>Please confirm your profile info below.</p>
 
   <form action="/registration" method="POST">
     <p>
@@ -24,7 +24,7 @@
       <p>If you work in the field:</p>
       <p>
         <label>City</label>
-        <select name="employee[City]">
+        <select name="employee[City][]">
           <option value=""></option>
           <% @cities.each do |city| %>
             <option value="<%= city.id %>"><%= city.name %></option>
@@ -33,7 +33,7 @@
       </p>
       <p>
         <label>School</label>
-        <select name="employee[School]">
+        <select name="employee[School][]">
           <option value=""></option>
           <% @schools.each do |school| %>
             <option value="<%= school.id %>"><%= school.label %></option>

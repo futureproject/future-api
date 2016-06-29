@@ -1,9 +1,8 @@
 class City
   extend Airtabled
-  @@table = airtable(:cities)
 
-  def self.all
-    @@table.all(sort: ["Name", :asc])
+  def self.default_sort
+    ["Name", :asc]
   end
 
   def self.all_cached
