@@ -15,15 +15,15 @@ module OmniauthSupport
     })
   end
 
-  def enable_automatic_auth(default_email="bruce.wayne@thefutureproject.org")
+  def enable_automatic_auth(default_email="chris.frank@thefutureproject.org")
     OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
       provider: "google_oauth2",
       uid: "123456789",
       info: {
-          :name => "Bruce Waynce",
+          :name => "Chris Frank",
           :email => default_email,
-          :first_name => "Bruce",
-          :last_name => "Wayne",
+          :first_name => "Chris",
+          :last_name => "Frank",
           :image => "https://lh3.googleusercontent.com/url/photo.jpg"
       },
     })

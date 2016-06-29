@@ -36,7 +36,7 @@ module AuthHelper
   end
 
   def get_email_from_auth_hash(hash=request.env["omniauth.auth"]["info"])
-    if hash["email"]
+    if hash["email"] && hash["email"].split("@").last == "thefutureproject.org"
       Array(hash["email"]).first.to_s.downcase
     else
       nil

@@ -19,9 +19,10 @@ class AuthController < ApplicationController
     if create_session_via_oauth
       url = session['google-auth-redirect'] || "/"
       redirect url
-    else
-      session[:registration_token] = get_email_from_auth_hash
+    elsif session[:registration_token] ||= get_email_from_auth_hash
       redirect "/registration"
+    else
+      "Auth error!"
     end
   end
 
