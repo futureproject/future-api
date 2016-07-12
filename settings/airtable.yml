@@ -1,22 +1,25 @@
 :development: &default
-  :quotes:
-    :base_id: appJi1ucZpPmznBLP
-    :table_name: Quotes
-  :redirects:
-    :base_id: appJi1ucZpPmznBLP
-    :table_name: Redirects
-  :employees:
-    :base_id: appJi1ucZpPmznBLP
-    :table_name: Employees
-  :commitments:
-    :base_id: appCkPo8BqJASORS9
-    :table_name: Commitments
-  :schools:
-    :base_id: appJi1ucZpPmznBLP
-    :table_name: Schools
   :cities:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Cities
+  :commitments:
+    :base_id: appCkPo8BqJASORS9
+    :table_name: Commitments
+  :employees:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Employees
+  :portals:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Portals
+  :redirects:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Redirects
+  :schools:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Schools
+  :quotes:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: Quotes
 
 :test:
   <<: *default

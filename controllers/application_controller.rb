@@ -4,9 +4,16 @@ class ApplicationController < App
 
   get "/" do
     authenticate!
+    @portals = Portal.all_cached
     @quote = Quote.daily
     @commitments = Commitment.undone_for_user_cached(current_user)
     erb :"application/launchpad"
+  end
+
+  get "/flush" do
+    authenticate!
+    App.cache.flush
+    redirect request.referrer
   end
 
   get '/:shortcut' do

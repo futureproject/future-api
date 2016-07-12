@@ -12,7 +12,7 @@ Error: Undefined mixin 'clearfix'.
 7:   }
 8:   li {
 9:     text-align: center;
-10:     width: 25%;
+10:     width: 33.3333333%;
 11:     float: left;
 
 Backtrace:
@@ -102,4 +102,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'clearfix'.\A         on line 6 of ./public/stylesheets/sass/home.scss, in `clearfix'\A         from line 6 of ./public/stylesheets/sass/home.scss\A \A 1: #launchpad {\A 2:   ul {\A 3:     margin: 0 0 -2rem;\A 4:     padding: 0;\A 5:     list-style: none;\A 6:     @include clearfix;\A 7:   }\A 8:   li {\A 9:     text-align: center;\A 10:     width: 25%;\A 11:     float: left;"; }
+  content: "Error: Undefined mixin 'clearfix'.\A         on line 6 of ./public/stylesheets/sass/home.scss, in `clearfix'\A         from line 6 of ./public/stylesheets/sass/home.scss\A \A 1: #launchpad {\A 2:   ul {\A 3:     margin: 0 0 -2rem;\A 4:     padding: 0;\A 5:     list-style: none;\A 6:     @include clearfix;\A 7:   }\A 8:   li {\A 9:     text-align: center;\A 10:     width: 33.3333333%;\A 11:     float: left;"; }

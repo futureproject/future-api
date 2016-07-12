@@ -1,30 +1,17 @@
-<h1><%= session["hashie"] %></h1>
 <article id="launchpad">
   <ul>
+    <% @portals.each do |portal| %>
     <li>
-      <a href="https://thefutureproject.slack.com/">
-        <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" alt="Slack" />
-      <label>Slack</label>
+      <a href="<%= portal.link %>">
+        <% if portal.icon %>
+          <img src="<%= portal[:icon][0][:thumbnails][:large][:url] %>" alt="<%= portal.name %>" />
+        <% else %>
+          <img src="/img/icons/logo.png" alt="<%= portal.name %>" />
+        <% end %>
+        <label><%= portal.name %></label>
       </a>
     </li>
-    <li>
-      <a href="https://airtable.com">
-        <img src="https://pbs.twimg.com/profile_images/675477983793025024/Cpcs-SOu.png" alt="Airtable" />
-        <label>Airtable</label>
-      </a>
-    </li>
-    <li>
-      <a href="http://dream.namely.com">
-        <img src="http://static1.squarespace.com/static/5719066b22482e5dd5e4a2fb/t/57504a231bbee0485a64990e/1464879661073/namely+logo" alt="Namely" />
-        <label>Namely</label>
-      </a>
-    </li>
-    <li>
-      <a href="http://logbook.dream.org">
-        <img src="/img/icons/logbook.png" alt="Logbook" />
-        <label>Logbook</label>
-      </a>
-    </li>
+    <% end %>
   </ul>
 </article>
 
@@ -36,8 +23,8 @@
 <article id="commitments">
   <header>
     <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
+  </header>
   <% if @commitments.any? %>
-    </header>
     <% @commitments.group_by{|c| c.due}.each do |day, commitments| %>
       <section>
         <h4><%= Date.parse(day).strftime("%A, %m/%d") %></h4>
@@ -49,7 +36,8 @@
       </section>
     <% end %>
   <% else %>
-    <p>According to Airtable, you're currently 100% commitment-free.</p>
-    </header>
+    <section>
+      <p>If TFP had a Project Management system, you'd see your upcoming work here.</p>
+    </section>
   <% end %>
 </article>

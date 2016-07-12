@@ -17,6 +17,10 @@
           <%= current_user.email %>
           //
           <a href="/auth/log_out">Log Out</a>
+          <% if current_user.attributes[:admin] %>
+            //
+            <a href="/flush">Clear Caches</a>
+          <% end %>
         <% end %>
       </article>
     </footer>
