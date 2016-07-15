@@ -8,18 +8,18 @@
   :employees:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Employees
-  :portals:
+  :quotes:
     :base_id: appJi1ucZpPmznBLP
-    :table_name: Portals
+    :table_name: Quotes
   :redirects:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Redirects
   :schools:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Schools
-  :quotes:
+  :tools:
     :base_id: appJi1ucZpPmznBLP
-    :table_name: Quotes
+    :table_name: Tools
 
 :test:
   <<: *default

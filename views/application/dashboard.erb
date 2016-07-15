@@ -1,0 +1,72 @@
+<article>
+  <h1><%= Date.today.strftime "%B %d, %Y" %></h1>
+</article>
+<article id="commitments">
+  <header>
+    <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
+  </header>
+  <% if @commitments.any? %>
+    <% @commitments.group_by{|c| c.due}.each do |day, commitments| %>
+      <section>
+        <h4><%= Date.parse(day).strftime("%A, %m/%d") %></h4>
+        <ol>
+          <% commitments.each do |commitment| %>
+          <li><%= commitment.commitment %></li>
+          <% end %>
+        </ol>
+      </section>
+    <% end %>
+  <% else %>
+    <section>
+      <p>If TFP had a Project Management system, you'd see your upcoming work here.</p>
+    </section>
+  <% end %>
+</article>
+
+<article id="library-activities">
+  <header>
+    Browse The Library
+  </header>
+  <section>
+    <iframe class="airtable-embed" src="https://airtable.com/embed/shrCBl3qEUiyLGVT0?backgroundColor=purple&layout=card&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+  </section>
+</article>
+
+<article id="order-swag">
+  <header>
+    Order Swag
+  </header>
+  <section>
+    <iframe class="airtable-embed" src="https://airtable.com/embed/shrWdrUyQavZtZdVK?backgroundColor=yellow&layout=card&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+  </section>
+</article>
+
+<article id="launchpad">
+  <header>Do something elsewhere:</header>
+  <section>
+    <ul>
+      <% @tools.each do |tool| %>
+      <li>
+        <a href="<%= tool.link %>">
+          <% if tool.icon %>
+            <img src="<%= tool[:icon][0][:thumbnails][:large][:url] %>" alt="<%= tool.name %>" />
+          <% else %>
+            <img src="/img/logo.png" alt="<%= tool.name %>" />
+          <% end %>
+          <label><%= tool.name %></label>
+        </a>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<article id="quote">
+  <header>
+  <q><%= @quote.body %></q>
+  </header>
+  <section>
+  - <%= @quote.source %>
+  <section>
+</article>
+

@@ -4,10 +4,10 @@ class ApplicationController < App
 
   get "/" do
     authenticate!
-    @portals = Portal.all_cached
+    @tools = Tool.all_cached
     @quote = Quote.daily
     @commitments = Commitment.undone_for_user_cached(current_user)
-    erb :"application/launchpad"
+    erb :"application/dashboard"
   end
 
   get "/flush" do
