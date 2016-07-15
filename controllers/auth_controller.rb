@@ -11,7 +11,11 @@ class AuthController < ApplicationController
       provider :google_oauth2,
         ENV['GOOGLE_KEY'],
         ENV['GOOGLE_SECRET'],
-        { hd: 'thefutureproject.org', access_type: 'online', provider_ignores_ste: true }
+        { hd: 'thefutureproject.org',
+          access_type: 'online',
+          provider_ignores_state: true,
+          skip_jwt: true
+      }
     end
   end
 
