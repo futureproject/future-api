@@ -3,15 +3,11 @@ require "bundler/setup"
 
 class App < Sinatra::Base
   Bundler.require(:default, settings.environment)
-  require "tilt/erb"
-  require "sass/plugin/rack"
   require "sinatra/json"
   require "sinatra/config_file"
   require "./dreamo/bot"
 
   configure do
-    Sass::Plugin.options[:style] = :compressed
-    use Sass::Plugin::Rack
     use Rack::Session::Cookie, expire_after: 259200, secret: ENV["SESSION_SECRET"]
     use Rack::Cache
     enable :logging
@@ -27,6 +23,7 @@ class App < Sinatra::Base
   configure :development do
     require "sinatra/reloader"
     register Sinatra::Reloader
+
   end
 
   configure :test, :development do
@@ -34,6 +31,7 @@ class App < Sinatra::Base
   end
 
   Dir["#{settings.root}/{helpers,models}/*.rb"].each{|f| require f}
+  require "./assets/init"
 end
 
 class ApplicationController < App

@@ -14,6 +14,8 @@ gem "dalli"
 gem "rack-cache"
 gem "slack-ruby-bot"
 gem "celluloid-io"
+gem "sprockets"
+gem "sprockets-helpers", require: "sinatra/sprockets-helpers"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"
