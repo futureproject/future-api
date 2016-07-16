@@ -1,6 +1,7 @@
 <article>
   <h1><%= Date.today.strftime "%B %d, %Y" %></h1>
 </article>
+
 <article id="commitments">
   <header>
     <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
@@ -23,26 +24,28 @@
   <% end %>
 </article>
 
-<article id="library-activities">
+<article data-toggle id="library-activities">
   <header>
-    Browse The Library
+    <a href="https://airtable.com/embed/shrCBl3qEUiyLGVT0?backgroundColor=purple&layout=card&viewControls=on">
+      Browse The Library
+    </a>
   </header>
-  <section>
-    <iframe class="airtable-embed" src="https://airtable.com/embed/shrCBl3qEUiyLGVT0?backgroundColor=purple&layout=card&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
-  </section>
 </article>
 
 <article id="order-swag">
   <header>
-    Order Swag
+    <a href="https://airtable.com/embed/shrWdrUyQavZtZdVK?backgroundColor=yellow&layout=card&viewControls=on">
+      Order Swag
+    </a>
   </header>
   <section>
-    <iframe class="airtable-embed" src="https://airtable.com/embed/shrWdrUyQavZtZdVK?backgroundColor=yellow&layout=card&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
   </section>
 </article>
 
 <article id="launchpad">
-  <header>Do something elsewhere:</header>
+  <header>
+    Do something elsewhere
+  </header>
   <section>
     <ul>
       <% @tools.each do |tool| %>
