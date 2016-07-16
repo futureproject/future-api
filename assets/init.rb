@@ -3,6 +3,7 @@ class App < Sinatra::Base
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, '/assets'
   set :assets_to_compile, %w(application.js screen.css)
+  set :digest_assets, production?
 
   configure do
     sprockets.append_path File.join(root, 'assets', 'stylesheets')
@@ -16,15 +17,10 @@ class App < Sinatra::Base
 
   configure :development do
     sprockets.cache = Sprockets::Cache::FileStore.new('./tmp')
-    set :digest_assets, false
     get "/assets/*" do
       env["PATH_INFO"].sub!("/assets", "")
       settings.sprockets.call(env)
     end
-  end
-
-  configure :production do
-    set :digest_assets, true
   end
 
 end
