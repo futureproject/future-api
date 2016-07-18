@@ -8,6 +8,9 @@
   :employees:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Employees
+  :portalmodules:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: PortalModules
   :quotes:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Quotes
@@ -17,9 +20,6 @@
   :schools:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Schools
-  :tools:
-    :base_id: appJi1ucZpPmznBLP
-    :table_name: Tools
 
 :test:
   <<: *default

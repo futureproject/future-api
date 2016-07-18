@@ -8,13 +8,13 @@ feature "As a Dream Director I can" do
     expect(page).to have_content "Browse The Library"
   end
 
-  scenario "add a new activity Library Activites via a form"
+  #scenario "add a new activity Library Activites via a form"
 
-  scenario "favorite Library Activites via a form"
+  #scenario "favorite Library Activites via a form"
 
-  scenario "view a the Library Vault in an iframe"
+  #scenario "view a the Library Vault in an iframe"
 
-  scenario "view Templates from the vault in an iframe"
+  #scenario "view Templates from the vault in an iframe"
 
   scenario "browse products in the Store via an iframe" do
     visit "/"
@@ -33,11 +33,11 @@ feature "As a Dream Director I can" do
 
   scenario "view commitments from Gotit"
 
-  scenario "search for student profiles"
+  #scenario "search for student profiles"
 
-  scenario "add a commitment from a student profiles"
+  #scenario "add a commitment from a student profiles"
 
-  scenario "view a graph of Student Commitments Made vs Student Commitments Completed"
+  #scenario "view a graph of Student Commitments Made vs Student Commitments Completed"
 
   scenario "respond to reflection prompts"
 end

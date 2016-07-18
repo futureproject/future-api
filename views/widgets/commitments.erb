@@ -1,0 +1,22 @@
+<article id="commitments">
+  <header>
+    <a href="<%= airtable_url_for "Commitments" %>">Commitments</a>
+  </header>
+  <% if @commitments.any? %>
+    <% @commitments.group_by{|c| c.due}.each do |day, commitments| %>
+      <section>
+        <h4><%= Date.parse(day).strftime("%A, %m/%d") %></h4>
+        <ol>
+          <% commitments.each do |commitment| %>
+          <li><%= commitment.commitment %></li>
+          <% end %>
+        </ol>
+      </section>
+    <% end %>
+  <% else %>
+    <section>
+      <p>If TFP had a Project Management system, you'd see your upcoming work here.</p>
+    </section>
+  <% end %>
+</article>
+

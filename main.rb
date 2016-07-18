@@ -10,6 +10,7 @@ class App < Sinatra::Base
   configure do
     use Rack::Session::Cookie, expire_after: 259200, secret: ENV["SESSION_SECRET"]
     use Rack::Cache
+    use Rack::Deflater
     enable :logging
     set :last_boot, Time.now.to_i
     set :default_redirect, ENV["DEFAULT_REDIRECT"] || "http://www.thefutureproject.org/404.html"

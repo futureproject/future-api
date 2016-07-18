@@ -2,6 +2,7 @@ require "./main"
 map("/api") { run ApiController }
 map("/auth") { run AuthController }
 map("/registration") { run RegistrationController }
+map("/widgets") { run WidgetsController }
 map("/") { run ApplicationController }
 
 Thread.abort_on_exception = true

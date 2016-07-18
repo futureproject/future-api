@@ -4,9 +4,7 @@ class ApplicationController < App
 
   get "/" do
     authenticate!
-    @tools = Tool.all_cached
-    @quote = Quote.daily
-    @commitments = Commitment.undone_for_user_cached(current_user)
+    @portal_modules = PortalModule.all_cached
     erb :"application/dashboard"
   end
 

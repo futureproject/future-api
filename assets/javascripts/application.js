@@ -1,1 +1,1 @@
-alert("!");
+//= require_self
