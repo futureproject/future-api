@@ -17,14 +17,15 @@ header, main, footer {
   display: block;
 }
 
-body > header {
-  padding: 2rem;
-  //background: rgba(0,0,255,.1);
-}
-
 main {
   padding: 2rem;
 }
+
+main > header {
+  margin: 0 auto;
+  //background: rgba(0,0,255,.1);
+}
+
 
 footer {
   //background: rgba(0,255,255,.05);
@@ -34,14 +35,12 @@ footer {
 }
 
 section, article {
-  margin: 2rem auto;
+  margin: 2rem auto 4rem;
   > header {
-    margin: 4rem 0 2rem;
-    @extend h3;
   }
 }
 
-article {
+article, main > header {
   max-width: 51rem;
 }
 

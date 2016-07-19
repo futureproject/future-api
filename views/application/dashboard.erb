@@ -1,16 +1,16 @@
-<article>
-  <h1><%= Date.today.strftime "%B %d, %Y" %></h1>
-</article>
+<header>
+  <%= Date.today.strftime "%A, %B %d" %>
+</header>
+
 <% @portal_modules.each do |mod| %>
-  <article class="<%= mod["Kind"] %>" id="module-<%= mod["Name"].parameterize %>">
-    <header>
-      <%= mod["Name"] %>
-    </header>
+  <article data-link="<%= mod["Link"] %>" class="<%= mod["Kind"] %>" id="module-<%= mod["Name"].parameterize %>">
+    <header><%= mod["Name"] %></header>
     <section>
-      <%= mod["Link"] %>
+      <div class="loading"></div>
     </section>
   </article>
 <% end %>
+
 <article id="launchpad">
   <header>
   Do something elsewhere
