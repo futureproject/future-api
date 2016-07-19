@@ -6,7 +6,6 @@
     @include clearfix;
   }
   li {
-    text-align: center;
     width: 33.3333333%;
     float: left;
     margin-bottom: 2rem;
@@ -15,7 +14,6 @@
     display: block;
     height: 4rem;
     width: 4rem;
-    margin: 0 auto;
     &:hover {
       -webkit-transform: scale(1.03);
     }

@@ -1,11 +1,11 @@
 html {
   margin: 0;
   padding: 0;
-  font-size: 12px;
+  /*font-size: 12px;*/
 }
 
 body {
-  background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .3) 1px, transparent 1px);
+  /*background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .3) 1px, transparent 1px);*/
   background-color: white;
   background-repeat: repeat;
   background-size: 2rem 2rem;
@@ -18,7 +18,7 @@ header, main, footer {
 }
 
 body > header {
-  margin: 0 auto;
+  margin: 1rem auto 0;
   @include sized;
   line-height: 4rem;
   img {
@@ -31,16 +31,13 @@ body > header {
 }
 
 main {
-  padding: 2rem;
+  padding: 1rem;
 }
-
-main > header {
-}
-
 
 footer {
   //background: rgba(0,255,255,.05);
-  padding: 0 2rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
   @include sized;
 }
 
@@ -54,9 +51,14 @@ article, main > header {
   @include sized;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 51rem) {
   html {
     font-size: 16px;
+  }
+  ul, ol {
+    list-style-position: outside;
+    padding-left: 0;
+    margin-left: 0;
   }
 }
 

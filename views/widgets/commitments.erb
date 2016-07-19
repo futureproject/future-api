@@ -2,7 +2,6 @@
 <h4>
   <a href="<%= airtable_url_for "Commitments" %>">View All</a>
 </h4>
--->
 <table>
   <thead>
     <tr>
@@ -19,7 +18,7 @@
     <% end %>
   </tbody>
 </table>
-<!-- 
+-->
 <% @commitments.group_by{|c| c["due"]}.each do |day, commitments| %>
   <section>
     <h4><%= day %></h4>
@@ -30,5 +29,4 @@
     </ol>
   </section>
 <% end %>
--->
 
