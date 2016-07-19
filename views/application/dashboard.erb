@@ -1,7 +1,3 @@
-<header>
-  <%= Date.today.strftime "%A, %B %d" %>
-</header>
-
 <% @portal_modules.each do |mod| %>
   <article data-link="<%= mod["Link"] %>" class="<%= mod["Kind"] %>" id="module-<%= mod["Name"].parameterize %>">
     <header><%= mod["Name"] %></header>
