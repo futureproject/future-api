@@ -1,0 +1,22 @@
+.embed {
+  header a:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "+";
+    @include transition;
+  }
+  iframe {
+    display: none;
+  }
+}
+.embed.is-expanded {
+  p { display: none; }
+  iframe {
+    display: block;
+  }
+  header a:after {
+    @include transform(rotate(45deg));
+  }
+}

@@ -2,7 +2,7 @@ window.tfp = window.tfp || {};
 
 tfp.Widget = function(elem){
   var self = this;
-  self.contentBox = elem.querySelector("section")
+  self.contentBox = elem.querySelector("section");
   self.url = elem.getAttribute("data-link");
   self.xhr = new XMLHttpRequest();
   self.xhr.open("GET", this.url);

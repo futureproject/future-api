@@ -1,10 +1,5 @@
 <% @portal_modules.each do |mod| %>
-  <article data-link="<%= mod["Link"] %>" class="<%= mod["Kind"] %>" id="module-<%= mod["Name"].parameterize %>">
-    <header><%= mod["Name"] %></header>
-    <section>
-      <div class="loading"></div>
-    </section>
-  </article>
+  <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
 <% end %>
 
 <article id="launchpad">

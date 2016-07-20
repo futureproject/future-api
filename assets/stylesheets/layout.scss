@@ -1,7 +1,7 @@
 html {
   margin: 0;
   padding: 0;
-  /*font-size: 12px;*/
+  font-size: 14px;
 }
 
 body {
@@ -21,7 +21,6 @@ body > header {
   padding: 2rem 1rem 1rem;
   @include sized;
   text-align: left;
-  font-size: 1.625rem;
   position: relative;
   img {
     display: block;
@@ -54,7 +53,7 @@ article, main > header {
   @include sized;
 }
 
-@media (min-width: 51rem) {
+@media (min-width: 768px) {
   html {
     font-size: 16px;
   }
