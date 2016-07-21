@@ -1,5 +1,7 @@
 <% @portal_modules.each do |mod| %>
-  <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
+  <% if !mod["Kind"].empty? %>
+    <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
+  <% end %>
 <% end %>
 
 <article id="launchpad">
