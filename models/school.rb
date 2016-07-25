@@ -9,4 +9,8 @@ class School
     App.cache.fetch("schools", 86400) { all }
   end
 
+  def all
+    all(view: "Active")
+  end
+
 end

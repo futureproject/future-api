@@ -80,6 +80,10 @@ input[type=text], input[type=email], input[type=password], input[type=phone] {
   }
 }
 
+select {
+  max-width: 33ch;
+}
+
 th, tr:nth-child(even) {
   background-color: rgba(0,0,0,.05);
 }
