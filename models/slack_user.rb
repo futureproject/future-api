@@ -10,7 +10,7 @@ class SlackUser
   end
 
   def self.find(id)
-    client.users_info(id)
+    client.users_info(user: id)
   end
 
   def self.find_by_email(email)

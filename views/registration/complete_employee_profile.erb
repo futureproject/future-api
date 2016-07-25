@@ -1,7 +1,7 @@
 <article>
   <h2>Hi <%= @slack_user[:profile][:first_name] %>,</h2>
-  <p>So you have a Slack account, which is great.</p>
-  <p>Please confirm your profile info below.</p>
+  <p>So you have a Slack account, which is great.
+  Please confirm your profile info below.</p>
 
   <form action="/registration" method="POST">
     <p>
@@ -21,24 +21,16 @@
       <input name="employee[Phone]" type="text" value="<%= @slack_user[:profile][:phone] %>">
     </p>
     <fieldset>
-      <p>If you have these:</p>
-      <p>
-        <label>City</label>
-        <select name="employee[City][]">
-          <option value=""></option>
-          <% @cities.each do |city| %>
-            <option value="<%= city.id %>"><%= city.name %></option>
-          <% end %>
-        </select>
-      </p>
-      <p>
-        <label>School</label>
-        <select name="employee[School][]">
-          <option value=""></option>
-          <% @schools.each do |school| %>
-            <option value="<%= school.id %>"><%= school.label %></option>
-          <% end %>
-        </select>
+      <label>Teams</label>
+      <p>(Select any you're part of.)</p>
+        <% @teams.each do |team| %>
+          <p>
+            <label>
+              <input type="checkbox" name="employee[Teams][]" value="<%= team.id %>">
+              <%= team["Label"] %>
+            </label>
+          </p>
+        <% end %>
     </fieldset>
     <p>
       <input type="hidden" name="employee[id]" value="<%= @employee.id %>">

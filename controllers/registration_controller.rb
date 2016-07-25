@@ -7,8 +7,7 @@ class RegistrationController < ApplicationController
     @slack_user = SlackUser.find_by_email(@email)
     if @slack_user
       @employee = Employee.find_or_create_by_slack_id(@slack_user.id)
-      @cities = City.all
-      @schools = School.all
+      @teams = Team.all_cached
       erb :"registration/complete_employee_profile"
     else
       erb :"registration/join_slack_first"
@@ -16,7 +15,7 @@ class RegistrationController < ApplicationController
   end
 
   post "/" do
-    if @user ||= Employee.update(employee_params)
+    if @user ||= Employee.patch(employee_params)
       session[:registration_token] = nil
       sign_in @user
       redirect "/"

@@ -10,17 +10,6 @@ class Employee
     block ? block.call(u) : u
   end
 
-  def self.update(attrs)
-    id = attrs[:id] || attrs["id"]
-    record = table.find(id)
-    attrs.each { |k,v| record[k] = v }
-    if self.table.update(record)
-      record
-    else
-      false
-    end
-  end
-
   def self.find_by_auth_token(token)
     App.cache.get cache_key_for({slack_id: token})
   end

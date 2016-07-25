@@ -46,11 +46,24 @@ module Airtabled
     }
   end
 
+  # update this record in airtable, but do not overwrite
+  # the values that aren't supplied
+  def patch(attrs)
+    id = attrs.delete(:id) || attrs.delete("id")
+    if self.table.update_record_fields(id, attrs)
+      attrs
+    else
+      false
+    end
+  end
+
+
   class NoSuchBase < StandardError
   end
 
 end
 
+# Airtable monkeypatches!
 module Airtable
   class Table < Resource
     def update(record)
@@ -66,5 +79,18 @@ module Airtable
       end
     end
 
+    def update_record_fields(record_id, fields_for_update)
+      result = self.class.patch(worksheet_url + "/" + record_id,
+        :body => { "fields" => fields_for_update }.to_json,
+        :headers => { "Content-type" => "application/json" }).parsed_response
+      if result.present? && result["id"].present?
+        Record.new(result_attributes(result))
+      else # failed
+        puts result
+        false
+      end
+    end
+
   end
+
 end
