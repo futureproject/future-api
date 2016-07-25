@@ -121,6 +121,7 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (11.2.2)
+    redcarpet (3.3.2)
     require_all (1.3.3)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
@@ -202,6 +203,7 @@ DEPENDENCIES
   puma
   rack-cache
   rake
+  redcarpet
   require_all
   rspec
   sass

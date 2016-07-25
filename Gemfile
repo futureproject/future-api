@@ -16,6 +16,7 @@ gem "slack-ruby-bot"
 gem "celluloid-io"
 gem "sprockets"
 gem "sprockets-helpers", require: "sinatra/sprockets-helpers"
+gem "redcarpet"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"
