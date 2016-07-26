@@ -23,9 +23,6 @@
   :tasks:
     :base_id: appsSbGeUL5na71it
     :table_name: Commitments
-  :teams:
-    :base_id: appJi1ucZpPmznBLP
-    :table_name: Teams
 
 :test:
   <<: *default

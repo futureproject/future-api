@@ -22,6 +22,8 @@ module Airtabled
     table.records(args)
   end
 
+  # default to whatever order airtable returns
+  # this method gets overridden on Airtabled classes
   def default_sort
     nil
   end
@@ -46,8 +48,9 @@ module Airtabled
     }
   end
 
-  # update this record in airtable, but do not overwrite
-  # the values that aren't supplied
+  # update this record in airtable, but only the values
+  # supplied in the hash. (PUT, insanely, overwrites all
+  # values that aren't in the hash with nil.)
   def patch(attrs)
     id = attrs.delete(:id) || attrs.delete("id")
     if self.table.update_record_fields(id, attrs)
@@ -58,6 +61,8 @@ module Airtabled
   end
 
 
+  # raise this error when a table
+  # is not defined in settings/airtable.yml
   class NoSuchBase < StandardError
   end
 
