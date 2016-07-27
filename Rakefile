@@ -1,6 +1,8 @@
 require "./main"
 task :environment do
-  Dotenv.load
+  if defined?(Dotenv)
+    Dotenv.load
+  end
 end
 
 Dir["lib/tasks/*.rake"].each {|f| load f }
