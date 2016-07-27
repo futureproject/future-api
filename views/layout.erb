@@ -12,25 +12,23 @@
       <a href="/">
         <img src="/img/logo.png" alt="The Future Project" />
       </a>
-      <%= Date.today.strftime "%A, %B %d" %>
+      <%= Date.today.strftime "%a, %B %d" %>
     </header>
 
     <main>
       <%= yield %>
     </main>
-    <footer>
-      <article>
-        <% if current_user %>
-          <%= current_user.email %>
+    <% if current_user %>
+      <footer>
+        <%= current_user.email %>
+        //
+        <a href="/auth/log_out">Log Out</a>
+        <% if current_user.attributes[:admin] %>
           //
-          <a href="/auth/log_out">Log Out</a>
-          <% if current_user.attributes[:admin] %>
-            //
-            <a href="/admin">Admin</a>
-          <% end %>
+          <a href="/admin">Admin</a>
         <% end %>
-      </article>
-    </footer>
+      </footer>
+    <% end %>
 
     <%= javascript_tag "application" %>
   </body>

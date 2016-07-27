@@ -1,15 +1,24 @@
-$light-blue: #50daff;
-$blue: #00a4f7;
-$yellow: #ffce00;
-$purple: #3b79fe;
-$red: #ff0000;
-$base-font-color: #333;
+$light-blue: lightskyblue;
+$blue: deepskyblue;
+$yellow: gold;
+$purple: mediumslateblue;
+$red: crimson;
 $base-highlight-color: $blue;
-$base-border-color: #eee;
+$base-border-color: lightgray;
+$base-font-color: dimgray;
+$base-font-family: "avenir next", avenir, sans-serif;
 
 body {
-  //font-family: "avenir", sans-serif;
-  font-family: "avenir next", avenir, sans-serif;
+  background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .1) 1px, transparent 1px);
+  font-family: $base-font-family;
+  background-color: whitesmoke;
+  background-repeat: repeat;
+  background-size: 2rem 2rem;
+  color: $base-font-color;
+  > header {
+    font-weight: 200;
+    font-size: 1.625rem;
+  }
 }
 
 h1, h2 {
@@ -17,33 +26,24 @@ h1, h2 {
   //background: rgba(255,0,0,.05);
 }
 
-header {
-  //font-weight: bold;
-}
-
 q {
   display: block;
-  color: $purple;
+  //color: $purple;
+  font-weight: 200;
   @extend h3;
   position: relative;
+  max-width: 555px;
+  margin-bottom: 0;
   &:before, &:after { position: absolute; }
   &:before { left: -1rem; }
 }
 
 article {
+  @include shadowed;
   header {
     position: relative;
     font-weight: bold;
     a { display: block; }
-    &:after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      content: "";
-      @include linear-gradient(to right, #cfcfcf, white);
-    }
   }
 }
 
@@ -101,7 +101,17 @@ a[data-method=delete], a[href*="destroy"], .error {
   color: $red;
 }
 
-
-footer {
-  border-top: 1px dashed #eee;
+.dashboard-module {
+  header a {
+    color: $base-font-color;
+  }
+  header a:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "+";
+    @include transition;
+  }
 }
+

@@ -1,0 +1,30 @@
+@mixin oneline {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin unstyled-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@mixin desaturate($pct) {
+  -webkit-filter: grayscale($pct);
+  -moz-filter: grayscale($pct);
+  -ms-filter: grayscale($pct);
+  filter: grayscale($pct);
+}
+
+@mixin sized {
+  max-width: 51rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin shadowed {
+  background-color: white;
+  box-shadow: 2px 3px 5px rgba(0,0,0,.1);
+  padding: 1rem;
+}

@@ -1,33 +1,8 @@
 <% @portal_modules.each do |mod| %>
   <% if !mod["Kind"].empty? %>
+         <div class="dashboard-module <%= mod["name"].downcase %> <%= (mod.css_classes || []).join(' ') %>">
     <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
+    </div>
   <% end %>
 <% end %>
 
-<article id="launchpad">
-  <header>
-  Do something elsewhere
-  </header>
-  <section>
-    <ul>
-      <li>
-        <a href="https://thefutureproject.slack.com/">
-          <img src="https://dl.airtable.com/g0jIEspXQOOPwpDkaxUk_large_slack.png" alt="Slack">
-          <label>Slack</label>
-        </a>
-      </li>
-      <li>
-        <a href="https://dream.namely.com/">
-          <img src="https://dl.airtable.com/0G6lHezAQJyZIgfX6iqN_large_namely.png" alt="Namely">
-          <label>Namely</label>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.expensify.com/signin">
-          <img src="https://dl.airtable.com/33JCDcS6QaeUgqDzXdkU_large_icon-rounded.png" alt="Expensify">
-          <label>Expensify</label>
-        </a>
-      </li>
-    </ul>
-  </section>
-</article>

@@ -22,12 +22,8 @@ class WidgetsController < ApplicationController
     erb :"widgets/commitments", layout: false
   end
 
-  get "/library" do
-    erb :"widgets/library", layout: false
-  end
-
-  get "/swag" do
-    erb :"widgets/library", layout: false
+  get "/:widget" do
+    erb :"widgets/#{params[:widget]}", layout: false
   end
 
 end

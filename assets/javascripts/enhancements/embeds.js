@@ -17,7 +17,7 @@ tfp.Embed = function(elem) {
           elem.classList.add("is-expanded");
           self.frame = document.createElement("iframe");
           self.frame.src = elem.getAttribute("data-link");
-          self.contentBox.appendChild(self.frame);
+          self.contentBox.insertBefore(self.frame, self.contentBox.firstChild)
         });
     }
   }
