@@ -6,11 +6,11 @@
   <form action="/registration" method="POST">
     <p>
       <label>Full Name</label>
-      <input required="" name="employee[Name]" type="text" value="<%= @slack_user[:profile][:real_name_normalized] %>">
+      <input required="" name="employee[NAME]" type="text" value="<%= @slack_user[:profile][:real_name_normalized] %>">
     </p>
     <p>
       <label>Job Title</label>
-      <input required="" name="employee[Title]" type="text" value="<%= @slack_user[:profile][:title] %>">
+      <input required="" name="employee[TITLE]" type="text" value="<%= @slack_user[:profile][:title] %>">
     </p>
     <p>
       <label>Email</label>

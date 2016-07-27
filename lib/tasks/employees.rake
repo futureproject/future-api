@@ -16,8 +16,8 @@ namespace :employees do
         record = table.records(filterByFormula:"TFPID = '#{employee.tfpid}'").first ||
           table.create(Airtable::Record.new({"TFPID": employee.tfpid}))
         attrs = {
-          "Name": employee.name,
-          "Title": employee.title,
+          "NAME": employee.name,
+          "TITLE": employee.title,
           "SCHOOL_TFPID": employee.school_tfpid,
           "CITY_TFPID": employee.city_tfpid
         }

@@ -1,0 +1,17 @@
+<article>
+  <% if flash[:notice] %>
+    <h2>
+      <%= flash[:notice] %>
+    </h2>
+  <% else %>
+  <h1>Admin Tools</h1>
+  <% end %>
+  <ul>
+    <li>
+      <a href="/admin/flush">Clear App Cache</a>
+    </li>
+    <li>
+      <a href="/admin/sync_employees">Sync Employees</a>
+    </li>
+  </ul>
+</article>

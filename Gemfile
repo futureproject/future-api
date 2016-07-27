@@ -17,6 +17,7 @@ gem "celluloid-io"
 gem "sprockets"
 gem "sprockets-helpers", require: "sinatra/sprockets-helpers"
 gem "redcarpet"
+gem "rack-flash3", require: "rack-flash"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"

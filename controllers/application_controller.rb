@@ -8,12 +8,6 @@ class ApplicationController < App
     erb :"application/dashboard"
   end
 
-  get "/flush" do
-    authenticate!
-    App.cache.flush
-    redirect request.referrer
-  end
-
   get '/:shortcut' do
     @redirect = Redirect.find_by_shortcut(params[:shortcut])
     if @redirect
