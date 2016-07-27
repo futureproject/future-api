@@ -20,7 +20,7 @@ class AdminController < ApplicationController
       `rake employees:sync`
       puts "... done"
     end
-    flash[:notice] = "Syncing employees, will finish in 60ish seconds."
+    flash[:notice] = "Syncing employees, will finish in 2ish minutes."
     redirect "/admin"
   end
 
