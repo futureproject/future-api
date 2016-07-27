@@ -1,6 +1,6 @@
 <% @portal_modules.each do |mod| %>
   <% if !mod["Kind"].empty? %>
-         <div class="dashboard-module <%= mod["name"].downcase %> <%= (mod.css_classes || []).join(' ') %>">
+         <div class="dashboard-module <%= mod["name"].downcase %> <%= mod["css_classes"] %>">
     <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
     </div>
   <% end %>
