@@ -13,7 +13,9 @@
       <% end %>
       <ul>
         <% tasks.each do |t| %>
-        <li><%= t["Commitment"] %></li>
+          <li>
+            <%= t["WHO"] %> - <%= t["Commitment"] %>
+          </li>
         <% end %>
       </ul>
     </section>
