@@ -1,1 +1,7 @@
-<p>Found no tasks in the epic dashboard. You're free!</p>
+<% if @tasks.any? %>
+  <% @tasks.each do |task| %>
+    <p><%= task["Commitment"] %></p>
+  <% end %>
+<% else %>
+  <p>Found no incomplete commitments. You're free!</p>
+<% end %>

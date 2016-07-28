@@ -13,7 +13,7 @@ class WidgetsController < ApplicationController
   end
 
   get "/tasks" do
-    #@commitments = Commitment.undone_for_user_cached(current_user)
+    @tasks = Task.undone_for_user(current_user)
     erb :"widgets/tasks", layout: false
   end
 
