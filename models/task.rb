@@ -10,7 +10,8 @@ class Task
   def self.undone
     records(
       filterByFormula: "NOT({Complete?})",
-      sort: ["By When", :asc]
+      sort: ["By When", :asc],
+      limit: 10
     )
   end
 
@@ -18,7 +19,8 @@ class Task
     App.cache.fetch("tasks_for_user_#{user.email}", 10) {
       records(
         filterByFormula: "AND(NOT({Complete?}),{TFPID} = '#{user["TFPID"]}')",
-        sort: ["By When", :asc]
+        sort: ["By When", :asc],
+        limit: 10
       )
     }
   end
