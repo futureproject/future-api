@@ -4,6 +4,9 @@
     width: 100%;
     height: 30rem;
   }
+  header {
+    position: relative;
+  }
 }
 .dashboard-module {
   .is-expanded {
@@ -24,7 +27,7 @@
     article {
       box-shadow: none;
       background: none;
-      //padding: 0 2rem;
+      padding: 0 2rem;
       //margin: 2rem auto 4rem;
     }
   }

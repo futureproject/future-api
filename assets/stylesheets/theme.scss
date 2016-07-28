@@ -6,15 +6,17 @@ $red: crimson;
 $base-highlight-color: $blue;
 $base-border-color: lightgray;
 $base-font-color: dimgray;
-$base-font-family: "avenir next", avenir, sans-serif;
+$base-background-color: #fafafa;
+$base-font-family: "avenir next", avenir, "helvetica neue", helvetica, arial, sans-serif;
 
 body {
   //background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .1) 1px, transparent 1px);
   font-family: $base-font-family;
-  background-color: whitesmoke;
+  background-color: $base-background-color;
   background-repeat: repeat;
   background-size: 2rem 2rem;
   color: $base-font-color;
+  overflow-x: hidden;
   > header {
     font-weight: 200;
     font-size: 1.625rem;
@@ -32,7 +34,7 @@ q {
   font-weight: 200;
   @extend h3;
   position: relative;
-  max-width: 555px;
+  max-width: 38ch;
   margin-bottom: 0;
   &:before, &:after { position: absolute; }
   &:before { left: -1rem; }
@@ -41,7 +43,6 @@ q {
 article {
   @include shadowed;
   header {
-    position: relative;
     font-weight: bold;
     a { display: block; }
   }
