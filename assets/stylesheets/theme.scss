@@ -10,6 +10,7 @@ $base-background-color: #fafafa;
 $base-font-family: "avenir next", avenir, "helvetica neue", helvetica, arial, sans-serif;
 
 body {
+  //background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .1) 1px, transparent 1px);
   font-family: $base-font-family;
   background-color: $base-background-color;
   background-repeat: repeat;

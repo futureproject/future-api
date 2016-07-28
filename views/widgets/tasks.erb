@@ -1,3 +1,7 @@
+<div class="subtitle">
+  Your commitments
+  - <a href="<%= airtable_url_for "Tasks" %>">View All →</a>
+</div>
 <% if @tasks.any? %>
   <% @tasks.group_by{|c| c["By When"]}.each do |day, tasks| %>
     <section>
