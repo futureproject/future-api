@@ -34,6 +34,15 @@
   &.launcher {
     display: none;
   }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 @media (min-width: 768px) {
   .dashboard-module {

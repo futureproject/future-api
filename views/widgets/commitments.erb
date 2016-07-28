@@ -1,32 +1,21 @@
-<!-- 
-<h4>
-  <a href="<%= airtable_url_for "Commitments" %>">View All</a>
-</h4>
 <table>
   <thead>
     <tr>
-      <th>When</th>
+      <th>Who</th>
       <th>What</th>
+      <th>When</th>
     </tr>
   </thead>
   <tbody>
     <% @commitments.each do |commitment| %>
       <tr>
-        <td><%= commitment["due"] || "N/A" %></td>
-        <td><%= commitment["commitment"] || "N/A" %></td>
+        <td><%= commitment["WHO"] || "N/A" %></td>
+        <td><%= commitment["Commitment"] || "N/A" %></td>
+        <td><%= commitment["By When"] || "N/A" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
--->
-<% @commitments.group_by{|c| c["due"]}.each do |day, commitments| %>
-  <section>
-    <h4><%= day %></h4>
-    <ol>
-      <% commitments.each do |commitment| %>
-      <li><%= commitment["commitment"] %></li>
-      <% end %>
-    </ol>
-  </section>
-<% end %>
-
+<p>
+<a href="<%= airtable_url_for "Commitments" %>">View All</a>
+</p>

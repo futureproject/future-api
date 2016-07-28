@@ -1,8 +1,17 @@
 class Commitment
   extend Airtabled
 
-  def self.all_cached
-    App.cache.fetch("commitments", 3600) { records(view: "Main View") }
+  def self.undone_cached
+    App.cache.fetch("commitments_undone", 3600) {
+      undone
+    }
+  end
+
+  def self.undone
+    records(
+      filterByFormula: "NOT({Complete?})",
+      sort: ["By When", :asc]
+    )
   end
 
   def self.undone_for_user(user)

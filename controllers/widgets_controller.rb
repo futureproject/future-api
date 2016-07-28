@@ -18,7 +18,7 @@ class WidgetsController < ApplicationController
   end
 
   get "/commitments" do
-    @commitments = Commitment.all_cached
+    @commitments = Commitment.undone
     erb :"widgets/commitments", layout: false
   end
 
