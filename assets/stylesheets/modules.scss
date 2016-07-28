@@ -9,6 +9,11 @@
   }
 }
 .dashboard-module {
+  header a:after {
+    display: inline-block;
+    content: "+";
+    @include transition;
+  }
   .is-expanded {
     max-width: 1440px;
     iframe {
@@ -36,7 +41,7 @@
   }
   table {
     table-layout: fixed;
-    width: 100%;
+    //display: none;
   }
   td {
     overflow: hidden;

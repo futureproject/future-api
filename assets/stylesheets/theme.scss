@@ -1,5 +1,5 @@
-$light-blue: lightskyblue;
-$blue: deepskyblue;
+$light-blue: dodgerblue;
+$blue: steelblue;
 $yellow: gold;
 $purple: mediumslateblue;
 $red: crimson;
@@ -96,6 +96,9 @@ th, tr:nth-child(even) {
 a {
   color: $base-highlight-color;
   text-decoration: none;
+  &:hover {
+    color: $light-blue;
+  }
 }
 
 time {
@@ -107,16 +110,17 @@ a[data-method=delete], a[href*="destroy"], .error {
 }
 
 .dashboard-module {
+  header {
+    font-size: 1.625rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
   header a {
     color: $base-font-color;
-  }
-  header a:after {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    content: "+";
-    @include transition;
   }
 }
 
