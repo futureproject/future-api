@@ -1,3 +1,9 @@
-<q><%= @quote.body %></q>
-<p>- <%= @quote.source %></p>
+<q>
+  <a target="_blank" href="https://thefutureproject.slack.com/messages/team-reflections/">
+    <%= @quote["body"] %>
+  </a>
+</q>
+<% if @quote["source"].present? %>
+<p>- <%= @quote["source"] %></p>
+<% end %>
 

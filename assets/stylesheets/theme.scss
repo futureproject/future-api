@@ -35,6 +35,8 @@ h4, h5, h6 {
 q {
   display: block;
   //color: $purple;
+  a { color: $base-font-color; }
+  a:hover { color: $light-blue; }
   font-weight: 200;
   @extend h3;
   position: relative;
