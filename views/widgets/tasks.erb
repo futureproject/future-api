@@ -1,7 +1,19 @@
 <% if @tasks.any? %>
-  <% @tasks.each do |task| %>
-    <p><%= task["Commitment"] %></p>
+  <% @tasks.group_by{|c| c["By When"]}.each do |day, tasks| %>
+    <section>
+      <% if day.present? %>
+        <h4>
+          <%= Date.parse(day).strftime("%a, %b %d")  %>
+        </h4>
+      <% end %>
+      <ul>
+        <% tasks.each do |t| %>
+        <li><%= t["Commitment"] %></li>
+        <% end %>
+      </ul>
+    </section>
   <% end %>
 <% else %>
   <p>Found no incomplete commitments. You're free!</p>
 <% end %>
+
