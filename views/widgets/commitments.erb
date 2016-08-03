@@ -6,11 +6,13 @@
 <% if @commitments.any? %>
   <% @commitments.group_by{|c| c["By When"]}.each do |day, tasks| %>
     <section>
-      <% if day.present? %>
-        <h4>
+      <h4>
+        <% if day.present? %>
           <%= Date.parse(day).strftime("%a, %b %d")  %>
-        </h4>
-      <% end %>
+        <% else %>
+          No Date Set
+        <% end %>
+      </h4>
       <ul>
         <% tasks.each do |t| %>
           <li>

@@ -114,6 +114,7 @@ a[data-method=delete], a[href*="destroy"], .error {
 .dashboard-module {
   header {
     font-size: 1.625rem;
+    color: #434343;
   }
   .subtitle {
     font-size: .875rem;
@@ -124,6 +125,7 @@ a[data-method=delete], a[href*="destroy"], .error {
   }
   header a {
     color: $base-font-color;
+    color: #434343;
   }
 }
 

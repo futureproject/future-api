@@ -10,6 +10,7 @@ class Commitment
   def self.undone
     records(
       filterByFormula: "NOT({Complete?})",
+      #filterByFormula: "AND(LEN({By When}) > 0, NOT({Complete?}))",
       sort: ["By When", :asc],
       limit: 10
     )
