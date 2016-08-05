@@ -1,22 +1,22 @@
-<div class="subtitle">
-  Your commitments
-  - <a href="<%= airtable_url_for "Tasks" %>">View All</a>
-</div>
 <% if @tasks.any? %>
+  <div class="calendar">
   <% @tasks.group_by{|c| c["By When"]}.each do |day, tasks| %>
     <section>
-      <% if day.present? %>
-        <h4>
+      <header>
+        <% if day.present? %>
           <%= Date.parse(day).strftime("%a, %b %d")  %>
-        </h4>
-      <% end %>
+        <% else %>
+          No Date Set
+        <% end %>
+      </header>
       <ul>
         <% tasks.each do |t| %>
-        <li><%= t["Commitment"] %></li>
+        <li><%= markdown t["Commitment"] %></li>
         <% end %>
       </ul>
     </section>
   <% end %>
+ </div>
 <% else %>
   <p>Found no incomplete commitments. You're free!</p>
 <% end %>

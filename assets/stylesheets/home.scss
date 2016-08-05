@@ -11,16 +11,16 @@
   list-style: none;
   @include clearfix;
   @include columns(1);
-  margin-left: -1rem;
+  margin-left: -2rem;
   li {
     @include shadowed;
-    width: calc(33.333333333% - 1rem);
+    width: calc(33.333333333% - 2rem);
     float: left;
     margin-left: 0;
     box-sizing: border-box;
     text-align: center;
     height: 8rem;
-    margin-left: 1rem;
+    margin-left: 2rem;
     a {
       color: $base-font-color;
       font-weight: 400;
