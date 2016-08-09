@@ -11,8 +11,8 @@
       </header>
       <ul class="tasks">
         <% tasks.each do |t| %>
-          <li class="task" data-id="<%= t["id"] %>" >
-            <input type="checkbox" ><%= markdown t["Commitment"] %>
+          <li class="task">
+            <input type="checkbox" data-id="<%= t["id"] %>"><%= markdown t["Commitment"] %>
           </li>
         <% end %>
       </ul>
