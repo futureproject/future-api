@@ -9,9 +9,11 @@
           No Date Set
         <% end %>
       </header>
-      <ul>
+      <ul class="tasks">
         <% tasks.each do |t| %>
-        <li><%= markdown t["Commitment"] %></li>
+          <li class="task" data-id="<%= t["id"] %>" >
+            <input type="checkbox" ><%= markdown t["Commitment"] %>
+          </li>
         <% end %>
       </ul>
     </section>

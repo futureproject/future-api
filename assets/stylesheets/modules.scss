@@ -51,6 +51,24 @@
     white-space: nowrap;
   }
 }
+.tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.task {
+  position: relative;
+  font-weight: normal;
+  padding-left: 4rem;
+  margin-bottom: 2rem;
+  min-height: 2rem;
+  input {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+  }
+}
 @media (min-width: 768px) {
   .embed {
     ul {
@@ -61,12 +79,6 @@
       li {
         @include oneline;
       }
-    }
-  }
-  .calendar {
-    section {
-      line-height: 1.25;
-      font-size: .8rem;
     }
   }
 }
