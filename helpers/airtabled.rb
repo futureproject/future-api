@@ -44,6 +44,10 @@ module Airtabled
         h[k] = []
       elsif v == ""
         h[k] = nil
+      elsif v == "true"
+        h[k] = true
+      elsif v == "false"
+        h[k] = false
       end
     }
   end

@@ -12,7 +12,10 @@
       <ul class="tasks">
         <% tasks.each do |t| %>
           <li class="task">
-            <input type="checkbox" data-id="<%= t["id"] %>"><%= markdown t["Commitment"] %>
+            <form method="POST" action="/api/tasks/<%= t["id"] %>" />
+              <input type="hidden" name="task[id]" value="<%= t["id"] %>" />
+              <input value="yes" name="task[Complete?]" type="checkbox"><%= markdown t["Commitment"] %>
+            </form>
           </li>
         <% end %>
       </ul>
@@ -20,6 +23,6 @@
   <% end %>
  </div>
 <% else %>
-  <p>Found no incomplete commitments. You're free!</p>
+  <p>You have done all the things.</p>
 <% end %>
 

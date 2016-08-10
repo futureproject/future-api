@@ -22,15 +22,18 @@ tfp.widgets = {
   tasks: function(){
     this.contentBox.addEventListener("click", function(event) {
       if(event.target.nodeName == "INPUT") {
-        event.target.setAttribute('disabled', true)
+        event.target.setAttribute('disabled', true);
+        form = event.target.parentNode;
+        data = new FormData(form);
+        data.append("task[Complete?]", !!event.target.checked)
         xhr = new XMLHttpRequest();
-        url = "/api/tasks/" + event.target.getAttribute('data-id') + "/toggle"
-        xhr.open("POST", url);
-        xhr.setRequestHeader("Content-Type", "application/json");
+        url = form.action;
+        xhr.open(form.method, url);
+        //xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = function() {
-          event.target.removeAttribute('disabled')
+          event.target.removeAttribute('disabled');
         }
-        xhr.send()
+        xhr.send(data);
       }
     }, true)
   }

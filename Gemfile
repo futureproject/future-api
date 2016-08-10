@@ -2,6 +2,7 @@ ruby "2.3.1"
 source "https://rubygems.org"
 gem "sinatra", require: false
 gem "sinatra-contrib", require: false
+gem "rack-contrib"
 gem "puma"
 gem "rake"
 gem "pg"

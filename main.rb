@@ -12,6 +12,7 @@ class App < Sinatra::Base
     use Rack::Cache
     use Rack::Deflater
     use Rack::Flash
+    use Rack::PostBodyContentTypeParser
     enable :logging
     set :last_boot, Time.now.to_i
     set :default_redirect, ENV["DEFAULT_REDIRECT"] || "http://www.thefutureproject.org/404.html"
