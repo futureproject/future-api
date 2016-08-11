@@ -12,6 +12,7 @@ tfp.Widget = function(elem){
     callback_name = self.url.split("/").pop()
     callback = tfp.widgets[callback_name]
     if(callback) { callback.call(self) }
+    if(!!tfp.msnry.layout) { tfp.msnry.layout() }
   }
   self.xhr.send()
 }

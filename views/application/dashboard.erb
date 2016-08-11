@@ -1,3 +1,4 @@
+<div class="dashboard-modules">
 <% @portal_modules.each do |mod| %>
   <% if !mod["Kind"].empty? %>
     <div class="dashboard-module <%= mod["css_classes"] %>">
@@ -5,4 +6,4 @@
     </div>
   <% end %>
 <% end %>
-
+</div>
