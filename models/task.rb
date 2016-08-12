@@ -20,7 +20,7 @@ class Task
       records(
         filterByFormula: "AND(NOT({Complete?}),{TFPID} = '#{user["TFPID"]}')",
         sort: ["By When", :asc],
-        limit: 10
+        limit: 100
       )
     }
   end
