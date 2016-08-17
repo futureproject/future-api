@@ -22,7 +22,7 @@
     </main>
     <% if current_user %>
       <footer>
-        <%= current_user.email %>
+        <%= current_user["Name"] %>
         //
         <a href="/auth/log_out">Log Out</a>
         <% if current_user.attributes[:admin] %>

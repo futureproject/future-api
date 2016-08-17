@@ -42,12 +42,13 @@ q {
   position: relative;
   max-width: 38ch;
   margin-bottom: 0;
-  &:before, &:after { position: absolute; }
-  &:before { left: -1rem; }
+}
+
+p {
+  max-width: 70ch;
 }
 
 article {
-  @include shadowed;
   header {
     font-weight: bold;
     a { display: block; }
@@ -132,21 +133,47 @@ a[data-method=delete], a[href*="destroy"], .error {
   color: $red;
 }
 
-.dashboard-module {
-  header {
-    font-size: 1.625rem;
+.module {
+  background: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+  iframe {
+    border-left: none;
+    border-right: none;
   }
-  .subtitle {
-    font-size: .875rem;
-    font-weight: 200;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    letter-spacing: 1px;
-  }
-  header a {
+}
+
+.module-title {
+  @include oneline;
+  @extend h3;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -1px;
+  a {
     color: $base-font-color;
-    color: #434343;
   }
+}
+
+.module-subtitle {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  font-weight: 200;
+}
+
+.module-badge {
+  border-radius: 1rem;
+  font-weight: bold;
+  background: $purple;
+  color: white;
+  text-align: center;
+  &.length-0 {
+    background: DarkSeaGreen;
+  }
+}
+
+.module.text {
+  h4 { margin: 0; }
+  ul { margin-bottom: 2rem; }
 }
 
 .calendar {
@@ -158,5 +185,11 @@ a[data-method=delete], a[href*="destroy"], .error {
     font-variant: small-caps;
     padding: 0 .5em;
     margin: 1rem auto;
+  }
+}
+
+#module-external-tools {
+  .module-content a {
+    @extend h3;
   }
 }

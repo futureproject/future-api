@@ -18,12 +18,3 @@
   filter: grayscale($pct);
 }
 
-@mixin sized {
-  max-width: 51rem;
-}
-
-@mixin shadowed {
-  background-color: white;
-  box-shadow: 2px 3px 5px rgba(0,0,0,.1);
-  padding: 1rem;
-}

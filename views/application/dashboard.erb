@@ -1,9 +1,9 @@
-<div class="dashboard-modules">
-<% @portal_modules.each do |mod| %>
-  <% if !mod["Kind"].empty? %>
-    <div class="dashboard-module <%= mod["css_classes"] %>">
-      <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
-    </div>
+<div class="portal-modules">
+  <% @portal_modules.each do |mod| %>
+    <% if !mod["Kind"].empty? %>
+      <div class="module <%= mod["Kind"] %>" id="module-<%= mod["Name"].parameterize %>">
+        <%= erb :"portal_modules/#{mod["Kind"].downcase}", locals: { mod: mod } %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>

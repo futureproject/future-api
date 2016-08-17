@@ -1,8 +1,14 @@
-  <article data-link="<%= mod["Link"] %>" class="<%= mod["Kind"] %>" id="module-<%= mod["Name"].parameterize %>">
-    <header>
-      <%= mod["Name"] %>
-    </header>
-    <section>
-      <div class="loading"></div>
-    </section>
-  </article>
+  <div class="module-header">
+    <div class="module-title">
+      <a href="<%= mod["Link"] %>">
+        <%= mod["Name"] %>
+      </a>
+    </div>
+    <div class="module-subtitle">
+      <%= mod["Subtitle"] %>
+    </div>
+  </div>
+
+  <div class="module-content">
+    <div class="loading"></div>
+  </div>
