@@ -11,7 +11,7 @@ class Task
     records(
       filterByFormula: "NOT({Complete?})",
       sort: ["By When", :asc],
-      limit: 10
+      limit: 100
     )
   end
 

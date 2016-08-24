@@ -19,6 +19,7 @@ gem "sprockets"
 gem "sprockets-helpers", require: "sinatra/sprockets-helpers"
 gem "redcarpet"
 gem "rack-flash3", require: "rack-flash"
+gem "activesupport", require: "active_support/all"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"
@@ -28,5 +29,3 @@ group :development, :test do
   gem "vcr"
   gem "webmock"
 end
-# temporary, until Airtable removes activesupport dependency
-gem "activesupport", require: "active_support/all"

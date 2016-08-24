@@ -8,9 +8,12 @@
   :employees:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Employees
-  :portalmodules:
+  :portal_modules:
     :base_id: appJi1ucZpPmznBLP
     :table_name: PortalModules
+  :possibility_profiles:
+    :base_id: appYExpmKDFmpgt3j
+    :table_name: Results
   :quotes:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Quotes

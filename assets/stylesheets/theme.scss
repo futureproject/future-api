@@ -193,3 +193,19 @@ a[data-method=delete], a[href*="destroy"], .error {
     @extend h3;
   }
 }
+
+.stat-card-header {
+  font-weight: bold;
+}
+.stat-card-stats {
+  line-height: 1;
+}
+.stat-card-stat:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.stat-card {
+  label {
+    display: block;
+    @extend .module-subtitle;
+  }
+}
