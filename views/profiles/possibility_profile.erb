@@ -1,0 +1,29 @@
+<h1><%= @profile["Name"] %></h1>
+<article>
+  <h2>
+    <%= @profile["Power Strength"] %>
+  </h2>
+  <% power = PossibilityProfile.profile_in @profile["Power Strength"] %>
+  <p>
+    <%= power["Description"] %>
+  </p>
+</article>
+<article>
+  <h2>
+    <%= @profile["Passion & Purpose Strength"] %>
+  </h2>
+  <% passion = PossibilityProfile.profile_in @profile["Passion & Purpose Strength"] %>
+  <p>
+    <%= passion["Description"] %>
+  </p>
+</article>
+<article>
+  <h2>
+    <%= @profile["Possibility Strength"] %>
+  </h2>
+  <% poss = PossibilityProfile.profile_in @profile["Possibility Strength"] %>
+  <p>
+    <%= poss["Description"] %>
+  </p>
+</article>
+

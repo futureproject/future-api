@@ -9,6 +9,10 @@ module Airtabled
     @@client.table(data_locator[:base_id], data_locator[:table_name])
   end
 
+  def at(base_id, table_name)
+    @@client.table(base_id, table_name)
+  end
+
   # returns all records in the database, making as many calls as necessary
   # to work around Airtable's 100-record per page design
   def all(args={sort: default_sort})

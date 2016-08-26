@@ -19,12 +19,14 @@ class PossibilityProfile
     end
   end
 
-  # using our SCIENTIFIC GROUPINGS, write a string
+  # find a record, make sure it has been processed, then return it
+  # if it hasn't been processed, process it first,
+  # using our SCIENTIFIC GROUPINGS to write a string
   # that represents a student's strongest attribute in each field
-  def self.calculate_scores(record_id)
+  def self.find_and_score(record_id)
     profile = PossibilityProfile.find(record_id)
     # return if this profile already has the three scores
-    return true if (profile["CF Power Strength"].present?)
+    return profile if (profile["Power Strength"].present?)
 
     attrs = profile.attributes.dup
 
@@ -47,17 +49,36 @@ class PossibilityProfile
 
     updated_attrs = {
       id: attrs[:id],
-      "CF Power Strength": self.find_strengths(power_scores),
-      "CF Passion Strength": self.find_strengths(passion_scores),
-      "CF Possibility Strength": self.find_strengths(possibility_scores)
+      "Power Strength": self.calculate_strengths(power_scores),
+      "Passion & Purpose Strength": self.calculate_strengths(passion_scores),
+      "Possibility Strength": self.calculate_strengths(possibility_scores)
     }
+
     PossibilityProfile.patch(updated_attrs)
+
+    # update these columns on the returned record
+    # can't just set them and save, because Airtable's API breaks
+    # w/r/t bases that have formula fields defined
+    updated_attrs.each do |k,v|
+      profile[k.to_s] = v
+    end
+
+    profile
   end
 
-  def self.find_strengths(attrs)
+  def self.calculate_strengths(attrs)
     max = attrs.values.max
     strengths = attrs.select{|k,v| v == max}.keys.map{|k| k.gsub("_score","").humanize.titleize }.join(", ")
     strengths
+  end
+
+  def self.profile_in(strength_name)
+    App.cache.fetch("strength_info_#{strength_name}", 31536000) {
+      at("appYExpmKDFmpgt3j", "Profile").records(
+        filterByFormula: "{Name} = '#{strength_name}'",
+        limit: 1
+      ).first
+    }
   end
 
 end

@@ -1,30 +1,23 @@
 <% if @profiles.any? %>
-  <div class="stat-cards">
+  <div class="text">
+    <ul>
     <% @profiles.each do |profile| %>
-      <div class="stat-card">
-        <div class="stat-card-header">
+      <li>
+        <a href="/profiles/possibility_profiles/<%= profile.id %>" target="_blank">
           <%= profile["Name"] %>
-        </div>
-        <div class="stat-card-stats">
-          <div class="stat-card-stat">
-            <label>Power Strength</label>
-            <%= profile["Power Strength"] %>
-          </div>
-          <div class="stat-card-stat">
-            <label>Purpose &amp; Passion Strength</label>
-            <%= profile["Purpose & Passion Strength"] %>
-          </div>
-          <div class="stat-card-stat">
-            <label>Possibility Strength</label>
-            <%= profile["Possibility Strength"] %>
-          </div>
-        </div>
-      </div>
+        </a>
+      </li>
     <% end %>
+    </ul>
   </div>
 <% else %>
   <p>No profiles to show.</p>
 <% end  %>
+
+<p>
+  <hr />
+</p>
+
 <p>
   <a target="_blank" href="https://thefutureproject.typeform.com/to/WLMedf">Take the survey</a>
 </p>

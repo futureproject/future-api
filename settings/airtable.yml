@@ -1,4 +1,4 @@
-:development: &default
+:production: &default
   :cities:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Cities
@@ -27,9 +27,12 @@
     :base_id: appsSbGeUL5na71it
     :table_name: Commitments
 
-:test:
+:development:
   <<: *default
+  :portal_modules:
+    :base_id: appJi1ucZpPmznBLP
+    :table_name: PortalDev
 
-:production:
+:test:
   <<: *default
 

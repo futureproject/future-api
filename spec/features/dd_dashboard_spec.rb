@@ -25,7 +25,6 @@ feature "As a Dream Director I can" do
 
   scenario "follow links to Namely, Slack, and Expensify" do
     visit "/"
-    expect(page).to have_content "Do something elsewhere"
     expect(page).to have_content "Namely"
     expect(page).to have_content "Slack"
     expect(page).to have_content "Expensify"
