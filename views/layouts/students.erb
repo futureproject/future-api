@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" class="student-profile">
+  <head>
+    <title><%= @profile["Name" ] %></title>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <%= stylesheet_tag "screen" %>
+  </head>
+  <body>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

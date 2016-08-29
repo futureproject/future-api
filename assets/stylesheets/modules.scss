@@ -70,6 +70,23 @@
 .stat-card {
   margin-bottom: 2rem;
 }
+
+.student-strengths {
+  article {
+    page-break-inside: avoid;
+  }
+  img {
+    display: block;
+    margin: 2rem 0;
+    height: 8rem;
+    width: 8rem;
+  }
+  dl, dt, dd {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .embed, .text {
     ul {
@@ -82,12 +99,17 @@
       }
     }
   }
-  .stat-card {
-    float: left;
-    width: calc(33.3333% - 1rem);
-    margin-right: 1rem;
-    &:nth-child(3n+1) {
-      clear: left;
+  .student-strengths {
+    dl {
+      @include clearfix;
+    }
+    dt {
+      float: left;
+      width: 25%;
+    }
+    dd {
+      float: left;
+      width: 75%;
     }
   }
 }

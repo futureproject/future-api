@@ -200,8 +200,15 @@ a[data-method=delete], a[href*="destroy"], .error {
 .stat-card-stat:not(:last-child) {
   margin-bottom: 1rem;
 }
-.stat-card {
-  label {
+.student-strengths {
+  dt {
+    @extend h3;
+    margin-top: 0;
+  }
+  dd {
+    margin-bottom: 2rem;
+  }
+  header {
     display: block;
     @extend .module-subtitle;
   }

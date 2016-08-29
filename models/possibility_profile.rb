@@ -72,13 +72,26 @@ class PossibilityProfile
     strengths
   end
 
-  def self.profile_in(strength_name)
-    App.cache.fetch("strength_info_#{strength_name}", 31536000) {
-      at("appYExpmKDFmpgt3j", "Profile").records(
-        filterByFormula: "{Name} = '#{strength_name}'",
-        limit: 1
-      ).first
-    }
+  def self.profile_in(strengths)
+    strength_names = strengths.split(",").map(&:strip)
+    strength_data = []
+    strength_names.each do |strength_name|
+      strength_data << App.cache.fetch("strength_info_#{strength_name}", 31536000) {
+        at("appYExpmKDFmpgt3j", "Profile").records(
+          filterByFormula: "{Name} = '#{strength_name}'",
+          limit: 1
+        ).first
+      }
+    end
+    strength_data
+  end
+
+  def self.strengths_for(record)
+    [
+      { name: "Power Strength", strengths: self.profile_in(record["Power Strength"]) },
+      { name: "Passion & Purpose Strength", strengths: self.profile_in(record["Passion & Purpose Strength"]) },
+      { name: "Possibility Strength", strengths: self.profile_in(record["Possibility Strength"]) },
+    ]
   end
 
 end
