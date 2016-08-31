@@ -7,7 +7,9 @@ require "capybara/dsl"
 require_relative "../main"
 require "slack-ruby-bot/rspec"
 require_all "#{Dir.pwd}/spec/support"
+
 Capybara.app = Rack::Builder.parse_file(File.expand_path('../../config.ru', __FILE__)).first
+
 Capybara.default_selector = :css
 Capybara.javascript_driver = :webkit
 Capybara.default_driver = :webkit

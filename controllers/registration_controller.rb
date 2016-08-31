@@ -17,7 +17,7 @@ class RegistrationController < ApplicationController
   end
 
   post "/" do
-    if @user ||= Employee.patch(params[:employee].delete(:id), params[:employee])
+    if @user ||= Employee.patch(params[:employee].delete("id"), params[:employee])
       session[:registration_token] = nil
       sign_in @user
       redirect "/"

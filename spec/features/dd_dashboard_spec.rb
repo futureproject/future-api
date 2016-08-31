@@ -1,35 +1,45 @@
 require "spec_helper"
 
 feature "As a Dream Director I can" do
-  scenario "view upcoming incomplete tasks from the Epic Dashboard"
 
-  scenario "view an iframe of the Library Activities" do
+  scenario "toggle incomplete tasks from the City Dashboard" do
     visit "/"
-    expect(page).to have_content "Browse The Library"
-  end
+    old_task_text = find_first_task_on_page
+    complete_first_task_on_page
 
-  #scenario "add a new activity Library Activites via a form"
-
-  #scenario "favorite Library Activites via a form"
-
-  #scenario "view a the Library Vault in an iframe"
-
-  #scenario "view Templates from the vault in an iframe"
-
-  scenario "browse products in the Store via an iframe" do
+    # reload the page
     visit "/"
-    expect(page).to have_content "Order Swag"
-  end
+    new_task_text = find_first_task_on_page
+    # expect that the first task is now different
+    expect(old_task_text).not_to eq new_task_text
 
-  scenario "view a list of employees and browse their favorite activites"
+    #clean up
+    Task.find_by("Commitment": old_task_text).update("Complete?": false)
+  end
 
   scenario "follow links to Namely, Slack, and Expensify" do
     visit "/"
-    expect(page).to have_content "Namely"
-    expect(page).to have_content "Slack"
-    expect(page).to have_content "Expensify"
+    widget = find("#module-external-tools")
+    widget.click
+    within(widget) do
+      expect(page).to have_content "Namely"
+      expect(page).to have_content "Slack"
+      expect(page).to have_content "Expensify"
+    end
   end
 
+  scenario "view possibility profiles" do
+    visit "/"
+    widget = find("#module-possibility-profiles")
+    widget.click
+    link_text = ""
+    within(widget) do
+      click_link "Benjamin Sisko"
+    end
+    within_window "Benjamin Sisko" do
+      expect(page).to have_text "Autonomy"
+    end
+  end
   scenario "view commitments from Gotit"
 
   #scenario "search for student profiles"
@@ -39,4 +49,19 @@ feature "As a Dream Director I can" do
   #scenario "view a graph of Student Commitments Made vs Student Commitments Completed"
 
   scenario "respond to reflection prompts"
+
+  def find_first_task_on_page
+    widget = find("#module-city-dashboard")
+    widget.click
+    widget.find("form", match: :first).text
+  end
+
+  def complete_first_task_on_page
+    widget = find("#module-city-dashboard")
+    checkbox = find("input[type=checkbox]", match: :first)
+    checkbox.click
+    #wait until the AJAX request goes through
+    expect(widget).not_to have_css('input[disabled]')
+  end
+
 end

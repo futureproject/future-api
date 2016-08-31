@@ -23,4 +23,12 @@ class App < Sinatra::Base
     end
   end
 
+  configure :test do
+    sprockets.cache = Sprockets::Cache::FileStore.new('./tmp')
+    get "/assets/*" do
+      env["PATH_INFO"].sub!("/assets", "")
+      settings.sprockets.call(env)
+    end
+  end
+
 end

@@ -25,7 +25,8 @@ class App < Sinatra::Base
   configure :development do
     require "sinatra/reloader"
     register Sinatra::Reloader
-
+    # debug modules, move to next group if you need them while running tests
+    Dir["#{settings.root}/debug/*.rb"].each{|f| require f}
   end
 
   configure :test, :development do
