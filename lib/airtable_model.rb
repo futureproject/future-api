@@ -1,4 +1,4 @@
-DB ||= YAML.load_file("#{App.root}/config/database.yml")[App.environment]
+DB ||= YAML.load_file("#{App.root}/config/airtable_data.yml")[App.environment]
 
 module Airtable
   class Model < Record
@@ -116,7 +116,7 @@ module Airtable
   end
 
   # raise this error when a table
-  # is not defined in config/database.yml
+  # is not defined in config/airtable_data.yml
   class NoSuchBase < StandardError
   end
 
