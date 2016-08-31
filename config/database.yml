@@ -1,4 +1,4 @@
-:production: &default
+:production:
   :cities:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Cities
