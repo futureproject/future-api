@@ -1,5 +1,4 @@
 class WidgetsController < ApplicationController
-  helpers Airtabled
 
   before do
     authenticate!

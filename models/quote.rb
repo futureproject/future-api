@@ -1,16 +1,15 @@
-class Quote
-  extend Airtabled
+class Quote < Airtable::Model
 
   #returns a hard-coded default quote
   def self.default
-    Airtable::Record.new(
+    self..new(
       body: "Education is what is left after one has forgotten everything one learned in school.",
       source: "Albert Einstein"
     )
   end
 
   def self.all
-    table.all(view: "Main View")
+    records(view: "Main View")
   end
 
   # inexpensive cache-backed version of all

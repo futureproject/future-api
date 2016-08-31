@@ -1,5 +1,4 @@
-class PossibilityProfile
-  extend Airtabled
+class PossibilityProfile < Airtable::Model
 
   def self.for_place(tfpid)
     records(

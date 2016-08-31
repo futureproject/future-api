@@ -4,7 +4,6 @@ require "bundler/setup"
 class App < Sinatra::Base
   Bundler.require(:default, settings.environment)
   require "sinatra/json"
-  require "sinatra/config_file"
   require "./dreamo/bot"
 
   configure do
@@ -33,7 +32,7 @@ class App < Sinatra::Base
     Dotenv.load
   end
 
-  Dir["#{settings.root}/{helpers,models}/*.rb"].each{|f| require f}
+  Dir["#{settings.root}/{lib,helpers,models}/*.rb"].each{|f| require f}
   require "./assets/init"
 end
 

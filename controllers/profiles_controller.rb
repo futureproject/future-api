@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-  helpers Airtabled
 
   before do
     authenticate!

@@ -3,6 +3,7 @@ class RegistrationController < ApplicationController
   get "/" do
     #block people who haven't had a registration token set by Oauth
     halt(406) unless session[:registration_token]
+
     @email = session[:registration_token]
     @slack_user = SlackUser.find_by_email(@email)
     if @slack_user
@@ -16,7 +17,7 @@ class RegistrationController < ApplicationController
   end
 
   post "/" do
-    if @user ||= Employee.patch(employee_params)
+    if @user ||= Employee.patch(params[:employee].delete(:id), params[:employee])
       session[:registration_token] = nil
       sign_in @user
       redirect "/"
@@ -29,10 +30,5 @@ class RegistrationController < ApplicationController
     @email = "dreamo@thefutureproject.org"
     erb :"registration/join_slack_first"
   end
-
-  private
-    def employee_params
-      Employee.airtable_formatted_hash(params[:employee])
-    end
 
 end

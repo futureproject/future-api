@@ -1,5 +1,4 @@
-class Commitment
-  extend Airtabled
+class Commitment < Airtable::Model
 
   def self.undone_cached
     App.cache.fetch("commitments_undone", 3600) {

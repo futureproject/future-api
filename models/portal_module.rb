@@ -1,9 +1,8 @@
-class PortalModule
-  extend Airtabled
+class PortalModule < Airtable::Model
 
   # call the Main View, so position is respected
   def self.all
-    table.all(view: "Main View")
+    records(view: "Main View")
   end
 
   # get the portal links, and cache them for a year

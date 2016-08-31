@@ -1,5 +1,4 @@
-class Task
-  extend Airtabled
+class Task < Airtable::Model
 
   def self.all_cached
     App.cache.fetch("tasks", 3600) {

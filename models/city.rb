@@ -1,5 +1,4 @@
-class City
-  extend Airtabled
+class City < Airtable::Model
 
   def self.default_sort
     ["Name", :asc]
@@ -8,4 +7,5 @@ class City
   def self.all_cached
     App.cache.fetch("cities", 86400) { all }
   end
+
 end

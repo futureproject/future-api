@@ -1,5 +1,4 @@
-class School
-  extend Airtabled
+class School < Airtable::Model
 
   def self.default_sort
     ["Label", :asc]
@@ -9,8 +8,8 @@ class School
     App.cache.fetch("schools", 86400) { all }
   end
 
-  def all
-    all(view: "Active")
+  def self.all
+    records(view: "Active")
   end
 
 end

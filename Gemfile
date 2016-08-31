@@ -23,7 +23,8 @@ gem "activesupport", require: "active_support/all"
 group :development, :test do
   gem "rspec"
   gem "sinatra-reloader"
-  gem "capybara"
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem "pry"
   gem "dotenv"
   gem "vcr"

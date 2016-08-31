@@ -1,5 +1,4 @@
 class ApiController < ApplicationController
-  helpers Airtabled
 
   before do
     authenticate!
@@ -13,7 +12,7 @@ class ApiController < ApplicationController
 
   # Updates a task with params[:task]
   post "/tasks/:id" do
-    if Task.patch(task_params)
+    if Task.patch(params[:id], params[:task])
       App.cache.delete("tasks_for_user_#{current_user.email}")
     else
       content_type :json
@@ -21,8 +20,4 @@ class ApiController < ApplicationController
     end
   end
 
-  private
-    def task_params
-      airtable_formatted_hash(params[:task])
-    end
 end
