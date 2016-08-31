@@ -1,3 +1,32 @@
+:development: &default
+  :cities:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Cities
+  :commitments:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Commitments
+  :employees:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Employees
+  :portal_modules:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: PortalModules
+  :possibility_profiles:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Results
+  :quotes:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Quotes
+  :redirects:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Redirects
+  :schools:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Schools
+  :tasks:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Commitments
+
 :production:
   :cities:
     :base_id: appJi1ucZpPmznBLP
@@ -27,35 +56,6 @@
     :base_id: appsSbGeUL5na71it
     :table_name: Commitments
 
-:development: &dev
-  :cities:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Cities
-  :commitments:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Commitments
-  :employees:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Employees
-  :portal_modules:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: PortalModules
-  :possibility_profiles:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Results
-  :quotes:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Quotes
-  :redirects:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Redirects
-  :schools:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Schools
-  :tasks:
-    :base_id: appU8z7k7vyymmPbK
-    :table_name: Commitments
-
 :test:
-  <<: *dev
+  <<: *default
 
