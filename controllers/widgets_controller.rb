@@ -12,7 +12,7 @@ class WidgetsController < ApplicationController
   end
 
   get "/tasks" do
-    @tasks = Task.undone_for_user(current_user)
+    @tasks = current_user.tasks_cached
     erb :"widgets/tasks", layout: false
   end
 

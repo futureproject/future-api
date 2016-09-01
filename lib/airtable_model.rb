@@ -113,6 +113,10 @@ module Airtable
       id.nil?
     end
 
+    def cache_key
+      "#{self.class.name.tableize}_#{self.id}"
+    end
+
   end
 
   # raise this error when a table

@@ -25,7 +25,7 @@
     :table_name: Schools
   :tasks:
     :base_id: appU8z7k7vyymmPbK
-    :table_name: Commitments
+    :table_name: tasks
 
 :production:
   :cities:

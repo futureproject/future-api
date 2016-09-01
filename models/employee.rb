@@ -19,5 +19,14 @@ class Employee < Airtable::Model
     "employee_#{employee[:slack_id]}"
   end
 
+  # all Tasks assigned to this user in the city dashboard
+  def tasks
+    Task.undone_for_user(self["TFPID"])
+  end
+
+  def tasks_cached
+    Task.undone_for_user_cached(self["TFPID"])
+  end
+
 end
 

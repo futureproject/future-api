@@ -1,6 +1,11 @@
 require "spec_helper"
 feature "Registration" do
 
+  before do
+    disable_automatic_auth
+    App.cache.flush
+  end
+
   scenario "With no Slack account" do
     enable_automatic_auth "asfasvweqr@thefutureproject.org"
     visit "/"

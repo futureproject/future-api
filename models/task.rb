@@ -14,14 +14,17 @@ class Task < Airtable::Model
     )
   end
 
-  def self.undone_for_user(user)
-    App.cache.fetch("tasks_for_user_#{user.email}", 3600) {
-      records(
-        filterByFormula: "AND(NOT({Complete?}),{TFPID} = '#{user["TFPID"]}')",
-        sort: ["By When", :asc],
-        limit: 100
-      )
-    }
+  def self.undone_for_user(tfpid)
+    records(
+      filterByFormula: "AND(NOT({Complete?}),{TFPID} = '#{tfpid}')",
+      sort: ["By When", :asc],
+      limit: 100
+    )
+  end
+
+  def self.undone_for_user_cached(tfpid)
+    key = "tasks_undone_for_user_#{tfpid}"
+    App.cache.fetch(key, 3600) { undone_for_user(tfpid) }
   end
 
 end

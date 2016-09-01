@@ -13,7 +13,9 @@ class ApiController < ApplicationController
   # Updates a task with params[:task]
   post "/tasks/:id" do
     if Task.patch(params[:id], params[:task])
-      App.cache.delete("tasks_for_user_#{current_user.email}")
+      App.cache.delete("tasks_undone_for_user_#{current_user["TFPID"]}")
+      content_type :json
+      status 200
     else
       content_type :json
       status 400
