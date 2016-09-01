@@ -26,12 +26,12 @@ module AuthHelper
   end
 
   def sign_in user
-    App.cache.set(Employee.cache_key_for(user), user)
+    App.cache.set(user.cache_key, user)
     session[:auth_token] = user[:slack_id]
   end
 
   def sign_out user
-    App.cache.delete Employee.cache_key_for(user)
+    App.cache.delete user.cache_key
     session[:auth_token] = nil
   end
 

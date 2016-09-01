@@ -1,4 +1,10 @@
+Slack.configure do |config|
+  config.token = ENV["SLACK_API_TOKEN"]
+end
+
 module Dreamo
+
+  WEB_CLIENT = Slack::Web::Client.new
 
   class Bot < SlackRubyBot::Bot
   end
