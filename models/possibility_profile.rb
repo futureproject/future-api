@@ -47,13 +47,12 @@ class PossibilityProfile < Airtable::Model
     )
 
     updated_attrs = {
-      id: attrs[:id],
       "Power Strength": self.calculate_strengths(power_scores),
       "Passion & Purpose Strength": self.calculate_strengths(passion_scores),
       "Possibility Strength": self.calculate_strengths(possibility_scores)
     }
 
-    PossibilityProfile.patch(updated_attrs)
+    PossibilityProfile.patch(record_id, updated_attrs)
 
     # update these columns on the returned record
     # can't just set them and save, because Airtable's API breaks

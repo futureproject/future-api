@@ -28,18 +28,6 @@ feature "As a Dream Director I can" do
     end
   end
 
-  scenario "view possibility profiles" do
-    visit "/"
-    widget = find("#module-possibility-profiles")
-    widget.click
-    link_text = ""
-    within(widget) do
-      click_link "Benjamin Sisko"
-    end
-    within_window "Benjamin Sisko" do
-      expect(page).to have_text "Autonomy"
-    end
-  end
   scenario "view commitments from Gotit"
 
   #scenario "search for student profiles"
