@@ -39,6 +39,14 @@ module Airtable
       nil
     end
 
+    # find records that match the filters
+    def self.where(filters)
+      formula = "AND(" + filters.map{|k,v| "{#{k}}='#{v}'" }.join(',') + ")"
+      records(
+        filterByFormula: formula,
+      )
+    end
+
     # find a record by ID, return it
     def self.find(id)
       record = table.find(id)
@@ -50,6 +58,14 @@ module Airtable
       formula = "AND(" + attrs.map{|k,v| "{#{k}}='#{v}'" }.join(',') + ")"
       results = records(
         filterByFormula: formula,
+        limit: 1
+      )
+      results.length == 1 ? results.first : nil
+    end
+
+    # return the first record
+    def self.first
+      results = records(
         limit: 1
       )
       results.length == 1 ? results.first : nil
@@ -83,10 +99,30 @@ module Airtable
       }
     end
 
+    #
+    # Infuriatingly, some of our records are split across multiple artable bases
+    # this function returns some or all, using the configuration at config/airtable_data.yml
+    def self.sharded_records(args)
+      db_label = args.delete(:table_name)
+      db_tables = DB[db_label.tableize.to_sym]
+      city_base = db_tables[args.delete(:city_name)]
+      if city_base
+        self.at(city_base, db_label).records(args)
+      else
+        results = []
+        db_tables.each do |key, val|
+          results <<  self.at(val, db_label).records(args)
+        end
+        results.flatten
+      end
+
+    end
+
+
+
 
     # INSTANCE METHODS
 
-    # save this method
     def save
       if new_record?
         self.class.table.create(self)
@@ -117,6 +153,26 @@ module Airtable
       "#{self.class.name.tableize}_#{self.id}"
     end
 
+    # iterate through all the many ways TFPID might be
+    # fucking defined on this thing, return the first one that works
+    def goddamn_tfpid
+      keys = [self["TFPID"], self[:tfpid], self[:TFPID], self["tfpid"]]
+      keys.find{|u| !u.nil? }
+    end
+
+    # iterate through all the many ways CITY_ID might be
+    # fucking defined on this thing, return the first one that works
+    def goddamn_city
+      keys = [self["CITY_TFPID"], self[:city_tfpid], self[:CITY_TFPID], self["city_tfpid"]]
+      keys.find{|u| !u.nil? }
+    end
+
+    # iterate through all the many ways SCHOOL_ID might be
+    # fucking defined on this thing, return the first one that works
+    def goddamn_school
+      keys = [self["SCHOOL_TFPID"], self[:school_tfpid], self[:SCHOOL_TFPID], self["school_tfpid"]]
+      keys.find{|u| !u.nil? }
+    end
   end
 
   # raise this error when a table

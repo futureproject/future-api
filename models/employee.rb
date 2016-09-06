@@ -24,12 +24,6 @@ class Employee < Airtable::Model
     }
   end
 
-  # iterate through all the many ways TFPID might be
-  # fucking defined on this thing, return the first one that works
-  def goddamn_tfpid
-    keys = [self["TFPID"], self[:tfpid], self[:TFPID], self["tfpid"]]
-    keys.find{|u| !u.nil? }
-  end
 
   def cache_key
     "#{self.class.name.tableize}_#{goddamn_tfpid}"
@@ -42,6 +36,24 @@ class Employee < Airtable::Model
 
   def tasks_cached
     Task.undone_for_user_cached(goddamn_tfpid)
+  end
+
+  def students
+    self.class.sharded_records(
+      table_name: "People",
+      city_name: goddamn_city,
+      sort: ["Name", :asc]
+    )
+  end
+
+  def student_commitments
+    formula = goddamn_school ? "{SCHOOL_TFPID} = '#{goddamn_school}'" : nil
+    self.class.sharded_records(
+      table_name: "Commitments",
+      city_name: goddamn_city,
+      sort: ["By When", :asc],
+      filterByFormula: formula
+    )
   end
 
 end

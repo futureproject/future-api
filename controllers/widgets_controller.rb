@@ -17,7 +17,7 @@ class WidgetsController < ApplicationController
   end
 
   get "/commitments" do
-    @commitments = Commitment.undone
+    @commitments = current_user.student_commitments
     erb :"widgets/commitments", layout: false
   end
 
