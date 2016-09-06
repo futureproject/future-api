@@ -9,4 +9,14 @@ class PortalModule < Airtable::Model
   def self.all_cached
     App.cache.fetch("portal_modules", 31536000) { all }
   end
+
+  def self.cached_for_team(team)
+    cities = DB[:people].keys
+    team = cities.include?(team) ? "City" : "HQ"
+    App.cache.fetch("portal_modules_#{team}", 31536000) {
+      records(view: "Main View").select{|rec|
+        rec["Audience"].include? team
+      }
+    }
+  end
 end

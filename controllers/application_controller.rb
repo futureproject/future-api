@@ -4,7 +4,7 @@ class ApplicationController < App
 
   get "/" do
     authenticate!
-    @portal_modules = PortalModule.all_cached
+    @portal_modules = current_user.dashboard_modules
     erb :"application/dashboard"
   end
 
