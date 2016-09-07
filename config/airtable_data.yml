@@ -24,21 +24,25 @@
     :base_id: appU8z7k7vyymmPbK
     :table_name: tasks
   :commitments:
-    "DC": "appLT7DTvzjd49AyW"
-    "DT": "appLT7DTvzjd49AyW"
-    "NHV": "appLT7DTvzjd49AyW"
-    "NYC": "appLT7DTvzjd49AyW"
-    "NWK": "appLT7DTvzjd49AyW"
-    "PHL": "appLT7DTvzjd49AyW"
-    "SF": "appLT7DTvzjd49AyW"
-  :people:
-    "DC": "appLT7DTvzjd49AyW"
-    "DT": "appLT7DTvzjd49AyW"
-    "NHV": "appLT7DTvzjd49AyW"
-    "NYC": "appLT7DTvzjd49AyW"
-    "NWK": "appLT7DTvzjd49AyW"
-    "PHL": "appLT7DTvzjd49AyW"
-    "SF": "appLT7DTvzjd49AyW"
+    :table_name: "Commitments"
+    :shards:
+      "DC": "appLT7DTvzjd49AyW"
+      "DT": "appLT7DTvzjd49AyW"
+      "NHV": "appLT7DTvzjd49AyW"
+      "NYC": "appLT7DTvzjd49AyW"
+      "NWK": "appLT7DTvzjd49AyW"
+      "PHL": "appLT7DTvzjd49AyW"
+      "SF": "appLT7DTvzjd49AyW"
+  :students:
+    :table_name: "People"
+    :shards:
+      "DC": "appLT7DTvzjd49AyW"
+      "DT": "appLT7DTvzjd49AyW"
+      "NHV": "appLT7DTvzjd49AyW"
+      "NYC": "appLT7DTvzjd49AyW"
+      "NWK": "appLT7DTvzjd49AyW"
+      "PHL": "appLT7DTvzjd49AyW"
+      "SF": "appLT7DTvzjd49AyW"
 
 :production:
   :cities:
@@ -66,21 +70,25 @@
     :base_id: appsSbGeUL5na71it
     :table_name: Commitments
   :commitments:
-    "DC": "appPlrx8TnvXDshRP"
-    "DT": "app5BKrRtkoskmPHh"
-    "NHV": "appil5KLJUJgqkqWg"
-    "NYC": "appigsqPHEMnGyQh9"
-    "NWK": "appuA4jfoyAytczEp"
-    "PHL": "appf9Is4s2yLCfSp4"
-    "SF": "appntYpIBVav5pUOT"
-  :people:
-    "DC": "appPlrx8TnvXDshRP"
-    "DT": "app5BKrRtkoskmPHh"
-    "NHV": "appil5KLJUJgqkqWg"
-    "NYC": "appigsqPHEMnGyQh9"
-    "NWK": "appuA4jfoyAytczEp"
-    "PHL": "appf9Is4s2yLCfSp4"
-    "SF": "appntYpIBVav5pUOT"
+    :table_name: "Commitments"
+    :shards:
+      "DC": "appPlrx8TnvXDshRP"
+      "DT": "app5BKrRtkoskmPHh"
+      "NHV": "appil5KLJUJgqkqWg"
+      "NYC": "appigsqPHEMnGyQh9"
+      "NWK": "appuA4jfoyAytczEp"
+      "PHL": "appf9Is4s2yLCfSp4"
+      "SF": "appntYpIBVav5pUOT"
+  :students:
+    :table_name: "People"
+    :shards:
+      "DC": "appPlrx8TnvXDshRP"
+      "DT": "app5BKrRtkoskmPHh"
+      "NHV": "appil5KLJUJgqkqWg"
+      "NYC": "appigsqPHEMnGyQh9"
+      "NWK": "appuA4jfoyAytczEp"
+      "PHL": "appf9Is4s2yLCfSp4"
+      "SF": "appntYpIBVav5pUOT"
 
 :test:
   <<: *default

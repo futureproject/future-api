@@ -23,7 +23,7 @@ class PossibilityProfile < Airtable::Model
   # using our SCIENTIFIC GROUPINGS to write a string
   # that represents a student's strongest attribute in each field
   def self.find_and_score(record_id)
-    profile = PossibilityProfile.find(record_id)
+    profile = PossibilityProfile.find_by(id: record_id)
     # return if this profile already has the three scores
     return profile if (profile["Power Strength"].present?)
 
