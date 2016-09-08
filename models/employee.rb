@@ -18,12 +18,10 @@ class Employee < Airtable::Model
   end
 
   def self.find_by_slack_id(id)
-    e = self.new({"TFPID": id})
     App.cache.fetch("slack_user_#{id}", 31536000) {
       self.find_by("slack_id": id)
     }
   end
-
 
   def cache_key
     "#{self.class.name.tableize}_#{goddamn_tfpid}"
@@ -47,12 +45,14 @@ class Employee < Airtable::Model
     )
   end
 
-  # commitments relevant to this user
+  # upcoming commitments relevant to this user
   def student_commitments
-    Commitment.where(
+    #filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})"]
+    #filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
+    Commitment.records(
       shard: goddamn_city,
       sort: ["By When", :asc],
-      "SCHOOL_TFPID": self.goddamn_school,
+      #filterByFormula: "AND(#{filters.join(',')})"
     )
   end
 

@@ -9,7 +9,7 @@ module Airtable
     def self.tables(args={})
       db = DB[self.name.tableize.to_sym] || raise(NoSuchBase)
       if db[:shards]
-        if args[:shard]
+        if args[:shard] && db[:shards][args[:shard]]
           [@@client.table(db[:shards][args.delete(:shard)], db[:table_name])]
         else
           db[:shards].map{|key,val| @@client.table val, db[:table_name]}

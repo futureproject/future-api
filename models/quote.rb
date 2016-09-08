@@ -2,7 +2,7 @@ class Quote < Airtable::Model
 
   #returns a hard-coded default quote
   def self.default
-    self..new(
+    self.new(
       body: "Education is what is left after one has forgotten everything one learned in school.",
       source: "Albert Einstein"
     )
