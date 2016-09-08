@@ -17,6 +17,7 @@ class WidgetsController < ApplicationController
   end
 
   get "/commitments" do
+    #cache_control :public, :must_revalidate, max_age: 30
     @commitments = current_user.student_commitments
     erb :"widgets/commitments", layout: false
   end

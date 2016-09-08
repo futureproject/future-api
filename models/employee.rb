@@ -47,13 +47,15 @@ class Employee < Airtable::Model
 
   # upcoming commitments relevant to this user
   def student_commitments
-    #filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})"]
-    #filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
-    Commitment.records(
-      shard: goddamn_city,
-      sort: ["By When", :asc],
-      #filterByFormula: "AND(#{filters.join(',')})"
-    )
+    App.cache.fetch("student_commitments_#{self.cache_key}", 86400) {
+      filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})"]
+      filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
+      Commitment.records(
+        shard: goddamn_city,
+        sort: ["By When", :asc],
+        filterByFormula: "AND(#{filters.join(',')})"
+      )
+    }
   end
 
   def dashboard_modules
