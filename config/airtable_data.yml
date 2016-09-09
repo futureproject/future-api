@@ -26,23 +26,11 @@
   :commitments:
     :table_name: "Commitments"
     :shards:
-      "DC": "appLT7DTvzjd49AyW"
-      "DT": "appLT7DTvzjd49AyW"
-      "NHV": "appLT7DTvzjd49AyW"
       "NYC": "appLT7DTvzjd49AyW"
-      "NWK": "appLT7DTvzjd49AyW"
-      "PHL": "appLT7DTvzjd49AyW"
-      "SF": "appLT7DTvzjd49AyW"
   :students:
     :table_name: "People"
     :shards:
-      "DC": "appLT7DTvzjd49AyW"
-      "DT": "appLT7DTvzjd49AyW"
-      "NHV": "appLT7DTvzjd49AyW"
       "NYC": "appLT7DTvzjd49AyW"
-      "NWK": "appLT7DTvzjd49AyW"
-      "PHL": "appLT7DTvzjd49AyW"
-      "SF": "appLT7DTvzjd49AyW"
 
 :production:
   :cities:

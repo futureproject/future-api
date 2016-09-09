@@ -34,7 +34,7 @@ tfp.widgets = {
       $t.attr('disabled','disabled');
       form = $t.closest("form").get(0);
       data = new FormData(form);
-      data.append("task[Complete?]", this.checked);
+      data.append("record[Complete?]", this.checked);
 
       // send data to the server
       xhr = new XMLHttpRequest();
@@ -45,8 +45,10 @@ tfp.widgets = {
       }
       xhr.send(data);
     });
-  }
+  },
 }
+
+tfp.widgets.commitments = tfp.widgets.tasks;
 
 $(function(){
   $(".widget").each(function(){

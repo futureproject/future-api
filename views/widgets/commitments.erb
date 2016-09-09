@@ -14,7 +14,8 @@
           <% stuff.each do |thing| %>
             <li class="task">
               <form method="POST" action="/api/commitments/<%= thing["id"] %>">
-                <input value="yes" name="commitment[Complete?]" type="checkbox"><%= thing["Commitment"] %>
+                <input value="yes" name="record[Complete?]" type="checkbox"><%= thing["Commitment"] %>
+                <input name="shard" type="hidden" value="<%= thing["SCHOOL_TFPID"].try(:split, "-").try(:first) %>">
               </form>
             </li>
           <% end %>
