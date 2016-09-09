@@ -48,7 +48,7 @@ class Employee < Airtable::Model
   # upcoming commitments relevant to this user
   def student_commitments
     App.cache.fetch("student_commitments_#{self.cache_key}", 86400) {
-      filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})"]
+      filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})", "NOT(NOT({WHO}))"]
       filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
       Commitment.records(
         shard: goddamn_city,

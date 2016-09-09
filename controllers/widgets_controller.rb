@@ -18,7 +18,7 @@ class WidgetsController < ApplicationController
 
   get "/commitments" do
     #cache_control :public, :must_revalidate, max_age: 30
-    @commitments = current_user.student_commitments
+    @commitments = current_user.student_commitments.sort_by{|x| x["By When"] }
     erb :"widgets/commitments", layout: false
   end
 

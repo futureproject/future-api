@@ -9,20 +9,22 @@
         <% end %>
       </header>
       <% commitments.group_by{|t| t["Who"] }.each do |person, stuff| %>
-        <h4><%= person %></h4>
-        <ul class="tasks">
-          <% stuff.each do |thing| %>
-            <li class="task">
-              <form method="POST" action="/api/commitments/<%= thing["id"] %>">
-                <input value="yes" name="record[Complete?]" type="checkbox"><%= thing["Commitment"] %>
-                <% if thing["PROJECTS_GROUPS"].present? %>
-                  - <span class="subtle"><%= thing["PROJECTS_GROUPS"] %></span>
-                <% end %>
-                <input name="shard" type="hidden" value="<%= thing["SCHOOL_TFPID"].try(:split, "-").try(:first) %>">
-              </form>
-            </li>
-          <% end %>
-        </ul>
+        <div class="student-tasks">
+          <h4><%= person %></h4>
+          <ul class="tasks">
+            <% stuff.each do |thing| %>
+              <li class="task">
+                <form method="POST" action="/api/commitments/<%= thing["id"] %>">
+                  <input value="yes" name="record[Complete?]" type="checkbox"><%= thing["Commitment"] %>
+                  <% if thing["PROJECTS_GROUPS"].present? %>
+                    - <span class="subtle"><%= thing["PROJECTS_GROUPS"] %></span>
+                  <% end %>
+                  <input name="shard" type="hidden" value="<%= thing["SCHOOL_TFPID"].try(:split, "-").try(:first) || current_user.goddamn_city %>">
+                </form>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
     </div>
   <% end %>

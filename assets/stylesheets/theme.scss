@@ -96,6 +96,7 @@ input[type=checkbox] {
   text-align: center;
   background: white;
   border-radius: 0;
+  outline: 1rem solid transparent;
   &:checked {
     &:before {
       content: "✓";
@@ -211,6 +212,21 @@ a[data-method=delete], a[href*="destroy"], .error {
   header {
     display: block;
     @extend .module-subtitle;
+  }
+}
+
+.student-tasks {
+  margin: 0 0 -1px 0;
+  padding-top: 1rem;
+  border-bottom: 1px dashed $base-border-color;
+  &:first-of-type { padding-top: 0; }
+  &:last-child { border-bottom: none; margin-bottom: 0; }
+  .tasks {
+    margin-left: .5rem;
+  }
+  h4 {
+    margin: 0 0 1rem;
+    &:after { content: ":"; }
   }
 }
 .subtle { color: lightgray; }
