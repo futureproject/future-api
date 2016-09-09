@@ -15,6 +15,9 @@
             <li class="task">
               <form method="POST" action="/api/commitments/<%= thing["id"] %>">
                 <input value="yes" name="record[Complete?]" type="checkbox"><%= thing["Commitment"] %>
+                <% if thing["PROJECTS_GROUPS"].present? %>
+                  - <span class="subtle"><%= thing["PROJECTS_GROUPS"] %></span>
+                <% end %>
                 <input name="shard" type="hidden" value="<%= thing["SCHOOL_TFPID"].try(:split, "-").try(:first) %>">
               </form>
             </li>
