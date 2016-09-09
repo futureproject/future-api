@@ -1,5 +1,5 @@
 .portal-modules {
-  margin-top: -1rem;
+  margin: -1rem -1rem 0;
 }
 
 .module {
@@ -94,6 +94,11 @@
   }
 }
 
+@media (min-width: 555px) {
+  .portal-modules {
+    margin: -1rem 0 0;
+  }
+}
 @media (min-width: 768px) {
   .embed, .text {
     ul {
