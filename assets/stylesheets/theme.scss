@@ -10,7 +10,7 @@ $base-background-color: #fafafa;
 $base-font-family: "avenir next", avenir, "helvetica neue", helvetica, arial, sans-serif;
 
 body {
-  //background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .1) 1px, transparent 1px);
+  background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, .1) 1px, transparent 1px);
   font-family: $base-font-family;
   background-color: $base-background-color;
   background-repeat: repeat;
@@ -160,7 +160,7 @@ a[data-method=delete], a[href*="destroy"], .error {
 .module-badge {
   border-radius: 1rem;
   font-weight: bold;
-  background: $purple;
+  background: $blue;
   color: white;
   text-align: center;
   &.length-0 {
@@ -175,7 +175,7 @@ a[data-method=delete], a[href*="destroy"], .error {
 
 .calendar {
   header {
-    background: $base-border-color;
+    background: $blue;
     font-weight: 200;
     color: white;
     text-transform: lowercase;

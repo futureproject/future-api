@@ -2,13 +2,13 @@
   <div class="calendar">
   <% @tasks.group_by{|c| c["By When"]}.each do |day, tasks| %>
     <div class="calendar-day">
-      <div class="calendar-day-header">
+      <header>
         <% if day.present? %>
           <%= Date.parse(day).strftime("%a, %b %d")  %>
         <% else %>
           No Date Set
         <% end %>
-      </div>
+      </header>
       <ul class="tasks">
         <% tasks.each do |t| %>
           <li class="task">

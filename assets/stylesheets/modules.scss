@@ -28,6 +28,10 @@
 .module-content {
   display: none;
   padding: 1rem;
+  .calendar:first-child {
+    margin-top: -2rem;
+  }
+  h4 { margin: 0; }
 }
 
 .module.is-expanded {
