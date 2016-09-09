@@ -27,6 +27,7 @@ tfp.widgets = {
     var todos = this.$elem.find(".task").length;
     var $badge = $("<div class='module-badge length-" + todos + "'>" +  todos + "</div>")
     this.$elem.find(".module-header").append($badge);
+
     // intercept input clicks
     this.$box.on("click", "input", function(event) {
       var $t = $(this);

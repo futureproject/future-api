@@ -64,6 +64,9 @@
   }
 }
 
+.commitments { @extend .tasks; }
+.commitment { @extend .task; }
+
 .stat-cards {
   @include clearfix;
 }

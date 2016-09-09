@@ -1,21 +1,26 @@
 <% if @commitments.any? %>
-  <% @commitments.group_by{|c| c["By When"]}.each do |day, tasks| %>
-    <section>
-      <h4>
+  <% @commitments.group_by{|c| c["By When"]}.each do |day, commitments| %>
+    <div class="calendar">
+      <div class="calendar-day-header">
         <% if day.present? %>
           <%= Date.parse(day).strftime("%a, %b %d")  %>
         <% else %>
           No Date Set
         <% end %>
-      </h4>
-      <ul>
-        <% tasks.each do |t| %>
-          <li>
-            <%= t["WHO"] %> - <%= t["Commitment"] %>
-          </li>
-        <% end %>
-      </ul>
-    </section>
+      </div>
+      <% commitments.group_by{|t| t["Who"] }.each do |person, stuff| %>
+        <h4><%= person %></h4>
+        <ul class="tasks">
+          <% stuff.each do |thing| %>
+            <li class="task">
+              <form method="POST" action="/api/commitments/<%= thing["id"] %>">
+                <input value="yes" name="commitment[Complete?]" type="checkbox"><%= thing["Commitment"] %>
+              </form>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   <% end %>
 <% else %>
   <p>No upcoming student commitments.</p>
