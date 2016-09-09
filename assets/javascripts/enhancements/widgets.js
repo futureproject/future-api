@@ -14,7 +14,9 @@ tfp.Widget = function(elem){
     callback = tfp.widgets[callback_name]
     if(callback) { callback.call(self) }
   }
-  self.xhr.send();
+  self.$elem.one('click', function(event) {
+    self.xhr.send();
+  })
 }
 
 tfp.widgets = {
