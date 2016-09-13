@@ -30,7 +30,8 @@ tfp.widgets.tasks = Backbone.View.extend({
     // append undone tasks to header
     var todos = this.$el.find(".task").length;
     var $badge = $("<div class='module-badge length-" + todos + "'>" +  todos + "</div>")
-    this.$el.find(".module-header").append($badge);
+    var header = this.$el.find(".module-header").get(0) || this.$el.closest(".module").find(".module-header").get(0)
+    $(header).append($badge);
   },
   events: {
     "click input": "toggle"

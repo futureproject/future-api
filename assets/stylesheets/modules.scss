@@ -94,6 +94,15 @@
   }
 }
 
+.new-commitment {
+  display: none;
+  input {
+    width: 100%;
+    display: block;
+  }
+}
+
+
 @media (min-width: 555px) {
   .portal-modules {
     margin: -1rem 0 0;
