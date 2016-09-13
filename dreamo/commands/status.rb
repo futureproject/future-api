@@ -29,7 +29,7 @@ module Dreamo
             attachments: tasks.map{|t|
               {
                 title: t["Commitment"],
-                text: Date.parse(t["By When"]).strftime("%b %d"),
+                text: Date.try(:parse, t["By When"]).try(:strftime, "%b %d"),
                 color: "#15c8ff",
                 #pretext: t["By When"],
                 fallback: t["Commitment"]
