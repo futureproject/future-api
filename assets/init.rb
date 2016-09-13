@@ -2,7 +2,7 @@ class App < Sinatra::Base
   register Sinatra::Sprockets::Helpers
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, '/assets'
-  set :assets_to_compile, %w(application.js screen.css)
+  set :assets_to_compile, %w(application.js screen.css gotit.js)
   set :digest_assets, production?
 
   configure do

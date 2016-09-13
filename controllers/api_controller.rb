@@ -10,6 +10,15 @@ class ApiController < ApplicationController
     json @quotes
   end
 
+  get "/students" do
+    @students = Student.search(
+      name: params[:q],
+      school: current_user.goddamn_school,
+      shard: current_user.goddamn_city
+    )
+    json @students.map(&:attributes)
+  end
+
   # Updates a task with params[:task]
   post "/tasks/:id" do
     if Task.patch(params[:id], params[:record])
@@ -19,6 +28,17 @@ class ApiController < ApplicationController
     else
       content_type :json
       status 400
+    end
+  end
+
+  # make a new commitment
+  post "/commitments" do
+    @commitment = Commitment.new(params[:record])
+    puts @commitment
+    if @commitment.save
+      "it worked"
+    else
+      erb :"commitments/new", layout: :"layouts/students"
     end
   end
 

@@ -38,10 +38,12 @@ class Employee < Airtable::Model
 
   # students relevant to this user
   def students
-    Student.where(
-      "SCHOOL_TFPID": self.goddamn_school,
+    filters = []
+    filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
+    Student.records(
       shard: self.goddamn_city,
       sort: ["Name", :asc],
+      filterByFormula: "AND(#{filters.join(',')})"
     )
   end
 

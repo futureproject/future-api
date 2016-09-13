@@ -22,6 +22,10 @@ class WidgetsController < ApplicationController
     erb :"widgets/commitments", layout: false
   end
 
+  get "/commitments/new" do
+    erb :"commitments/new", layout: :"layouts/gotit"
+  end
+
   get "/profiles" do
     @profiles = PossibilityProfile.for_user(current_user)
     erb :"widgets/profiles", layout: false

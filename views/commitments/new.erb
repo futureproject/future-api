@@ -1,0 +1,43 @@
+<h2>New Commitment</h2>
+<form id="new-commitment" action="/api/commitments" method="POST">
+  <p>
+    <label>Who</label>
+    <select multiple class="selectize" required name="record[By Whom][]">
+    </select>
+  </p>
+  <p>
+    <label>What</label>
+    <input required name="record[Commitment]" type="text" value="" placeholder="Land on the moon" />
+  </p>
+  <p>
+    <label>When</label>
+    <input required name="record[By When]" type="date" value="<%= Date.today %>" />
+  </p>
+  <!--
+  <p>
+    <label>Engagement Type</label>
+    <select requried name="record[Engagement Type][]">
+      <option value="Coaching Session (1 on 1)">Coaching Session (1 on 1)</option>
+      <option value="Factilitated Course">Factilitated Course</option>
+      <option value="Curated Course (outside resource)">Curated Course (outside resource)</option>
+      <option value="Event">Event (assembly/gathering)</option>
+      <option value="Impromptu">Impromptu (text/hallway/pop-up)</option>
+    </select>
+  </p>
+  <p>
+    <label>
+      <input name="record[For a Project?]" type="checkbox">
+      For a project?
+    </label>
+  </p>
+  <p>
+    <label>Notes</label>
+    <br>
+    <textarea name="record[Notes]" placeholder="Engagement details, etc">
+    </textarea>
+  </p>
+  -->
+  <p>
+    <input type="submit" value="Let's do this." />
+  </p>
+</form>

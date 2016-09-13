@@ -1,3 +1,5 @@
+<div class="new-commitment" id="new-commitment">
+</div>
 <% if @commitments.any? %>
   <% @commitments.group_by{|c| c["By When"]}.each do |day, commitments| %>
     <div class="calendar">
