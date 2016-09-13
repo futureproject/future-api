@@ -34,7 +34,7 @@ class App < Sinatra::Base
     set :static_cache_control, [:public, :max_age => 7200]
   end
 
-  configure :development do
+  configure :development, :test do
     # debug modules, move to next group if you need them while running tests
     Dir["#{settings.root}/debug/*.rb"].each{|f| require f}
   end

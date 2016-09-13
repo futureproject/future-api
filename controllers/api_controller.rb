@@ -34,8 +34,7 @@ class ApiController < ApplicationController
   # make a new commitment
   post "/commitments" do
     @commitment = Commitment.new(params[:record])
-    puts @commitment
-    if @commitment.save
+    if @commitment.save(params[:shard])
       "it worked"
     else
       erb :"commitments/new", layout: :"layouts/students"

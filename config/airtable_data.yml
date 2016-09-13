@@ -27,6 +27,8 @@
     :table_name: "Commitments"
     :shards:
       "NYC": "appLT7DTvzjd49AyW"
+      "HQ": "appLT7DTvzjd49AyW"
+      "DC": "appLT7DTvzjd49AyW"
       #"DC": "appPlrx8TnvXDshRP"
       #"DT": "app5BKrRtkoskmPHh"
       #"NHV": "appil5KLJUJgqkqWg"

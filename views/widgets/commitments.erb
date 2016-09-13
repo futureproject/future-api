@@ -1,5 +1,25 @@
 <div class="new-commitment" id="new-commitment">
+  <form action="/api/commitments" method="POST">
+    <p>
+      <label>Who</label>
+      <select multiple class="selectize" required name="record[By Whom][]">
+      </select>
+    </p>
+    <p>
+      <label>What</label>
+      <input required name="record[Commitment]" type="text" value="" placeholder="Land on the moon" />
+    </p>
+    <p>
+      <label>When</label>
+      <input required name="record[By When]" type="date" value="<%= Date.today %>" />
+    </p>
+    <p>
+      <input type="hidden" name="shard" value="<%= current_user.goddamn_city %>" />
+      <input type="submit" value="Got it." />
+    </p>
+  </form>
 </div>
+<div id="commitments-checklist">
 <% if @commitments.any? %>
   <% @commitments.group_by{|c| c["By When"]}.each do |day, commitments| %>
     <div class="calendar">
@@ -16,7 +36,7 @@
           <ul class="tasks">
             <% stuff.each do |thing| %>
               <li class="task">
-                <form method="POST" action="/api/commitments/<%= thing["id"] %>">
+                <form class="toggle" method="POST" action="/api/commitments/<%= thing["id"] %>">
                   <input value="yes" name="record[Complete?]" type="checkbox"><%= thing["Commitment"] %>
                   <% if thing["PROJECTS_GROUPS"].present? %>
                     - <span class="subtle"><%= thing["PROJECTS_GROUPS"] %></span>
@@ -33,3 +53,4 @@
 <% else %>
   <p>No upcoming student commitments.</p>
 <% end %>
+</div>

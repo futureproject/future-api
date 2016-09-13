@@ -117,15 +117,20 @@ module Airtable
       }
     end
 
-
     # INSTANCE METHODS
 
-    def save
+    def formatted_fields
+      self.class.airtable_formatted(self.fields)
+    end
+
+    def save(shard=self.goddman_city)
       if new_record?
-        self.class.tables(shard: goddamn_city).map{|tbl| tbl.create(self) }
+        self.class.tables(shard: shard).map{|tbl|
+          tbl.create self
+        }
       else
-        self.class.tables(shard: goddamn_city).map{|tbl|
-          tbl..update_record_fields(id, self.changed_fields)
+        self.class.tables(shard: shard).map{|tbl|
+          tbl.update_record_fields(id, self.changed_fields)
         }
       end
     end

@@ -17,10 +17,19 @@ feature "I can manage student commitments" do
     Commitment.find_by(id: original_task).update("Complete?": false)
   end
 
+  scenario "by adding" do
+    visit "/"
+    find("#module-got-it").click
+    within find("#new-commitment") do
+      fill_in("record[Commitment]", with: "Land on the moon")
+      click_button "Got it."
+    end
+  end
+
   def find_first_task_on_page(element_id="#module-city-dashboard")
     widget = find(element_id)
     widget.click
-    widget.find("form", match: :first)[:action].split("/").last
+    widget.find("form.toggle", match: :first)[:action].split("/").last
   end
 
   def complete_first_task_on_page(element_id="#module-city-dashboard")

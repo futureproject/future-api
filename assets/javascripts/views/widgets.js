@@ -56,8 +56,12 @@ tfp.widgets.tasks = Backbone.View.extend({
 tfp.widgets.commitments = Backbone.View.extend({
   initialize: function(){
     this.views = {
-      checklist: new tfp.widgets.tasks({ el: this.el }),
-      form: new tfp.CommitmentsFormView({ el: this.el.querySelector("#new-commitment") })
+      checklist: new tfp.widgets.tasks({
+        el: this.el.querySelector("#commitments-checklist")
+      }),
+      form: new tfp.CommitmentsFormView({
+        el: this.el.querySelector("#new-commitment")
+      })
     }
   }
 })
