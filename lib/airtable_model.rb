@@ -64,7 +64,7 @@ module Airtable
     def self.find_by(filters)
       shard = filters.delete(:shard)
       if filters[:id]
-        results = tables(shard: shard).map{|tbl| tbl.find(filters[:id]) }
+        results = self.classify tables(shard: shard).map{|tbl| tbl.find(filters[:id]) }
       else
         formula = "AND(" + filters.map{|k,v| "{#{k}}='#{v}'" }.join(',') + ")"
         results = records(
