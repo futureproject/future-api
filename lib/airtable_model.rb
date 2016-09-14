@@ -123,11 +123,11 @@ module Airtable
       self.class.airtable_formatted(self.fields)
     end
 
-    def save(shard=self.goddman_city)
+    def save(shard=self.goddamn_city)
       if new_record?
         self.class.tables(shard: shard).map{|tbl|
           tbl.create self
-        }
+        }.first
       else
         self.class.tables(shard: shard).map{|tbl|
           tbl.update_record_fields(id, self.changed_fields)

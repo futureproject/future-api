@@ -3,16 +3,16 @@
   <form action="/api/commitments" method="POST">
     <p>
       <label>These dreamers:</label>
-      <select multiple class="selectize" required name="record[By Whom][]">
+      <select multiple class="selectize" name="record[By Whom][]">
       </select>
     </p>
     <p>
       <label>commit to:</label>
-      <input required name="record[Commitment]" type="text" value="" placeholder="landing on the moon" />
+      <input name="record[Commitment]" type="text" value="" placeholder="landing on the moon" />
     </p>
     <p>
       <label>by this date:</label>
-      <input required name="record[By When]" type="date" value="<%= Date.today %>" />
+      <input name="record[By When]" type="date" value="<%= Date.today %>" />
     </p>
     <fieldset class="incidentals">
       <label>Engagement type:</label>

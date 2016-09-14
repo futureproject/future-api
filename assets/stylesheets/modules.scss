@@ -126,3 +126,17 @@
   }
 }
 
+.flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: DarkSeaGreen;
+  padding: 2rem;
+  text-align: center;
+  z-index: 100000;
+  color: white;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+

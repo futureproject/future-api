@@ -35,9 +35,11 @@ class ApiController < ApplicationController
   post "/commitments" do
     @commitment = Commitment.new(params[:record])
     if @commitment.save(params[:shard])
-      "it worked"
+      content_type :json
+      json @commitment
     else
-      erb :"commitments/new", layout: :"layouts/students"
+      content_type :json
+      status 400
     end
   end
 

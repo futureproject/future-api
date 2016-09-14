@@ -11,7 +11,6 @@ tfp.PeoplePickerView = Backbone.View.extend({
       closeAfterSelect: true,
       load: function(query, callback) {
         if (!query.length) return callback();
-        console.log(callback)
         $.ajax({
           url: '/api/students?q=' + encodeURIComponent(query),
           type: 'GET',
