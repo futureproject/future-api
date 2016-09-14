@@ -1,12 +1,14 @@
 window.tfp = window.tfp || {}
+
 tfp.PeoplePickerView = Backbone.View.extend({
   initialize: function(){
     this.$el.selectize({
+      plugins: ['remove_button'],
       valueField: 'id',
       labelField: 'name',
       searchField: 'name',
       create: false,
-      closeAfterSelect: !!navigator.userAgent.match(/ipad|iphone|ipod/i),
+      closeAfterSelect: true,
       load: function(query, callback) {
         if (!query.length) return callback();
         console.log(callback)
@@ -30,5 +32,8 @@ tfp.PeoplePickerView = Backbone.View.extend({
         }
       }
     })
-  }
+  },
+  clear: function(){
+    this.el.selectize.clear()
+  },
 })

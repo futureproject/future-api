@@ -62,9 +62,9 @@ label {
 
 fieldset {
   border: none;
-  outline: 1px dashed $light-blue;
-  padding: 2rem;
-  margin: 2rem 0;
+  outline: 1px dashed $base-border-color;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 input[type=text], input[type=email], input[type=password], input[type=phone], input[type=date] {
@@ -78,11 +78,10 @@ input[type=text], input[type=email], input[type=password], input[type=phone], in
   line-height: 1;
   padding: 0 .25rem;
   margin: 0;
-  box-shadow: inset 0 -.25rem 0 $base-font-color;
-  &:focus {
-    outline: none;
-    box-shadow: inset 0 -.25rem 0 $base-highlight-color;
-  }
+  background: $base-border-color;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
 }
 input[type=checkbox] {
   @include appearance(none);
@@ -92,18 +91,40 @@ input[type=checkbox] {
   border: 1px solid $base-border-color;
   box-shadow: 2px 2px 0 $base-border-color;
   line-height: 1;
-  font-size: 2rem;
   text-align: center;
   background: white;
   border-radius: 0;
   outline: 1rem solid transparent;
+  margin-right: .5rem;
   &:checked {
     &:before {
       content: "✓";
+      font-size: 2rem;
     }
   }
   &:focus {
     outline: none;
+  }
+}
+
+input[type=submit], input[type=cancel], button {
+  @include appearance(none);
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  border: none;
+  background: DarkSeaGreen;
+  display: inline-block;
+  cursor: pointer;
+  width: auto;
+  line-height: 2;
+  padding: 0 1rem;
+  font-size: 2rem;
+  border-radius: .25rem;
+  height: 4rem;
+  &.cancel, &[type=cancel] {
+    background: $yellow;
+    color: $base-font-color;
   }
 }
 
@@ -231,3 +252,114 @@ a[data-method=delete], a[href*="destroy"], .error {
 }
 .subtle { color: lightgray; }
 
+
+select[multiple] {
+  display: none;
+}
+
+.selectize-input {
+  @extend input[type=text];
+  width: 100%;
+  height: auto;
+  input, .item {
+    display: inline-block !important;
+    padding: 1rem .5rem;
+    font-weight: bold;
+    line-height: 2;
+  }
+  input {
+    outline: none;
+    font-weight: normal;
+    box-sizing: content-box;
+    &:focus { outline: none; }
+  }
+  .remove {
+    padding-left: .25rem;
+    outline: 1rem solid transparent;
+    display: inline-block;
+    color: $red;
+  }
+  .active {
+    color: $red;
+  }
+}
+.selectize-control {
+  position: relative;
+}
+.selectize-dropdown {
+  position: absolute;
+  background: rgba(255,255,255,.98);
+  z-index: 1000;
+  box-shadow: 2px 2px 0 $base-font-color;
+  border: 1px solid $base-font-color;
+  box-sizing: border-box;
+}
+.selectize-control.loading {
+  opacity: .5;
+}
+.selectize-dropdown-content {
+  .active {
+    color: $base-highlight-color;
+  }
+  div[data-selectable] {
+    padding: 1rem .5rem;
+    cursor: pointer;
+    &:hover {
+      color: $base-highlight-color;
+    }
+  }
+  .title {
+    font-weight: bold;
+  }
+  .highlight {
+    background: $yellow;
+  }
+}
+.new-commitment {
+  margin-bottom: 4rem;
+  p  {
+    max-width: 100%;
+    > input[type=text], input[type=date] {
+      height: 4rem;
+    }
+    input[type=date] {
+      line-height: 4;
+    }
+  }
+  input {
+    width: 100%;
+    display: block;
+  }
+  .incidentals {
+    opacity: .75;
+    label {
+      display: block;
+      clear: both;
+      margin-top: 1rem;
+      &:first-child { margin: 0; }
+    }
+    input[type=checkbox] {
+      width: 2rem;
+      float: left;
+    }
+    input[type=text] {
+      padding: 0 .5rem;
+      line-height: 1;
+    }
+  }
+}
+.is-selected .pika-button {
+  background: $blue;
+}
+.pika-button:hover {
+  background: $light-blue;
+}
+.toggle-form {
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  margin-bottom: 2rem;
+}
+
+::-webkit-input-placeholder { line-height: normal; }

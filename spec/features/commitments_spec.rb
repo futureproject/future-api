@@ -21,8 +21,9 @@ feature "I can manage student commitments" do
     visit "/"
     find("#module-got-it").click
     within find("#new-commitment") do
-      fill_in("record[Commitment]", with: "Land on the moon")
+      fill_in("record[Commitment]", with: "landing on the moon")
       click_button "Got it."
+      expect(page).to have_content "Commitment added!"
     end
   end
 
