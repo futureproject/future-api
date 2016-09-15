@@ -12,7 +12,7 @@ tfp.EmbedView = Backbone.View.extend({
     var extension = url.split("/").pop();
     if (extension.match(/jpg|jpeg|png|gif/i)) {
       var embed = document.createElement("img");
-      var $target = $this.$el.find(".module-content");
+      var $target = this.$el.find(".module-content");
       var $loader = $("<div class='tfp-loading' />");
       $target.prepend($loader);
       embed.src = url;
