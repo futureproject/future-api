@@ -126,9 +126,11 @@ module Airtable
     def save(shard=self.goddamn_city)
       if self.valid?
         if new_record?
-          self.class.tables(shard: shard).map{|tbl|
+          results = self.class.tables(shard: shard).map{|tbl|
             tbl.create self
-          }.first
+          }
+          # return the first version of this record that saved successfully
+          results.find{|x| !!x }
         else
           self.class.tables(shard: shard).map{|tbl|
             tbl.update_record_fields(id, self.changed_fields)
