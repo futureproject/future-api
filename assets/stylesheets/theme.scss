@@ -362,4 +362,14 @@ select[multiple] {
   margin-bottom: 2rem;
 }
 
+.flash {
+  color: white;
+  background: darkseagreen;
+  font-weight: bold;
+}
+.flash.error {
+  background: $red;
+}
+
 ::-webkit-input-placeholder { line-height: normal; }
+

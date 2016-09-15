@@ -19,4 +19,5 @@ $(function(){
       el: this
     })
   })
+  tfp.flasher = new tfp.FlashView()
 })
