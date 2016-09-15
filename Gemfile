@@ -29,4 +29,5 @@ group :development, :test do
   gem "dotenv"
   gem "vcr"
   gem "webmock"
+  gem "launchy"
 end

@@ -36,10 +36,12 @@ class ApiController < ApplicationController
     @commitment = Commitment.new(params[:record])
     if @commitment.save(params[:shard])
       content_type :json
+      status 201
       json @commitment
     else
       content_type :json
       status 400
+      json @commitment.errors
     end
   end
 

@@ -2,7 +2,7 @@ class RegistrationController < ApplicationController
 
   get "/" do
     #block people who haven't had a registration token set by Oauth
-    halt(406) unless session[:registration_token]
+    halt(401) unless session[:registration_token]
 
     @email = session[:registration_token]
     @slack_user = SlackUser.find_by_email(@email)

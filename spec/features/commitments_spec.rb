@@ -20,11 +20,10 @@ feature "I can manage student commitments" do
   scenario "by adding" do
     visit "/"
     find("#module-got-it").click
-    within find("#new-commitment") do
-      fill_in("record[Commitment]", with: "landing on the moon")
-      click_button "Got it."
-      expect(page).to have_content "Commitment added!"
-    end
+    complete_commitment_form
+    expect(page).to have_content "Commitment added!"
+    #clean up
+    Commitment.find_by("Commitment": "pass this test").destroy
   end
 
   def find_first_task_on_page(element_id="#module-city-dashboard")
@@ -38,6 +37,19 @@ feature "I can manage student commitments" do
     checkbox = find("input[type=checkbox]", match: :first)
     checkbox.click
     expect(widget).not_to have_css('input[disabled]')
+  end
+
+  def complete_commitment_form
+    click_button "Add New"
+    within '#new-commitment' do
+      who = first('.selectize-input input[type=text]')
+      q = "Elwin"
+      who.set(q)
+      option = find('div[data-selectable]', text: q, match: :first)
+      option.click
+      fill_in("record[Commitment]", with: "pass this test")
+      click_button "Got it."
+    end
   end
 end
 

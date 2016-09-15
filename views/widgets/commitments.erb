@@ -12,7 +12,7 @@
     </p>
     <p>
       <label>by this date:</label>
-      <input name="record[By When]" type="date" value="<%= Date.today %>" />
+      <input name="record[By When]" type="date" value="<%= Date.today + 1.week %>" />
     </p>
     <fieldset class="incidentals">
       <label>Engagement type:</label>
@@ -35,6 +35,7 @@
       <input type="hidden" name="shard" value="<%= current_user.goddamn_city %>" />
       <input type="submit" value="Got it." />
     </p>
+  </form>
 </div>
 <div id="commitments-checklist">
 <% if @commitments.any? %>

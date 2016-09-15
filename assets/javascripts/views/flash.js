@@ -5,9 +5,9 @@ tfp.FlashView = Backbone.View.extend({
     this.listenTo(Backbone, "flash", this.flash);
   },
   flash: function(msg) {
-    msg = msg.replace("\n", "<br>")
-    $notice = $("<div class='flash'>" + msg + "</div>");
-    if (!!msg.match(/required/i)) {
+    var msg = msg.replace("\n", "<br>")
+    var $notice = $("<div class='flash'>" + msg + "</div>");
+    if (!!msg.match(/required|error/i)) {
       $notice.addClass('error')
     }
     $('body').append($notice.hide().fadeIn());

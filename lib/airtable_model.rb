@@ -124,14 +124,18 @@ module Airtable
     end
 
     def save(shard=self.goddamn_city)
-      if new_record?
-        self.class.tables(shard: shard).map{|tbl|
-          tbl.create self
-        }.first
+      if self.valid?
+        if new_record?
+          self.class.tables(shard: shard).map{|tbl|
+            tbl.create self
+          }.first
+        else
+          self.class.tables(shard: shard).map{|tbl|
+            tbl.update_record_fields(id, self.changed_fields)
+          }
+        end
       else
-        self.class.tables(shard: shard).map{|tbl|
-          tbl.update_record_fields(id, self.changed_fields)
-        }
+        false
       end
     end
 
@@ -155,6 +159,14 @@ module Airtable
 
     def cache_key
       "#{self.class.name.tableize}_#{self.id}"
+    end
+
+    def valid?
+      true
+    end
+
+    def errors
+      {}
     end
 
     # iterate through all the many ways TFPID might be
