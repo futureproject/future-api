@@ -6,15 +6,20 @@ tfp.FlashView = Backbone.View.extend({
   },
   flash: function(msg) {
     var msg = msg.replace("\n", "<br>")
-    var $notice = $("<div class='flash'>" + msg + "</div>");
-    if (!!msg.match(/required|error/i)) {
-      $notice.addClass('error')
+    if (!!navigator.userAgent.match(/iphone|ipad|ipod/i)) {
+      alert(msg)
     }
-    $('body').append($notice.hide().fadeIn());
-    window.setTimeout(function(){
-      $notice.fadeOut(function(){
-        $(this).remove();
-      })
-    }, 2000)
+    else {
+      var $notice = $("<div class='flash'>" + msg + "</div>");
+      if (!!msg.match(/required|error/i)) {
+        $notice.addClass('error')
+      }
+      $('body').append($notice.hide().fadeIn());
+      window.setTimeout(function(){
+        $notice.fadeOut(function(){
+          $(this).remove();
+        })
+      }, 2000)
+    }
   }
 })
