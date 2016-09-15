@@ -35,6 +35,7 @@ class ApiController < ApplicationController
   post "/commitments" do
     @commitment = Commitment.new(params[:record])
     if @commitment.save(params[:shard])
+      App.cache.delete "student_commitments_#{current_user.cache_key}"
       content_type :json
       status 201
       json @commitment

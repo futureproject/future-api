@@ -22,6 +22,13 @@ feature "I can manage student commitments" do
     find("#module-got-it").click
     complete_commitment_form
     expect(page).to have_content "Commitment added!"
+
+    visit "/"
+    find("#module-got-it").click
+    within "#module-got-it" do
+      expect(page).to have_content "pass this test"
+    end
+
     #clean up
     Commitment.find_by("Commitment": "pass this test").destroy
   end
