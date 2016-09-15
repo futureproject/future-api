@@ -4,4 +4,8 @@ module AppHelper
     "https://airtable.com/#{DB[base_name.downcase.to_sym][:base_id]}"
   end
 
+  def airtable_formatted(hash)
+    Airtable::Model.airtable_formatted(hash)
+  end
+
 end

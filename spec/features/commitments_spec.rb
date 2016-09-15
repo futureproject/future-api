@@ -55,6 +55,8 @@ feature "I can manage student commitments" do
       option = find('div[data-selectable]', text: q, match: :first)
       option.click
       fill_in("record[Commitment]", with: "pass this test")
+      check "record[For a Project?]"
+      fill_in "record[Notes]", with: "This is pretty ambitious"
       click_button "Got it."
     end
   end

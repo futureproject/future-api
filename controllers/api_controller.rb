@@ -21,7 +21,7 @@ class ApiController < ApplicationController
 
   # Updates a task with params[:task]
   post "/tasks/:id" do
-    if Task.patch(params[:id], params[:record])
+    if Task.patch(params[:id], record_params)
       App.cache.delete("tasks_undone_for_user_#{current_user["TFPID"]}")
       content_type :json
       status 200
@@ -33,7 +33,7 @@ class ApiController < ApplicationController
 
   # make a new commitment
   post "/commitments" do
-    @commitment = Commitment.new(params[:record])
+    @commitment = Commitment.new(record_params)
     if @commitment.save(params[:shard])
       App.cache.delete "student_commitments_#{current_user.cache_key}"
       content_type :json
@@ -48,7 +48,7 @@ class ApiController < ApplicationController
 
   # Updates a student commitment with params[:commitment]
   post "/commitments/:id" do
-    if Commitment.patch(params[:id], params[:record], params[:shard])
+    if Commitment.patch(params[:id], record_params, params[:shard])
       App.cache.delete("student_commitments_#{current_user.cache_key}")
       content_type :json
       status 200
@@ -57,5 +57,10 @@ class ApiController < ApplicationController
       status 400
     end
   end
+
+  private
+    def record_params
+      airtable_formatted(params[:record])
+    end
 
 end
