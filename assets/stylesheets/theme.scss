@@ -216,12 +216,11 @@ a[data-method=delete], a[href*="destroy"], .error {
 .calendar {
   header {
     background: $slate;
-    font-weight: 200;
     color: white;
-    text-transform: lowercase;
-    font-variant: small-caps;
-    padding: 0 .5em;
-    margin: 1rem auto;
+    text-transform: uppercase;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
+    font-size: .75rem;
+    line-height: 2rem;
   }
 }
 

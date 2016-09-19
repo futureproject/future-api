@@ -47,6 +47,14 @@
   height: 2rem;
   line-height: 2;
 }
+.calendar {
+  header {
+    padding: 0 1rem;
+    margin: 1rem -1rem;
+    position: -webkit-sticky;
+    top: 0;
+  }
+}
 
 .tasks {
   list-style: none;
