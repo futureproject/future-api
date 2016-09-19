@@ -41,7 +41,7 @@ h4, h5, h6 {
 q {
   display: block;
   a { color: $base-font-color; }
-  a:hover { color: $pink; }
+  a:hover { color: $indigo; }
   font-weight: 200;
   @extend h3;
 }
@@ -153,10 +153,10 @@ th, tr:nth-child(even) {
 }
 
 a {
-  color: $base-highlight-color;
+  color: $slate;
   text-decoration: none;
   &:hover {
-    color: $pink;
+    color: $blue;
   }
 }
 
