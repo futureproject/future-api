@@ -1,8 +1,14 @@
-$light-blue: dodgerblue;
-$blue: steelblue;
-$yellow: gold;
-$purple: mediumslateblue;
-$red: crimson;
+$red: #ff6555;
+$orange: #ff9c00;
+$yellow: #ffdb00;
+$green: #0ee077;
+$teal: #00e5c9;
+$blue: #0bccf9;
+$indigo: #89a2ff;
+$violet: #c57ff7;
+$pink: #f757a7;
+$slate: #5f6d84;
+
 $base-highlight-color: $blue;
 $base-border-color: lightgray;
 $base-font-color: #333;
@@ -34,9 +40,8 @@ h4, h5, h6 {
 
 q {
   display: block;
-  //color: $purple;
   a { color: $base-font-color; }
-  a:hover { color: $light-blue; }
+  a:hover { color: $pink; }
   font-weight: 200;
   @extend h3;
 }
@@ -114,7 +119,7 @@ input[type=submit], input[type=cancel], button {
   font-family: inherit;
   font-weight: bold;
   border: none;
-  background: DarkSeaGreen;
+  background: $blue;
   display: inline-block;
   cursor: pointer;
   width: auto;
@@ -151,7 +156,7 @@ a {
   color: $base-highlight-color;
   text-decoration: none;
   &:hover {
-    color: $light-blue;
+    color: $pink;
   }
 }
 
@@ -183,21 +188,23 @@ a[data-method=delete], a[href*="destroy"], .error {
   }
 }
 
-.module-subtitle {
+.subtitle, .module-subtitle {
   text-transform: lowercase;
   font-variant: small-caps;
   letter-spacing: 1px;
   font-weight: 200;
+  display: block;
+  font-size: 1rem;
 }
 
 .module-badge {
   border-radius: 1rem;
   font-weight: bold;
-  background: $blue;
+  background: $red;
   color: white;
   text-align: center;
   &.length-0 {
-    background: DarkSeaGreen;
+    background: $green;
   }
 }
 
@@ -208,7 +215,7 @@ a[data-method=delete], a[href*="destroy"], .error {
 
 .calendar {
   header {
-    background: $blue;
+    background: $slate;
     font-weight: 200;
     color: white;
     text-transform: lowercase;
@@ -363,7 +370,7 @@ select[multiple] {
   background: $blue;
 }
 .pika-button:hover {
-  background: $light-blue;
+  background: $pink;
 }
 .toggle-form {
   font-size: 1rem;
@@ -375,7 +382,7 @@ select[multiple] {
 
 .flash {
   color: white;
-  background: darkseagreen;
+  background: $teal;
   font-weight: bold;
 }
 .flash.error {

@@ -7,10 +7,10 @@
   -moz-animation: rotation .8s infinite ease-in-out;
   -o-animation: rotation .8s infinite ease-in-out;
   animation: rotation .8s infinite ease-in-out;
-  border-left:4px solid $base-highlight-color;
-  border-right:4px solid $base-highlight-color;
-  border-bottom:4px solid $base-highlight-color;
-  border-top:4px solid $purple;
+  border-left:4px solid $slate;
+  border-right:4px solid $slate;
+  border-bottom:4px solid $slate;
+  border-top:4px solid $base-font-color;
   border-radius:100%;
   text-indent: -99999em;
   overflow: hidden;
