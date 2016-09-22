@@ -33,6 +33,7 @@ module AuthHelper
   def sign_out user
     App.cache.delete user.cache_key
     session[:auth_token] = nil
+    session[:registration_token] = nil
   end
 
   def get_email_from_auth_hash(hash=request.env["omniauth.auth"]["info"])
