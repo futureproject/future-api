@@ -1,13 +1,11 @@
 class RegistrationController < ApplicationController
+  helpers RegistrationHelper
 
   get "/" do
-    #block people who haven't had a registration token set by Oauth
-    halt(401) unless session[:registration_token]
+    @auth_info = get_auth_info_from_registration_token
 
-    @email = session[:registration_token]
-    @slack_user = SlackUser.find_by_email(@email)
-    if @slack_user
-      @employee = Employee.find_or_create_by_slack_id(@slack_user.id)
+    if @auth_info[:slack_user]
+      @employee = Employee.find_or_create_by_slack_id(@auth_info[:slack_user][:id])
       @cities = City.all
       @schools = School.all
       erb :"registration/complete_employee_profile"
@@ -29,6 +27,11 @@ class RegistrationController < ApplicationController
   get "/join_slack" do
     @email = "dreamo@thefutureproject.org"
     erb :"registration/join_slack_first"
+  end
+
+  post "/link_slack_account" do
+    session[:registration_token] = params[:slack_id]
+    redirect "/registration/"
   end
 
 end

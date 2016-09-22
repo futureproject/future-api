@@ -1,24 +1,23 @@
 <article>
-  <h2>Hi <%= @slack_user[:profile][:first_name] %>,</h2>
-  <p>So you have a Slack account, which is great.
-  Please confirm your profile info below.</p>
+  <h2>Hi <%= @auth_info[:slack_user][:profile][:first_name] %>,</h2>
+  <p>Please confirm your profile info below.</p>
 
   <form action="/registration" method="POST">
     <p>
       <label>Full Name</label>
-      <input required name="employee[NAME]" type="text" value="<%= @slack_user[:profile][:real_name_normalized] %>">
+      <input required name="employee[NAME]" type="text" value="<%= @auth_info[:slack_user][:profile][:real_name_normalized] %>">
     </p>
     <p>
       <label>Job Title</label>
-      <input required name="employee[TITLE]" type="text" value="<%= @slack_user[:profile][:title] %>">
+      <input required name="employee[TITLE]" type="text" value="<%= @auth_info[:slack_user][:profile][:title] %>">
     </p>
     <p>
       <label>Email</label>
-      <input size="30" required name="employee[Email]" type="text" value="<%= @slack_user[:profile][:email] %>">
+      <input size="30" required name="employee[Email]" type="text" value="<%= @auth_info[:slack_user][:profile][:email] %>">
     </p>
     <p>
       <label>Phone</label>
-      <input name="employee[Phone]" type="text" value="<%= @slack_user[:profile][:phone] %>">
+      <input name="employee[Phone]" type="text" value="<%= @auth_info[:slack_user][:profile][:phone] %>">
     </p>
     <p>
       <label>City/Team</label>

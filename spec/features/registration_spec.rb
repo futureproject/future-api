@@ -12,6 +12,15 @@ feature "Registration" do
     should_see_slack_registration_prompt
   end
 
+  scenario "With a slack account, but no exact email match" do
+    enable_automatic_auth "chris@thefutureproject.org"
+    visit "/"
+    should_see_slack_registration_prompt
+    select "chris.frank", from: "slack_id"
+    click_button "Next"
+    expect(page).to have_content "Please confirm your profile"
+  end
+
   scenario "With a Slack account and no profile info in Airtable" do
     enable_automatic_auth("kanya.balakrishna@thefutureproject.org")
     visit "/"
@@ -21,7 +30,7 @@ feature "Registration" do
 
 
   def should_see_slack_registration_prompt
-    expect(page).to have_content "Please create a Slack account"
+    expect(page).to have_content "no Slack account matches"
   end
 
   def complete_registration_form

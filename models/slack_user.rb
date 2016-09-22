@@ -10,11 +10,15 @@ class SlackUser
   end
 
   def self.find(id)
-    client.users_info(user: id)
+    begin
+      client.users_info(user: id)
+    rescue Slack::Web::Api::Error
+      nil
+    end
   end
 
-  def self.find_by_email(email)
-    all.select{|u| u[:profile][:email] == email }.first
+  def self.find_by_email(email, set=self.all)
+    set.select{|u| u[:profile][:email] == email }.first
   end
 
 end
