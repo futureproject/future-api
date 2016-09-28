@@ -2,6 +2,7 @@ window.tfp = window.tfp || {}
 
 tfp.PeoplePickerView = Backbone.View.extend({
   initialize: function(){
+    var endpoint = this.$el.attr("data-endpoint");
     this.$el.selectize({
       plugins: ['remove_button'],
       valueField: 'id',
@@ -12,7 +13,7 @@ tfp.PeoplePickerView = Backbone.View.extend({
       load: function(query, callback) {
         if (!query.length) return callback();
         $.ajax({
-          url: '/api/students?q=' + encodeURIComponent(query),
+          url: endpoint + '?q=' + encodeURIComponent(query),
           type: 'GET',
           error: function() {
             callback();

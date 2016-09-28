@@ -14,7 +14,7 @@ tfp.WidgetView = Backbone.View.extend({
       widgetName = self.url.split("/").pop()
       widgetView = tfp.widgets[widgetName]
       if(!!widgetView) {
-        v = new widgetView({ el: self.el })
+        v = new widgetView({ el: self.el });
       }
     }
     self.$el.one('click', function(event) {

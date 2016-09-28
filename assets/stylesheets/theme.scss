@@ -332,7 +332,7 @@ select[multiple] {
     background: $yellow;
   }
 }
-.new-commitment {
+.toggler-form {
   margin-bottom: 4rem;
   p  {
     max-width: 100%;
@@ -365,18 +365,20 @@ select[multiple] {
     }
   }
 }
-.is-selected .pika-button {
-  background: $blue;
-}
-.pika-button:hover {
-  background: $pink;
-}
-.toggle-form {
+
+.toggler-form-toggle {
   font-size: 1rem;
   position: absolute;
   right: 1rem;
   top: 1rem;
   margin-bottom: 2rem;
+}
+
+.is-selected .pika-button {
+  background: $blue;
+}
+.pika-button:hover {
+  background: $pink;
 }
 
 .flash {

@@ -1,4 +1,9 @@
+var tfp = window.tfp || {}
+tfp.widgets = tfp.widgets || {};
+
 $(function(){
+  tfp.widgets.commitments = tfp.checklistView.extend()
+  tfp.widgets.tasks = tfp.checklistView.extend()
   // initialize all dashboard modules
   $(".module").each(function(){
     new tfp.ModuleView({

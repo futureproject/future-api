@@ -19,10 +19,31 @@ class ApiController < ApplicationController
     json @students.map(&:attributes)
   end
 
+  get "/employees" do
+    @employees = Employee.search(
+      name: params[:q]
+    )
+    json @employees.map(&:attributes)
+  end
+
+  # make a new commitment
+  post "/tasks" do
+    @task = Task.new(record_params)
+    if @task.save
+      App.cache.delete "tasks_undone_for_user_#{current_user.goddamn_tfpid}"
+      content_type :json
+      status 201
+      json @task
+    else
+      content_type :json
+      status 400
+      json @task.errors
+    end
+  end
   # Updates a task with params[:task]
   post "/tasks/:id" do
     if Task.patch(params[:id], record_params)
-      App.cache.delete("tasks_undone_for_user_#{current_user["TFPID"]}")
+      App.cache.delete("tasks_undone_for_user_#{current_user.goddamn_tfpid}")
       content_type :json
       status 200
     else

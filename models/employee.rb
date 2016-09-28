@@ -9,6 +9,16 @@ class Employee < Airtable::Model
     block ? block.call(u) : u
   end
 
+  def self.search(args)
+    filters = []
+    filters.push ["FIND('#{args[:name].downcase}', LOWER(NAME)) > 0"] if args[:name]
+    records(
+      sort: ["NAME", :asc],
+      filterByFormula: "AND(#{filters.join(',')})"
+    )
+  end
+
+
   # look in Memcache for this user
   # if the user isn't in memcache, they haven't passed auth
   # so deny them access
