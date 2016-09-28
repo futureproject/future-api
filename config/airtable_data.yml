@@ -23,6 +23,9 @@
   :tasks:
     :base_id: appU8z7k7vyymmPbK
     :table_name: tasks
+  :task_employees:
+    :base_id: appU8z7k7vyymmPbK
+    :table_name: Employees
   :commitments:
     :table_name: "Commitments"
     :shards:
@@ -70,6 +73,9 @@
   :schools:
     :base_id: appJi1ucZpPmznBLP
     :table_name: Schools
+  :task_employees:
+    :base_id: appsSbGeUL5na71it
+    :table_name: People
   :tasks:
     :base_id: appsSbGeUL5na71it
     :table_name: Commitments

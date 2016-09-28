@@ -19,8 +19,8 @@ class ApiController < ApplicationController
     json @students.map(&:attributes)
   end
 
-  get "/employees" do
-    @employees = Employee.search(
+  get "/tasks/assignees" do
+    @employees = TaskEmployee.search(
       name: params[:q]
     )
     json @employees.map(&:attributes)
