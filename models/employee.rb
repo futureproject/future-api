@@ -71,7 +71,7 @@ class Employee < Airtable::Model
   end
 
   def dashboard_modules
-    if self["admin"]
+    if self["admin"].present?
       PortalModule.all_cached
     else
       PortalModule.cached_for_team(self.goddamn_city)
