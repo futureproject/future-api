@@ -25,12 +25,9 @@
       <div class="calendar">
       <% @tasks.group_by{|c| c["By When"]}.each do |day, tasks| %>
         <div class="calendar-day">
-          <header>
-            <% if day.present? %>
-              <%= Date.parse(day).strftime("%a, %b %d")  %>
-            <% else %>
-              No Date Set
-            <% end %>
+          <% day = day.blank? ? Date.today : Date.parse(day) %>
+          <header class="<%= "overdue" if day <= Date.today %>">
+            <%= day.strftime("%a, %b %d")  %>
           </header>
           <ul class="tasks">
             <% tasks.each do |t| %>
