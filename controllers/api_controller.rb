@@ -4,12 +4,14 @@ class ApiController < ApplicationController
     authenticate!
   end
 
+  # random quotes
   get "/quotes" do
     #cache_control :public, :'no-cache', :must_revalidate, max_age: 10
     @quotes = airtable("Quotes").all.shuffle.first
     json @quotes
   end
 
+  # Students from multiple Got It bases, optionally filtered by name
   get "/students" do
     @students = Student.search(
       name: params[:q],
@@ -19,6 +21,7 @@ class ApiController < ApplicationController
     json @students.map(&:attributes)
   end
 
+  # get task assignments from the City Dashboard airtable base
   get "/tasks/assignees" do
     @employees = TaskEmployee.search(
       name: params[:q]
@@ -40,6 +43,7 @@ class ApiController < ApplicationController
       json @task.errors
     end
   end
+
   # Updates a task with params[:task]
   post "/tasks/:id" do
     if Task.patch(params[:id], record_params)
@@ -77,6 +81,11 @@ class ApiController < ApplicationController
       content_type :json
       status 400
     end
+  end
+
+  # Receive incoming PossibilityProfiles from TypeForm, send them to Airtable
+  post "/possibility_profiles" do
+    puts params
   end
 
   private
