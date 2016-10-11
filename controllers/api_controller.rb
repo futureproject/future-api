@@ -83,11 +83,6 @@ class ApiController < ApplicationController
     end
   end
 
-  # Receive incoming PossibilityProfiles from TypeForm, send them to Airtable
-  post "/possibility_profiles" do
-    puts params
-  end
-
   private
     def record_params
       airtable_formatted(params[:record])
