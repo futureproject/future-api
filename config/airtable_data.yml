@@ -29,7 +29,7 @@
   :commitments:
     :table_name: "Commitments"
     :shards:
-      "NYC": "appLT7DTvzjd49AyW"
+      "NYC": "appU8z7k7vyymmPbK"
     #:shards:
       #"DC": "appPlrx8TnvXDshRP"
       #"DT": "app5BKrRtkoskmPHh"
@@ -39,9 +39,9 @@
       #"PHL": "appf9Is4s2yLCfSp4"
       #"SF": "appntYpIBVav5pUOT"
   :students:
-    :table_name: "People"
+    :table_name: "Students"
     :shards:
-      "NYC": "appLT7DTvzjd49AyW"
+      "NYC": "appU8z7k7vyymmPbK"
     #:shards:
       #"DC": "appPlrx8TnvXDshRP"
       #"DT": "app5BKrRtkoskmPHh"
