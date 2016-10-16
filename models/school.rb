@@ -1,4 +1,4 @@
-class School < Airtable::Model
+class School < Airmodel::Model
 
   def self.default_sort
     ["Label", :asc]

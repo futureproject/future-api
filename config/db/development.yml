@@ -1,0 +1,35 @@
+:cities:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Cities
+:employees:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Employees
+:portal_modules:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: PortalModules
+:possibility_profiles:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Results
+:quotes:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Quotes
+:redirects:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Redirects
+:schools:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Schools
+:tasks:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: tasks
+:task_employees:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Employees
+:commitments:
+  :table_name: "Commitments"
+  :bases:
+    "NYC": "appU8z7k7vyymmPbK"
+:students:
+  :table_name: "Students"
+  :bases:
+    "NYC": "appU8z7k7vyymmPbK"

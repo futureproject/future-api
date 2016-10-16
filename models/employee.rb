@@ -1,4 +1,4 @@
-class Employee < Airtable::Model
+class Employee < Airmodel::Model
 
   def self.default_sort
     ["Email", :asc]
@@ -34,7 +34,7 @@ class Employee < Airtable::Model
   end
 
   def cache_key
-    "#{self.class.name.tableize}_#{goddamn_tfpid}"
+    "#{self.class.table_name}_#{goddamn_tfpid}"
   end
 
   # all Tasks assigned to this user in the city dashboard

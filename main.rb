@@ -32,11 +32,17 @@ class App < Sinatra::Base
     # cache static assets agressively, because
     # Sprockets uses digests to guarantee unique filenames
     set :static_cache_control, [:public, :max_age => 7200]
+
+    # define Airtable schema
+    Airmodel.bases "#{App.root}/config/db/production.yml"
   end
 
   configure :development, :test do
     # debug modules, move to next group if you need them while running tests
     Dir["#{settings.root}/debug/*.rb"].each{|f| require f}
+
+    # define Airtable schema
+    Airmodel.bases "#{App.root}/config/db/development.yml"
   end
 
 
@@ -44,6 +50,7 @@ class App < Sinatra::Base
   Dir["#{settings.root}/{lib,helpers,models}/*.rb"].each{|f| require f}
 
   require "./assets/init"
+
 end
 
 class ApplicationController < App

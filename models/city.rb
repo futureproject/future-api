@@ -1,4 +1,4 @@
-class City < Airtable::Model
+class City < Airmodel::Model
 
   def self.default_sort
     ["Name", :asc]

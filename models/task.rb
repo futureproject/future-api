@@ -1,4 +1,4 @@
-class Task < Airtable::Model
+class Task < Airmodel::Model
 
   def self.all_cached
     App.cache.fetch("tasks", 3600) {

@@ -1,4 +1,4 @@
-class Student < Airtable::Model
+class Student < Airmodel::Model
 
   def self.search(args)
     filters = []
@@ -13,6 +13,10 @@ class Student < Airtable::Model
 
   def goddamn_city
     goddamn_school.try(:split, "-").try(:first)
+  end
+
+  def shard_identifier
+    goddamn_city
   end
 
 end

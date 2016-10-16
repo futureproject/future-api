@@ -1,4 +1,4 @@
-class PortalModule < Airtable::Model
+class PortalModule < Airmodel::Model
 
   # call the Main View, so position is respected
   def self.all

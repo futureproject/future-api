@@ -1,4 +1,4 @@
-class Commitment < Airtable::Model
+class Commitment < Airmodel::Model
 
   def goddamn_city
     goddamn_school.try(:split, "-").try(:first)

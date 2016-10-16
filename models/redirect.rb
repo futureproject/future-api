@@ -1,4 +1,4 @@
-class Redirect < Airtable::Model
+class Redirect < Airmodel::Model
 
   # less expensive cache-backed version of Redirect.all
   # only caches for 60 seconds because any found redirects

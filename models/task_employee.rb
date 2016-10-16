@@ -1,4 +1,4 @@
-class TaskEmployee < Airtable::Model
+class TaskEmployee < Airmodel::Model
 
   def self.search(args)
     filters = []

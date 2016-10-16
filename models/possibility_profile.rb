@@ -1,4 +1,4 @@
-class PossibilityProfile < Airtable::Model
+class PossibilityProfile < Airmodel::Model
 
   def self.for_place(tfpid)
     records(

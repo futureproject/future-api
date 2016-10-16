@@ -1,9 +1,10 @@
 GIT
-  remote: https://github.com/Airtable/airtable-ruby.git
-  revision: 19174836b1be5bb4c6e0e7a2e6bff353537d2761
+  remote: https://github.com/chrisfrank/airmodel.git
+  revision: e44fe0ec42d65a79378edbcf9818a934efc078a9
   specs:
-    airtable (0.0.9)
-      httparty
+    airmodel (0.0.1pre)
+      activesupport (~> 5.0)
+      airtable (~> 0.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -14,6 +15,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    airtable (0.0.8)
+      httparty
     backports (3.6.8)
     capybara (2.7.1)
       addressable
@@ -198,7 +201,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  airtable!
+  airmodel!
   capybara
   capybara-webkit
   celluloid-io

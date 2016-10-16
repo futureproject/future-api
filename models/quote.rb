@@ -1,4 +1,4 @@
-class Quote < Airtable::Model
+class Quote < Airmodel::Model
 
   #returns a hard-coded default quote
   def self.default
