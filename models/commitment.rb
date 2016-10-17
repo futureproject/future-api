@@ -16,4 +16,8 @@ class Commitment < Airmodel::Model
     "Error! Please fill in who, what, and when"
   end
 
+  def shard_identifier
+    goddamn_city
+  end
+
 end
