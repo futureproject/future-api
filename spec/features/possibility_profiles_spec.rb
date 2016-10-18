@@ -11,6 +11,7 @@ feature "viewing Possibility Profiles" do
     end
     within_window "Benjamin Sisko" do
       expect(page).to have_text "Purpose"
+      expect(page).to have_text "You are an optimist"
     end
 
     # clean up
