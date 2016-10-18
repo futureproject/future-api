@@ -2,7 +2,7 @@ class PortalModule < Airmodel::Model
 
   # call the Main View, so position is respected
   def self.all
-    records(view: "Main View")
+    some(view: "Main View")
   end
 
   # get the portal links, and cache them for a year
@@ -14,7 +14,7 @@ class PortalModule < Airmodel::Model
     cities = City.all_cached.map(&:tfpid)
     team = cities.include?(team) ? "City" : "HQ"
     App.cache.fetch("portal_modules_#{team}", 31536000) {
-      records(view: "Main View").select{|rec|
+      some(view: "Main View").select{|rec|
         rec["Audience"].include? team
       }
     }

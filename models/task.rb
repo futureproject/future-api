@@ -2,23 +2,21 @@ class Task < Airmodel::Model
 
   def self.all_cached
     App.cache.fetch("tasks", 3600) {
-      records(sort: ["By When", :asc])
+      some(sort: ["By When", :asc])
     }
   end
 
   def self.undone
-    records(
+    some(
       filterByFormula: "NOT({Complete?})",
-      sort: ["By When", :asc],
-      limit: 100
+      sort: ["By When", :asc]
     )
   end
 
   def self.undone_for_user(tfpid)
-    records(
+    some(
       filterByFormula: "AND(NOT({Complete?}),{TFPID} = '#{tfpid}')",
-      sort: ["By When", :asc],
-      limit: 100
+      sort: ["By When", :asc]
     )
   end
 

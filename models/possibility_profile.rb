@@ -1,7 +1,7 @@
 class PossibilityProfile < Airmodel::Model
 
   def self.for_place(tfpid)
-    records(
+    some(
       filterByFormula: "FIND('#{tfpid}', {School})",
       limit: 100,
       sort: ["Name", :asc]
@@ -14,7 +14,7 @@ class PossibilityProfile < Airmodel::Model
     elsif user["CITY_TFPID"]
       self.for_place(user["CITY_TFPID"])
     else
-      self.records
+      self.some
     end
   end
 

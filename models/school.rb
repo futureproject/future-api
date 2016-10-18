@@ -9,7 +9,7 @@ class School < Airmodel::Model
   end
 
   def self.all
-    records(view: "Active")
+    some(view: "Active")
   end
 
 end

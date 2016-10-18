@@ -4,7 +4,7 @@ class Student < Airmodel::Model
     filters = []
     filters.push ["FIND('#{args[:name].downcase}', LOWER(Name)) > 0"] if args[:name]
     filters.push("{SCHOOL_TFPID} = '#{args[:school]}'") if args[:school]
-    records(
+    some(
       shard: args[:shard],
       sort: ["Name", :asc],
       filterByFormula: "AND(#{filters.join(',')})"

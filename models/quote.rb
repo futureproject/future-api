@@ -9,7 +9,7 @@ class Quote < Airmodel::Model
   end
 
   def self.all
-    records(view: "Main View")
+    some(view: "Main View")
   end
 
   # inexpensive cache-backed version of all

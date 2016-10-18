@@ -12,7 +12,7 @@ class Employee < Airmodel::Model
   def self.search(args)
     filters = []
     filters.push ["FIND('#{args[:name].downcase}', LOWER(NAME)) > 0"] if args[:name]
-    records(
+    some(
       sort: ["NAME", :asc],
       filterByFormula: "AND(#{filters.join(',')})"
     )
@@ -50,7 +50,7 @@ class Employee < Airmodel::Model
   def students
     filters = []
     filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
-    Student.records(
+    Student.some(
       shard: self.goddamn_city,
       sort: ["Name", :asc],
       filterByFormula: "AND(#{filters.join(',')})"
@@ -63,7 +63,7 @@ class Employee < Airmodel::Model
     App.cache.fetch("student_commitments_#{self.cache_key}", 86400) {
       filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})", "NOT(NOT({WHO}))"]
       filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
-      Commitment.records(
+      Commitment.some(
         shard: shard_id,
         sort: ["By When", :asc],
         filterByFormula: "AND(#{filters.join(',')})"
