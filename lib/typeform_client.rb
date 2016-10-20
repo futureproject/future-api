@@ -20,7 +20,13 @@ module TypeformClient
       r = Airtable::Record.new
       response["answers"].each do |key,val|
         attr = self.strip_html(questions[key])
-        r[attr] = val
+        # if the value is a number, save it as an integer
+        # TODO: delete last check after all 158 make it in
+        if val.present? && val.to_i.to_s == val && val.to_i <= 10
+          r[attr] = val.to_i
+        else
+          r[attr] = val
+        end
       end
       destination.create(r)
     end

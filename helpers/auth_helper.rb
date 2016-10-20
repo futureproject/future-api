@@ -10,8 +10,12 @@ module AuthHelper
   end
 
   def current_user
-    token = session[:auth_token] || ENV["AUTH_HACK"]
-    token ? Employee.find_by_auth_token(token) : nil
+    if ENV["AUTH_HACK"]
+      Employee.find_by("TFPID": ENV["AUTH_HACK"])
+    else
+      token = session[:auth_token]
+      token ? Employee.find_by_auth_token(token) : nil
+    end
   end
 
   def create_session_via_oauth
