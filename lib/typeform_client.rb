@@ -32,6 +32,9 @@ module TypeformClient
     end
   end
 
+  def import_one(api_call)
+  end
+
   def self.strip_html(str)
     str.gsub(/<\/?[^>]*>/, "").strip
   end
