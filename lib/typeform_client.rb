@@ -32,7 +32,28 @@ module TypeformClient
     end
   end
 
-  def import_one(api_call)
+  def self.parse_for_airtable(formdata)
+    fields = formdata["form_response"]["definition"]["fields"].map{|x| {name: self.strip_html(x["title"]), id: x["id"] } }
+    formdata["form_response"]["answers"].each do |answer|
+      formatted_answer = case answer["type"]
+        when "number"
+          "NUM"
+        when "choice"
+          "CHOI"
+        when "text"
+          "TXT"
+        when "choices"
+          "cHS"
+        else
+          ""
+      end
+      fields.find{|x| x[:id] == answer["field"]["id"] }[:response] = formatted_answer
+    end
+    answers = {}
+    fields.each do |field|
+      answers[field[:name]] = self.strip_html(field[:response])
+    end
+    answers
   end
 
   def self.strip_html(str)
