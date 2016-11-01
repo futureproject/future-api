@@ -8,8 +8,8 @@
   :bases: appJi1ucZpPmznBLP
   :table_name: PortalModules
 :possibility_profiles:
-  :bases: appYExpmKDFmpgt3j
   :table_name: Results
+  :bases: app8PZoqiK1HF4xAD
 :quotes:
   :bases: appJi1ucZpPmznBLP
   :table_name: Quotes
@@ -45,6 +45,3 @@
     "NWK": "appuA4jfoyAytczEp"
     "PHL": "appf9Is4s2yLCfSp4"
     "SF": "appntYpIBVav5pUOT"
-:test_profiles:
-  :table_name: "Results"
-  :bases: "app8PZoqiK1HF4xAD"
