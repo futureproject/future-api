@@ -7,7 +7,7 @@ module Dreamo
       if data[:bot_id] == "B24JU1HMF" && data[:attachments]
         data[:attachments].each do |attachment|
           record_id = attachment[:title_link].split("/").last
-          PossibilityProfile.find_and_score(record_id)
+          #PossibilityProfile.find_and_score(record_id)
         end
       end
     end

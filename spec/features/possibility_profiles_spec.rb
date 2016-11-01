@@ -7,18 +7,18 @@ feature "viewing Possibility Profiles" do
     widget.click
     link_text = ""
     within(widget) do
-      click_link "Benjamin Sisko"
+      click_link "Dinette Boomer"
     end
-    within_window "Benjamin Sisko" do
-      expect(page).to have_text "Purpose"
-      expect(page).to have_text "You are an optimist"
+    within_window "Dinette Boomer" do
+      expect(page).to have_text "Personal Growth"
+      expect(page).to have_text "You value continued personal development"
     end
 
     # clean up
-    PossibilityProfile.find_by("Name": "Benjamin Sisko").update(
-      "Power Strength": nil,
-      "Possibility Strength": nil,
-      "Passion & Purpose Strength": nil,
-    )
+    #PossibilityProfile.find_by("Name": "Benjamin Sisko").update(
+      #"Power Strength": nil,
+      #"Possibility Strength": nil,
+      #"Passion & Purpose Strength": nil,
+    #)
   end
 end

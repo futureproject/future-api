@@ -8,8 +8,8 @@
   :bases: appU8z7k7vyymmPbK
   :table_name: PortalModules
 :possibility_profiles:
-  :bases: appU8z7k7vyymmPbK
-  :table_name: Results
+  :table_name: "Results"
+  :bases: "app8PZoqiK1HF4xAD"
 :quotes:
   :bases: appU8z7k7vyymmPbK
   :table_name: Quotes
@@ -33,6 +33,3 @@
   :table_name: "Students"
   :bases:
     "NYC": "appU8z7k7vyymmPbK"
-:test_profiles:
-  :table_name: "Results"
-  :bases: "app8PZoqiK1HF4xAD"

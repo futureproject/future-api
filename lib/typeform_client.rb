@@ -11,13 +11,13 @@ module TypeformClient
 
   # import everything into airtable
   def self.import_all
-    destination = Airmodel.client.table("app8PZoqiK1HF4xAD", "Results")
+    failed_saves = []
     surveys = self.possibility_profiles
     questions = {}
     surveys["questions"].each{|q| questions[q["id"]] = q["question"] }
     responses = surveys["responses"].select{|s| s["completed"] == "1" }
     responses.each_with_index do |response, index|
-      r = Airtable::Record.new
+      r = PossibilityProfile.new
       response["answers"].each do |key,val|
         attr = self.strip_html(questions[key])
         # if the value is a number, save it as an integer
@@ -28,10 +28,17 @@ module TypeformClient
           r[attr] = val
         end
       end
-      destination.create(r)
+      if r.save
+        puts "saved #{r['Label']}"
+      else
+        puts "COULD NOT SAVE #{r['Label']}"
+        failed_saves.push r
+      end
     end
+    puts failed_saves.map{|x| x.language }
   end
 
+  # parse an incoming Typeform webhook, format it for airtable
   def self.parse_for_airtable(formdata)
     return nil unless formdata["form_response"]
     fields = formdata["form_response"]["definition"]["fields"].map{|x| {name: self.strip_html(x["title"]), id: x["id"] } }

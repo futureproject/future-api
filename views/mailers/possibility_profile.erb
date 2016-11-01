@@ -1,0 +1,21 @@
+<h1><%= @profile["Label"] %></h1>
+<p><%= @profile["School"] %></p>
+
+<hr>
+
+<% @profile.strengths.each do |strength_set| %>
+  <h2><%= strength_set[:name] %></h2>
+
+  <% strength_set[:strengths].each do |strength| %>
+    <h3><%= strength["Name"] %></h3>
+
+    <p><img style="display:block; width: 100%; height: auto; max-width: 240px; margin: 0 auto;" src="<%= strength["Icon"].first["thumbnails"]["large"]["url"] %>" alt="<%= strength["Name"] %>" /></p>
+    <p><%= strength[@profile.language] %></p>
+
+  <% end %>
+  <hr>
+<% end %>
+
+<p>Yours in Possibility,</p>
+
+<p>The Future Project</p>

@@ -15,13 +15,16 @@ module Mailer
     puts response.headers
   end
 
-  def self.deliver_possibility_profile(args)
+  def self.deliver_possibility_profile(profile)
     from = Email.new('email': 'noreply@thefutureproject.org', 'name': 'The Future Project')
     subject = 'Your Possibility Profile Results'
-    to = Email.new('email': args[:email])
+    to = Email.new('email': profile.email_address)
+    @profile = profile
+    template = File.read("#{App.root}/views/mailers/possibility_profile.erb")
+    body = ERB.new(template).result(binding)
     content = Content.new(
-      type: 'text/plain',
-      value: "Your results from the Possibility Profile are ready! You can view them here: #{args[:profile_url]}"
+      type: 'text/html',
+      value: body
     )
     mail = Mail.new(from, subject, to, content)
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])

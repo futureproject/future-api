@@ -1,12 +1,11 @@
 <h2>
-  <%= @profile["Name"] %>
+  <%= @profile["Label"] %>
   <span class="subtitle">
-    <%= @profile["School"].try(:gsub, ",", "").try(:split, "|").try(:first) %>
+    <%= @profile["School"] %>
   </span>
 </h2>
-<% strengths = PossibilityProfile.strengths_for(@profile) %>
 <section class="student-strengths">
-<% strengths.each do |strength_set| %>
+<% @profile.strengths.each do |strength_set| %>
   <article>
     <header>
       <%= strength_set[:name] %>

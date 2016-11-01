@@ -11,4 +11,14 @@ namespace :profiles do
     end
   end
 
+  task import: :environment do
+    TypeformClient.import_all
+  end
+
+  task score: :environment do
+    PossibilityProfile.all.each do |profile|
+      profile.score
+    end
+  end
+
 end
