@@ -37,13 +37,13 @@ module TypeformClient
     formdata["form_response"]["answers"].each do |answer|
       formatted_answer = case answer["type"]
         when "number"
-          "NUM"
+          answer["number"]
         when "choice"
-          "CHOI"
+          answer["choice"]["label"]
         when "text"
-          "TXT"
+          answer["text"]
         when "choices"
-          "cHS"
+          answer["choices"]["labels"].join("|")
         else
           ""
       end
@@ -51,7 +51,7 @@ module TypeformClient
     end
     answers = {}
     fields.each do |field|
-      answers[field[:name]] = self.strip_html(field[:response])
+      answers[self.strip_html(field[:name])] = field[:response]
     end
     answers
   end

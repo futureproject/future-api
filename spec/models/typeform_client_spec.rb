@@ -5,7 +5,9 @@ describe TypeformClient do
     describe "possibility_profile" do
       it "imports possibility profiles from Typeform" do
         s = SAMPLE_TYPEFORM_RESPONSE
-        t = TypeformClient.parse_for_airtable(s)
+        attrs = TypeformClient.parse_for_airtable(s)
+        record = PossibilityProfile.new(attrs)
+        expect(record.valid?).to eq true
       end
     end
   end

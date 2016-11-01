@@ -33,3 +33,6 @@
   :table_name: "Students"
   :bases:
     "NYC": "appU8z7k7vyymmPbK"
+:test_profiles:
+  :table_name: "Results"
+  :bases: "app8PZoqiK1HF4xAD"
