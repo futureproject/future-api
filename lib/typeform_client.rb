@@ -33,6 +33,7 @@ module TypeformClient
   end
 
   def self.parse_for_airtable(formdata)
+    return nil unless formdata["form_response"]
     fields = formdata["form_response"]["definition"]["fields"].map{|x| {name: self.strip_html(x["title"]), id: x["id"] } }
     formdata["form_response"]["answers"].each do |answer|
       formatted_answer = case answer["type"]
