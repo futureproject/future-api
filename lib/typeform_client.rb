@@ -47,9 +47,13 @@ module TypeformClient
     data["questions"].each{|q| fields[q["id"]] = q["question"] }
     res["answers"].each do |key,val|
       attr = self.strip_html(fields[key])
-      attrs[attr] = val
+      if val.present? && val.to_i.to_s == val && val.to_i <= 10
+        attrs[attr] = val.to_i
+      else
+        attrs[attr] = val
+      end
     end
-    attrs
+    PossibilityProfile.create(attrs)
   end
 
   # parse an incoming Typeform webhook, format it for airtable
