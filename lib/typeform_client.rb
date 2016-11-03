@@ -38,6 +38,20 @@ module TypeformClient
     puts failed_saves.map{|x| x.language }
   end
 
+  # import one possibilityprofile into airtable
+  def self.import_one(token="ee6838e7d4ac3c380c94b0693eee8740")
+    data = HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}&token=#{token}")
+    res = data["responses"].first
+    fields = {}
+    attrs  = {}
+    data["questions"].each{|q| fields[q["id"]] = q["question"] }
+    res["answers"].each do |key,val|
+      attr = self.strip_html(fields[key])
+      attrs[attr] = val
+    end
+    attrs
+  end
+
   # parse an incoming Typeform webhook, format it for airtable
   def self.parse_for_airtable(formdata)
     return nil unless formdata["form_response"]
