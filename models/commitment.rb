@@ -1,5 +1,25 @@
 class Commitment < Airmodel::Model
 
+  def self.recent
+    App.cache.fetch("global_recent_commitments", 86400) {
+      filters = ["{By When} <= '#{Date.today}'", "{By When} >= '#{Date.today-1.weeks}'", "NOT(NOT({SCHOOL_TFPID}))"]
+      self.some(
+        filterByFormula: "AND(#{filters.join(',')})",
+        sort: ["By When", :asc]
+      )
+    }
+  end
+
+  def self.upcoming
+    App.cache.fetch("global_upcoming_commitments", 86400) {
+      filters = ["{By When} > '#{Date.today}'", "{By When} <= '#{Date.today+1.weeks}'", "NOT(NOT({SCHOOL_TFPID}))"]
+      self.some(
+        filterByFormula: "AND(#{filters.join(',')})",
+        sort: ["By When", :asc]
+      )
+    }
+  end
+
   def goddamn_city
     goddamn_school.try(:split, "-").try(:first)
   end
@@ -18,6 +38,10 @@ class Commitment < Airmodel::Model
 
   def shard_identifier
     goddamn_city
+  end
+
+  def is_complete?
+    self["Complete?"].present?
   end
 
 end

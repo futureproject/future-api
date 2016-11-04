@@ -5,6 +5,7 @@ end
 module Dreamo
 
   WEB_CLIENT = Slack::Web::Client.new
+  COLORS = %w(#00c0ef #00d4bd #97e242 #fab406 #f63868 #d43da3 #3c82f7)
 
   class Bot < SlackRubyBot::Bot
   end

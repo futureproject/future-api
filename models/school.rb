@@ -12,4 +12,5 @@ class School < Airmodel::Model
     some(view: "Active")
   end
 
+
 end
