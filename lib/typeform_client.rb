@@ -6,7 +6,7 @@ module TypeformClient
 
   # get all the possibility profiles from typeform
   def self.possibility_profiles
-    HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}")
+    HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}&completed=true")
   end
 
   # import everything into airtable
