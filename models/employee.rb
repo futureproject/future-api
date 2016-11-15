@@ -1,5 +1,10 @@
 class Employee < Airmodel::Model
 
+  # get all records, cache them for 24 hours
+  def self.all_cached
+    App.cache.fetch("employees", 86400) { all }
+  end
+
   def self.default_sort
     ["Email", :asc]
   end
