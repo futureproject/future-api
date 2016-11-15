@@ -8,17 +8,20 @@ class ProfilesController < ApplicationController
 
   # handle incoming requests from typeform
   post "/possibility_profiles" do
-    attrs = TypeformClient.parse_for_airtable(params)
-    if attrs && @profile = PossibilityProfile.create(attrs)
-      # calculate scores
-      @profile.score
-      # email student
-      @profile.deliver_by_email
-      status 200
-    else
-      status 406
+    begin
+      attrs = TypeformClient.parse_for_airtable(params)
+      if attrs && @profile = PossibilityProfile.create(attrs)
+        # calculate scores
+        @profile.score
+        # email student
+        @profile.deliver_by_email
+        status 200
+      else
+        status 406
+      end
+    rescue => e
+      text e
     end
   end
-
 
 end
