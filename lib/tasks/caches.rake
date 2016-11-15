@@ -14,6 +14,8 @@ namespace :caches do
       App.cache.set(employee.cache_key, employee)
       # store this employee's tasks
       Task.undone_for_user(employee.goddamn_tfpid)
+      # cache dashboard modules
+      employee.dashboard_modules
     end
   end
 end
