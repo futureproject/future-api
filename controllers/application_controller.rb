@@ -8,6 +8,10 @@ class ApplicationController < App
     erb :"application/dashboard"
   end
 
+  get "/error_tracking" do
+    raise "You broke it!"
+  end
+
   get '/:shortcut' do
     @redirect = Redirect.find_by_shortcut(params[:shortcut])
     if @redirect

@@ -31,10 +31,8 @@ class App < Sinatra::Base
     # log errors via raygun
     Raygun.setup do |config|
       config.api_key = ENV['RAYGUN_APIKEY']
-      config.silence_reporting = !ENV['RAYGUN_APIKEY']
     end
     use Raygun::Middleware::RackExceptionInterceptor
-
   end
 
   configure :production do
