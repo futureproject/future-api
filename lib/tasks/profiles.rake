@@ -23,11 +23,18 @@ namespace :profiles do
 
   task import: :environment do
     profiles = TypeformClient.missing_profiles
+    errors = []
     profiles.each do |profile|
       puts "importing #{profile['token']}..."
-      TypeformClient.import_one profile["token"]
+      begin
+        TypeformClient.import_one profile["token"]
+      rescue
+        errors.push profile["token"]
+      end
       puts "... done."
     end
+    puts "Failed to import these profiles"
+    puts errors
   end
 
 end
