@@ -1,5 +1,7 @@
 class Commitment < Airmodel::Model
 
+  # commitments across all bases,
+  # due between a week ago and today.
   def self.recent
     App.cache.fetch("global_recent_commitments", 86400) {
       filters = ["{By When} <= '#{Date.today}'", "{By When} >= '#{Date.today-1.weeks}'", "NOT(NOT({SCHOOL_TFPID}))"]
@@ -10,6 +12,8 @@ class Commitment < Airmodel::Model
     }
   end
 
+  # commitments across all bases,
+  # due between today and a week from now.
   def self.upcoming
     App.cache.fetch("global_upcoming_commitments", 86400) {
       filters = ["{By When} > '#{Date.today}'", "{By When} <= '#{Date.today+1.weeks}'", "NOT(NOT({SCHOOL_TFPID}))"]

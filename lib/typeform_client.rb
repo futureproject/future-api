@@ -38,6 +38,14 @@ module TypeformClient
     puts failed_saves.map{|x| x.language }
   end
 
+  def self.find_by_first_name name
+    surveys = self.possibility_profiles
+    surveys["responses"].select{|r|
+      fname =  r["answers"]["textfield_26540922"]
+      fname && fname.include?(name)
+    }
+  end
+
   # import one possibilityprofile into airtable
   def self.import_one(token="ee6838e7d4ac3c380c94b0693eee8740")
     data = HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}&token=#{token}")
@@ -53,7 +61,9 @@ module TypeformClient
         attrs[attr] = val
       end
     end
-    PossibilityProfile.create(attrs)
+    p = PossibilityProfile.create(attrs)
+    p.score
+    p.deliver_by_email
   end
 
   # parse an incoming Typeform webhook, format it for airtable

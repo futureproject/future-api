@@ -2,7 +2,7 @@ namespace :employees do
   desc "Sync to all relevant Airtable bases"
   task sync: :environment do
     puts "Syncing employees to various airtable bases"
-    employees = Employee.all
+    employees = Employee.all_cached
     bases = [
       { id: "appsSbGeUL5na71it", table_name: "People", base_name: "City Dashboard" },
       { id: "appVDoSoBOmoejlA2", table_name: "People", base_name: "Resources" },
