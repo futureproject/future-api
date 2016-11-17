@@ -13,7 +13,8 @@ describe TypeformClient do
 
     describe "missing_profiles" do
       it "returns a list of PossibilityProfiles that haven't been imported yet" do
-        TypeformClient.missing_profiles
+        t = TypeformClient.missing_profiles
+        expect(t.length).to be > 100
       end
     end
   end

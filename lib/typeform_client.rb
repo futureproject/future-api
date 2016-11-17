@@ -10,11 +10,16 @@ module TypeformClient
   end
 
   def self.missing_profiles
-    all_profiles = self.possibility_profiles
+    responses = possibility_profiles["responses"].select do |s|
+      s["answers"]["textfield_34000025"].present?
+    end
     imported_profiles = PossibilityProfile.some(
-      filterByFormula: "NOT(NOT({Email}))"
+      filterByFormula: "NOT(NOT({What is your email address?}))"
     )
-    binding.pry
+    already_imported = responses.select do |x|
+      imported_profiles.find{|y| y["What is your email address?"] == x["answers"]["textfield_34000025"] }
+    end
+    responses - already_imported
   end
 
   # import everything into airtable

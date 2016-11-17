@@ -5,7 +5,6 @@ feature "viewing Possibility Profiles" do
     visit "/"
     widget = find("#module-possibility-profiles")
     widget.click
-    link_text = ""
     within(widget) do
       click_link "Dinette Boomer"
     end
@@ -14,11 +13,5 @@ feature "viewing Possibility Profiles" do
       expect(page).to have_text "You value continued personal development"
     end
 
-    # clean up
-    #PossibilityProfile.find_by("Name": "Benjamin Sisko").update(
-      #"Power Strength": nil,
-      #"Possibility Strength": nil,
-      #"Passion & Purpose Strength": nil,
-    #)
   end
 end
