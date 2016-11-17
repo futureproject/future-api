@@ -11,13 +11,22 @@ namespace :profiles do
     end
   end
 
-  task import: :environment do
-    TypeformClient.import_all
-  end
+  #task import: :environment do
+    #TypeformClient.import_all
+  #end
 
   task score: :environment do
     PossibilityProfile.all.each do |profile|
       profile.score
+    end
+  end
+
+  task import: :environment do
+    profiles = TypeformClient.missing_profiles
+    profiles.each do |profile|
+      puts "importing #{profile['token']}..."
+      TypeformClient.import_one profile["token"]
+      puts "... done."
     end
   end
 

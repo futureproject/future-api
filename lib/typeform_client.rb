@@ -9,6 +9,12 @@ module TypeformClient
     HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}&completed=true")
   end
 
+  def self.missing_profiles
+    all_profiles = self.possibility_profiles
+    imported_profiles = PossibilityProfile.all
+    binding.pry
+  end
+
   # import everything into airtable
   def self.import_all
     failed_saves = []
@@ -79,7 +85,7 @@ module TypeformClient
         when "text"
           answer["text"]
         when "choices"
-          answer["choices"]["labels"].join("|")
+          answer["choices"]["labels"].join("|") rescue answer["choices"]["other"]
         else
           ""
       end

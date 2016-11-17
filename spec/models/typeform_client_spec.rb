@@ -10,5 +10,10 @@ describe TypeformClient do
         expect(record.valid?).to eq true
       end
     end
+
+    describe "missing_profiles" do
+      it "returns a list of PossibilityProfiles that haven't been imported yet" do
+      end
+    end
   end
 end
