@@ -21,6 +21,7 @@ gem "redcarpet"
 gem "rack-flash3", require: "rack-flash"
 gem "activesupport", require: "active_support/all"
 gem "sendgrid-ruby"
+gem "raygun4ruby"
 group :development, :test do
   gem "rspec"
   gem 'capybara'

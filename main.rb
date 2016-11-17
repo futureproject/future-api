@@ -26,6 +26,15 @@ class App < Sinatra::Base
     set :default_redirect, ENV["DEFAULT_REDIRECT"] || "http://www.thefutureproject.org/404.html"
     # start memecache
     set :cache, Dalli::Client.new
+    set :raise_errors, true
+
+    # log errors via raygun
+    Raygun.setup do |config|
+      config.api_key = ENV['RAYGUN_APIKEY']
+      config.silence_reporting = !ENV['RAYGUN_APIKEY']
+    end
+    use Raygun::Middleware::RackExceptionInterceptor
+
   end
 
   configure :production do
