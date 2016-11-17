@@ -13,6 +13,7 @@ describe TypeformClient do
 
     describe "missing_profiles" do
       it "returns a list of PossibilityProfiles that haven't been imported yet" do
+        TypeformClient.missing_profiles
       end
     end
   end

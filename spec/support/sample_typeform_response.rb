@@ -755,7 +755,8 @@ SAMPLE_TYPEFORM_RESPONSE = {
     }, {
       "type" => "choices",
       "choices" => {
-        "labels" => ["Non-binary gender"]
+        "labels" => nil,
+        "other" => "JIM"
       },
       "field" => {
         "id" => "26476767", "type" => "multiple_choice"

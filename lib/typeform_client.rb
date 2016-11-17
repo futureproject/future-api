@@ -11,7 +11,9 @@ module TypeformClient
 
   def self.missing_profiles
     all_profiles = self.possibility_profiles
-    imported_profiles = PossibilityProfile.all
+    imported_profiles = PossibilityProfile.some(
+      filterByFormula: "NOT(NOT({Email}))"
+    )
     binding.pry
   end
 
