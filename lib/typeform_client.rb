@@ -13,7 +13,7 @@ module TypeformClient
     responses = possibility_profiles["responses"].select do |s|
       s["answers"]["textfield_34000025"].present?
     end
-    imported_profiles = PossibilityProfile.some(
+    imported_profiles = PossibilityProfile.all(
       filterByFormula: "NOT(NOT({What is your email address?}))"
     )
     already_imported = responses.select do |x|
