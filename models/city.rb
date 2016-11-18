@@ -5,7 +5,7 @@ class City < Airmodel::Model
   end
 
   def self.all_cached
-    App.cache.fetch("cities", 86400) { all }
+    App.cache.fetch("cities", 31536000) { all }
   end
 
 end
