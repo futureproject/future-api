@@ -59,6 +59,10 @@ module TypeformClient
     }
   end
 
+  def self.find(token)
+    HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}&token=#{token}")["responses"]
+  end
+
   # import one possibilityprofile into airtable
   def self.import_one(token="ee6838e7d4ac3c380c94b0693eee8740")
     data = HTTParty.get("#{@@base_uri}/WLMedf?key=#{@@api_key}&token=#{token}")
