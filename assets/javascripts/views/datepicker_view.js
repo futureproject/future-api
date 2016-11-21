@@ -1,13 +1,13 @@
-window.tfp = window.tfp || {}
+var pikaday = require("pikaday");
 
-tfp.DatePickerView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   initialize: function(){
-    test = document.createElement('input');
+    var test = document.createElement('input');
     test.type = "date";
     if (test.type === "date") {
       return true;
     } else {
-      this.pika = new Pikaday({
+      this.pika = new pikaday({
         field: this.el,
         firstDay: 1,
         yearRange: 5,

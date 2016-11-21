@@ -1,14 +1,15 @@
-window.tfp = window.tfp || {};
+var peoplePicker = require('./people_picker_view');
+var datePicker = require('./datepicker_view');
 
-tfp.CommitmentsFormView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   initialize: function(){
     this.views = {
       $form: this.$el.find('form'),
       $button: this.$el.find("form input[type=submit]"),
-      selector: new tfp.PeoplePickerView({
+      selector: new peoplePicker({
         el: this.el.querySelector('select[multiple]')
       }),
-      datePicker: new tfp.DatePickerView({
+      datePicker: new datePicker({
         el: this.el.querySelector('input[type=date]')
       })
     };
@@ -31,11 +32,11 @@ tfp.CommitmentsFormView = Backbone.View.extend({
     var button = this.views.$button;
     event.preventDefault()
     button.attr('disabled','disabled')
-    data = new FormData(this.views.$form.get(0))
+    var data = new FormData(this.views.$form.get(0))
     //send data to the server
-    xhr = new XMLHttpRequest();
-    url = this.views.$form.attr('action');
-    method = this.views.$form.attr('method');
+    var xhr = new XMLHttpRequest();
+    var url = this.views.$form.attr('action');
+    var method = this.views.$form.attr('method');
     xhr.open(method, url);
     xhr.onload = function(event){
       button.removeAttr('disabled')

@@ -1,7 +1,4 @@
-window.tfp = window.tfp || {};
-tfp.widgets = tfp.widgets || {};
-
-tfp.WidgetView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   initialize: function(){
     var self = this;
     this.$box = self.$el.find(".module-content");
@@ -11,11 +8,8 @@ tfp.WidgetView = Backbone.View.extend({
     self.xhr.setRequestHeader("Content-Type", "text/html");
     self.xhr.onload = function() {
       self.$box.html(self.xhr.responseText);
-      widgetName = self.url.split("/").pop()
-      widgetView = tfp.widgets[widgetName]
-      if(!!widgetView) {
-        v = new widgetView({ el: self.el });
-      }
+      var widgetName = self.url.split("/").pop()
+      Backbone.trigger("widget:ready", { widget: widgetName, element: self.el })
     }
     self.$el.one('click', function(event) {
       self.xhr.send();

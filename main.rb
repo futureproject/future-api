@@ -50,7 +50,6 @@ class App < Sinatra::Base
 
     # define Airtable schema
     Airmodel.bases "#{App.root}/config/db/development.yml"
-    `npm run build-dev`
   end
 
 

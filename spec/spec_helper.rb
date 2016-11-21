@@ -1,5 +1,6 @@
 ENV["RACK_ENV"] = "test"
 ENV["SESSION_SECRET"] ||= "12345"
+`npm run build-test`
 require "pry"
 require "capybara"
 require "capybara/rspec"

@@ -4,7 +4,11 @@
 //= require_tree ./views
 //= require ./init
 //
-var $ = require("jquery");
-var pikaday = require("pikaday");
 var Selectize = require("selectize");
 var Backbone = require("backbone");
+var tfp = require("./init");
+
+$(function(){
+  tfp.init();
+})
+

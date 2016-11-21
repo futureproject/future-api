@@ -1,6 +1,4 @@
-window.tfp = window.tfp || {};
-
-tfp.FlashView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   initialize: function(){
     this.listenTo(Backbone, "flash", this.flash);
   },

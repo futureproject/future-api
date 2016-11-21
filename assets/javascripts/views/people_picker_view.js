@@ -1,6 +1,4 @@
-window.tfp = window.tfp || {}
-
-tfp.PeoplePickerView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   initialize: function(){
     var endpoint = this.$el.attr("data-endpoint");
     this.$el.selectize({

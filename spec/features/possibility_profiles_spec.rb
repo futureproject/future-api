@@ -6,9 +6,9 @@ feature "viewing Possibility Profiles" do
     widget = find("#module-possibility-profiles")
     widget.click
     within(widget) do
-      click_link "Dinette Boomer"
+      click_link "Ashley Wong"
     end
-    within_window "Dinette Boomer" do
+    within_window "Ashley Wong" do
       expect(page).to have_text "Personal Growth"
       expect(page).to have_text "You value continued personal development"
     end

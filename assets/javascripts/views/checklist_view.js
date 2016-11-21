@@ -1,15 +1,16 @@
-window.tfp = window.tfp || {};
+var toggler = require("./toggler_view");
+var form = require("./commitments_form");
 
-tfp.checklistView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   events: {
     "click .toggler-form-toggle": "toggleForm"
   },
   initialize: function(){
     this.views = {
-      checklist: new tfp.togglerView({
+      checklist: new toggler({
         el: this.el.querySelector(".toggler-checklist")
       }),
-      form: new tfp.CommitmentsFormView({
+      form: new form({
         el: this.el.querySelector(".toggler-form")
       }),
       $toggle: this.$el.find(".toggler-form-toggle")

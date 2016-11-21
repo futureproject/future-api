@@ -1,6 +1,4 @@
-window.tfp = window.tfp || {};
-
-tfp.ModuleView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
   events: {
     "click .module-header": "toggle"
   },

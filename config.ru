@@ -7,3 +7,10 @@ map("/registration") { run RegistrationController }
 map("/widgets") { run WidgetsController }
 map("/") { run ApplicationController }
 
+#compile assets in development mode
+if ENV["RACK_ENV"] == "development"
+  Thread.new do
+    `npm run build-dev`
+  end
+end
+
