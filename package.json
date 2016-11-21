@@ -10,12 +10,6 @@
     "pikaday": "^1.5.1",
     "selectize": "^0.12.4",
     "webpack": "^1.13.3"
-  },
-  "scripts": {
-    "build": "webpack --config config/webpack.config.js -p",
-    "build-dev": "webpack --config config/webpack.config.js"
-  },
-  "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-polyfill": "^6.16.0",
@@ -25,5 +19,11 @@
     "node-sass": "^3.13.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1"
+  },
+  "scripts": {
+    "build": "webpack --config config/webpack.config.js -p",
+    "build-dev": "webpack --config config/webpack.config.js"
+  },
+  "devDependencies": {
   }
 }
