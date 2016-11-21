@@ -2,3 +2,4 @@ development.sqlite
 .bundle
 .env
 .sass-cache
+/node_modules

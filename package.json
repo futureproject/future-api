@@ -1,0 +1,29 @@
+{
+  "name": "future-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@heroku.com:tfp-redirects-production.git",
+  "author": "Chris Frank <chris.frank@thefutureproject.org>",
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "pikaday": "^1.5.1",
+    "selectize": "^0.12.4",
+    "webpack": "^1.13.3"
+  },
+  "scripts": {
+    "build": "webpack --config config/webpack.config.js -p",
+    "build-dev": "webpack --config config/webpack.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "css-loader": "^0.26.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.13.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1"
+  }
+}

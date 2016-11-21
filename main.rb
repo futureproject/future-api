@@ -50,13 +50,14 @@ class App < Sinatra::Base
 
     # define Airtable schema
     Airmodel.bases "#{App.root}/config/db/development.yml"
+    `npm run build-dev`
   end
 
 
   # all the good stuff
   Dir["#{settings.root}/{lib,helpers,models}/*.rb"].each{|f| require f}
 
-  require "./assets/init"
+  #require "./assets/init"
 
 end
 
