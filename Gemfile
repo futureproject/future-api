@@ -2,6 +2,7 @@ ruby "2.3.1"
 source "https://rubygems.org"
 gem "sinatra", require: false
 gem "sinatra-contrib", require: false
+gem "async_sinatra", require: "sinatra/async"
 gem "rack-contrib"
 gem "thin"
 gem "rake"

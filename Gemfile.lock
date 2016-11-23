@@ -13,6 +13,9 @@ GEM
       airtable (~> 0.0.9)
     airtable (0.0.9)
       httparty
+    async_sinatra (1.2.1)
+      rack (>= 1.4.1)
+      sinatra (>= 1.3.2)
     backports (3.6.8)
     capybara (2.7.1)
       addressable
@@ -204,6 +207,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   airmodel (~> 0.0.2)
+  async_sinatra
   capybara
   capybara-webkit
   celluloid-io

@@ -4,6 +4,8 @@ require "bundler/setup"
 class App < Sinatra::Base
   Bundler.require(:default, settings.environment)
 
+  register Sinatra::Async
+
   # load Environment variables
   # (foreman handles ENV variables in production)
   configure :test, :development do

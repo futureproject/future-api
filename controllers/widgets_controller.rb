@@ -11,28 +11,24 @@ class WidgetsController < ApplicationController
     erb :"widgets/daily_quote", layout: false
   end
 
-  get "/tasks" do
+  aget "/tasks" do
     @tasks = current_user.tasks_cached
-    erb :"widgets/tasks", layout: false
+    body erb(:"widgets/tasks", layout: false)
   end
 
-  get "/commitments" do
+  aget "/commitments" do
     #cache_control :public, :must_revalidate, max_age: 30
     @commitments = current_user.student_commitments.sort_by{|x| x["By When"] }
-    erb :"widgets/commitments", layout: false
+    body erb(:"widgets/commitments", layout: false)
   end
 
-  get "/commitments/new" do
-    erb :"commitments/new", layout: :"layouts/gotit"
-  end
-
-  get "/profiles" do
+  aget "/profiles" do
     @profiles = PossibilityProfile.for_user(current_user)
-    erb :"widgets/profiles", layout: false
+    body erb(:"widgets/profiles", layout: false)
   end
 
-  get "/:widget" do
-    erb :"widgets/#{params[:widget]}", layout: false
+  aget "/:widget" do
+    body erb(:"widgets/#{params[:widget]}", layout: false)
   end
 
 end
