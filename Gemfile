@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "sinatra", require: false
 gem "sinatra-contrib", require: false
 gem "rack-contrib"
-gem "thin"
+gem "puma"
 gem "rake"
 gem "pg"
 gem "omniauth-google-oauth2"
