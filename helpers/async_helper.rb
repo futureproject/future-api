@@ -12,6 +12,7 @@ module AsyncHelper
     EM.defer do
       response = yield
       env['async.callback'].call [status, headers, response]
+      env['async.close'].callback
     end
     cue_async
   end
