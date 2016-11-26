@@ -57,4 +57,5 @@ feature "I can toggle tasks" do
       click_button "Add to Dashboard"
     end
   end
+
 end

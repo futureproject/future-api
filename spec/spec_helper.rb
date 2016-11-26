@@ -14,6 +14,11 @@ Capybara.app = Rack::Builder.parse_file(File.expand_path('../../config.ru', __FI
 Capybara.default_selector = :css
 Capybara.javascript_driver = :webkit
 Capybara.default_driver = :webkit
+Capybara.register_server :thin do |app, port, host|
+  require 'rack/handler/thin'
+   Rack::Handler::Thin.run(app, :Port => port, :Host => host)
+end
+Capybara.server = :thin
 
 #set default redirect to tfp.org, so that it doesn't 404 in tests
 App.set :default_redirect, "http://www.thefutureproject.org/"

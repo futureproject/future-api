@@ -32,6 +32,8 @@ module AuthHelper
   def sign_in user
     App.cache.set(user.cache_key, user)
     session[:auth_token] = user[:slack_id]
+    puts "!!!!!"
+    puts session[:auth_token]
   end
 
   def sign_out user
