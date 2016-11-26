@@ -4,6 +4,7 @@ gem "sinatra", require: false
 gem "sinatra-contrib", require: false
 gem "rack-contrib"
 gem "thin"
+gem "thin_async", require: 'thin/async'
 gem "rake"
 gem "pg"
 gem "omniauth-google-oauth2"
