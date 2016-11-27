@@ -29,6 +29,8 @@ class App < Sinatra::Base
     set :cache, Dalli::Client.new
     set :raise_errors, true
 
+    EventMachine.threadpool_size = ENV['MAX_THREADS'] || 5
+
     # log errors via raygun
     Raygun.setup do |config|
       config.api_key = ENV['RAYGUN_APIKEY']
