@@ -4,7 +4,8 @@ class PossibilityProfile < Airmodel::Model
     some(
       filterByFormula: "FIND('#{tfpid}', {School})",
       limit: 100,
-      sort: ["Label", :asc]
+      sort: ["Label", :asc],
+      fields: ["Label"]
     )
   end
 

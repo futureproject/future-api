@@ -4,7 +4,6 @@ require "bundler/setup"
 class App < Sinatra::Base
   Bundler.require(:default, settings.environment)
 
-
   # load Environment variables
   # (foreman handles ENV variables in production)
   configure :test, :development do
@@ -12,9 +11,6 @@ class App < Sinatra::Base
   end
 
   require "sinatra/json"
-
-  # load Dreamo The Talking Fish
-  require "./dreamo/bot"
 
   configure do
     use Rack::Session::Cookie, expire_after: 259200, secret: ENV["SESSION_SECRET"]
@@ -58,8 +54,6 @@ class App < Sinatra::Base
 
   # all the good stuff
   Dir["#{settings.root}/{lib,helpers,models}/*.rb"].each{|f| require f}
-
-  #require "./assets/init"
 
 end
 

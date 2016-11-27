@@ -4,19 +4,22 @@ module AsyncHelper
     [-1, {}, []]
   end
 
-  def asynchronously(args={})
+  #def asynchronously(args={})
     #headers =  {
       #'Content-Type' => (args[:content_type] || 'application/json')
     #}
     #status = args[:status] || 200
-    #EM.defer do
+    #EM.next_tick do
       #response = yield
       #env['async.callback'].call [status, headers, response]
-      #env['async.close'].callback
     #end
     #cue_async
+  #end
+
+  def asynchronously(args={})
     Thin::AsyncResponse.perform(env) do |response|
-      response.status = 201
+      content_type(args[:content_type] || 'application/json')
+      response.status = args[:status] || 200
       EM.defer do
         res = yield
         response << res
@@ -24,5 +27,4 @@ module AsyncHelper
       end
     end
   end
-
 end

@@ -14,7 +14,7 @@ module RegistrationHelper
       { slack_user: user }
     # otherwise if there's a match by Slack ID
     when user ||= SlackUser.find(token)
-      { slack_user: user[:user] }
+      { slack_user: user }
     # fuck it, just return all the users
     else
       { slackers: slackers }

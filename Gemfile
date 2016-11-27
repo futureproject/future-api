@@ -14,13 +14,12 @@ gem "airmodel", "~> 0.0.2"
 gem "memcachier"
 gem "dalli"
 gem "rack-cache"
-gem "slack-ruby-bot"
-gem "celluloid-io"
 gem "redcarpet"
 gem "rack-flash3", require: "rack-flash"
 gem "activesupport", require: "active_support/all"
 gem "sendgrid-ruby"
 gem "raygun4ruby"
+
 group :development, :test do
   gem "rspec"
   gem 'capybara'
@@ -31,4 +30,9 @@ group :development, :test do
   gem "vcr"
   gem "webmock"
   gem "launchy"
+end
+
+group :bot do
+  gem "slack-ruby-bot"
+  gem "celluloid-io"
 end

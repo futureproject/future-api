@@ -1,24 +1,26 @@
 class SlackUser
-  @@client = Slack::Web::Client.new(token: ENV["SLACK_API_TOKEN"])
+  #@@client = Slack::Web::Client.new(token: ENV["SLACK_API_TOKEN"])
+  @@base_uri = "https://slack.com/api/users.list?token=#{ENV['SLACK_API_TOKEN']}"
 
   def self.client
     @@client
   end
 
   def self.all
-    client.users_list[:members]
+    response = Net::HTTP.get_response(URI.parse(@@base_uri))
+    JSON.parse(response.body)["members"].map(&:with_indifferent_access)
   end
 
-  def self.find(id)
+  def self.find(id, set=self.all)
     begin
-      client.users_info(user: id)
+      set.find{|u| u['id'] == id}
     rescue Slack::Web::Api::Error
       nil
     end
   end
 
   def self.find_by_email(email, set=self.all)
-    set.select{|u| u[:profile][:email] == email }.first
+    set.find{|u| u['profile']['email'] == email }
   end
 
 end
