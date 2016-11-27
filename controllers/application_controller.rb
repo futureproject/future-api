@@ -1,6 +1,7 @@
 class ApplicationController < App
   helpers AuthHelper
   helpers AppHelper
+  helpers AsyncHelper
 
   get "/" do
     authenticate!
@@ -10,6 +11,12 @@ class ApplicationController < App
 
   get "/error_tracking" do
     raise "You broke it!"
+  end
+
+  get "/async_ram_test" do
+    asynchronously do
+      json []
+    end
   end
 
   get '/:shortcut' do

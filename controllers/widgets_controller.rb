@@ -1,5 +1,4 @@
 class WidgetsController < ApplicationController
-  helpers AsyncHelper
 
   before do
     authenticate!
