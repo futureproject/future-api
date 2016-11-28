@@ -1,18 +1,25 @@
 class PossibilityProfile < Airmodel::Model
 
   def self.for_place(tfpid)
-    some(
+    results = some(
       filterByFormula: "FIND('#{tfpid}', {School})",
       limit: 100,
       sort: ["Label", :asc],
-      fields: ["Label"]
+      fields: ["Label", "School"]
     )
+    # if the TFPID is a school, e.g. NYC-TFPID, instead of just NYC
+    # then return only exact matches for the school
+    if tfpid.include? "|"
+      results.select{|x| x.school.split(" | ").last == tfpid }
+    else
+      results
+    end
   end
 
   def self.for_user(user)
-    if user["SCHOOL_TFPID"]
+    if user["SCHOOL_TFPID"].present?
       self.for_place(user["SCHOOL_TFPID"])
-    elsif user["CITY_TFPID"]
+    elsif user["CITY_TFPID"].present?
       self.for_place(user["CITY_TFPID"])
     else
       self.some
