@@ -1,8 +1,13 @@
 class PossibilityProfile < Airmodel::Model
 
   def self.for_place(tfpid)
+    if tfpid == "HQ"
+      formula = ""
+    else
+      formula = "FIND('#{tfpid}', {School})"
+    end
     results = some(
-      filterByFormula: "FIND('#{tfpid}', {School})",
+      filterByFormula: formula,
       limit: 100,
       sort: ["Label", :asc],
       fields: ["Label", "School"]
