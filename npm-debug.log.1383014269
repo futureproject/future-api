@@ -1,0 +1,30 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/7.1.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'build-dev' ]
+2 info using npm@3.10.9
+3 info using node@v7.1.0
+4 verbose run-script [ 'prebuild-dev', 'build-dev', 'postbuild-dev' ]
+5 info lifecycle future-api@1.0.0~prebuild-dev: future-api@1.0.0
+6 silly lifecycle future-api@1.0.0~prebuild-dev: no script for prebuild-dev, continuing
+7 info lifecycle future-api@1.0.0~build-dev: future-api@1.0.0
+8 verbose lifecycle future-api@1.0.0~build-dev: unsafe-perm in lifecycle true
+9 verbose lifecycle future-api@1.0.0~build-dev: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/chrisfrank/code/future-api/node_modules/.bin:/usr/local/Cellar/node/7.1.0/bin:/Users/chrisfrank/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/bin:/Users/chrisfrank/.rbenv/versions/2.3.1/bin:/usr/local/Cellar/rbenv/1.0.0/libexec:/Users/chrisfrank/.rbenv/bin:/Users/chrisfrank/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/node/7.1.0/bin
+10 verbose lifecycle future-api@1.0.0~build-dev: CWD: /Users/chrisfrank/code/future-api
+11 silly lifecycle future-api@1.0.0~build-dev: Args: [ '-c', 'webpack --config config/webpack.config.js --watch' ]
+12 verbose stack Error: write EPIPE
+12 verbose stack     at exports._errnoException (util.js:1022:11)
+12 verbose stack     at WriteWrap.afterWrite [as oncomplete] (net.js:804:14)
+13 verbose cwd /Users/chrisfrank/code/future-api
+14 error Darwin 16.1.0
+15 error argv "/usr/local/Cellar/node/7.1.0/bin/node" "/usr/local/bin/npm" "run" "build-dev"
+16 error node v7.1.0
+17 error npm  v3.10.9
+18 error code EPIPE
+19 error errno EPIPE
+20 error syscall write
+21 error write EPIPE
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]

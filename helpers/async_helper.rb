@@ -17,14 +17,14 @@ module AsyncHelper
   #end
 
   def asynchronously(args={})
-    Thin::AsyncResponse.perform(env) do |response|
-      content_type(args[:content_type] || 'application/json')
-      response.status = args[:status] || 200
-      EM.defer do
-        res = yield
-        response << res
-        response.done
-      end
-    end
+    #Thin::AsyncResponse.perform(env) do |response|
+      #content_type(args[:content_type] || 'application/json')
+      #response.status = args[:status] || 200
+      #EM.defer do
+        #res = yield
+        #response << res
+        #response.done
+      #end
+    #end
   end
 end

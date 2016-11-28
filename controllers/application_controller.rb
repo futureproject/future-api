@@ -1,7 +1,7 @@
 class ApplicationController < App
   helpers AuthHelper
   helpers AppHelper
-  helpers AsyncHelper
+  #helpers AsyncHelper
 
   get "/" do
     authenticate!
@@ -13,10 +13,14 @@ class ApplicationController < App
     raise "You broke it!"
   end
 
-  get "/async_ram_test" do
-    asynchronously do
-      json []
-    end
+  get '/expensive_test' do
+    @tasks = Task.some
+    json @tasks.to_json
+  end
+
+  get '/less_expensive_test' do
+    @tasks = Task.all_cached
+    json @tasks.to_json
   end
 
   get '/:shortcut' do
