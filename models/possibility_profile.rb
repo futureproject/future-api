@@ -14,7 +14,7 @@ class PossibilityProfile < Airmodel::Model
     )
     # if the TFPID is a school, e.g. NYC-TFPID, instead of just NYC
     # then return only exact matches for the school
-    if tfpid.include? "|"
+    if tfpid.include? "-"
       results.select{|x| x.school.split(" | ").last == tfpid }
     else
       results
