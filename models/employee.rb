@@ -76,7 +76,7 @@ class Employee < Airmodel::Model
     }
   end
 
-  def dashboard_modules
+  def portal_modules
     if self["admin"].present?
       PortalModule.all_cached
     else

@@ -11,7 +11,7 @@ class PortalModule < Airmodel::Model
   end
 
   def self.cached_for_team(team)
-    cities = City.all_cached.map(&:tfpid)
+    cities = City.all_cached.map(&:tfpid).reject{|x| x == "HQ" }
     team = cities.include?(team) ? "City" : "HQ"
     App.cache.fetch("portal_modules_#{team}", 31536000) {
       some(view: "Main View").select{|rec|
