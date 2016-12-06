@@ -3,3 +3,4 @@ development.sqlite
 .env
 .sass-cache
 /node_modules
+npm-debug*
