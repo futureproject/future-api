@@ -18,6 +18,7 @@ gem "rack-flash3", require: "rack-flash"
 gem "activesupport", require: "active_support/all"
 gem "sendgrid-ruby"
 gem "raygun4ruby"
+gem 'namely'
 
 group :development, :test do
   gem "rspec"

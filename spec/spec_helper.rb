@@ -34,4 +34,5 @@ end
 
 VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = "#{App.root}/spec/fixtures/vcr_cassettes"
 end

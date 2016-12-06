@@ -4,3 +4,4 @@ development.sqlite
 .sass-cache
 /node_modules
 npm-debug*
+spec/fixtures/vcr_cassettes/*
