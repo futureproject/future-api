@@ -54,6 +54,21 @@ namespace :employees do
     airtable_employees = TaskEmployee.all
     puts "pulling employees from namely"
     namely_employees = NamelyClient.employees
+    airtable_employees.each do |x|
+      namely_employee = namely_employees.find{|y| y.tfpid == x.tfpid }
+      if namely_employee
+        begin
+          puts "updating projects for #{namely_employee[:first_name]} #{namely_employee[:last_name]}"
+          namely_employee.update(
+            projects_i_m_sponsoring: x.projects_sponsoring.join("\n"),
+            projects_i_m_leading: x.projects_leading.join("\n"),
+            projects_i_m_on: x.projects_supporting.join("\n")
+          )
+        rescue Namely::FailedRequestError
+          puts "failed to update #{namely_employee[:first_name]}"
+        end
+      end
+    end
   end
 
 end

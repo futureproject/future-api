@@ -1,4 +1,5 @@
 require "./main"
+
 task :environment do
   if defined?(Dotenv)
     Dotenv.load
