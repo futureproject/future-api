@@ -49,7 +49,7 @@ class App < Sinatra::Base
     Dir["#{settings.root}/debug/*.rb"].each{|f| require f}
 
     # define Airtable schema
-    Airmodel.bases "#{App.root}/config/db/development.yml"
+    Airmodel.bases ENV['AIRTABLE_CONFIG_PATH'] || "#{App.root}/config/db/development.yml"
   end
 
 
