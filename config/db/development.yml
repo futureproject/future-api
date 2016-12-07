@@ -1,47 +1,45 @@
 :cities:
-  :bases: appJi1ucZpPmznBLP
+  :bases: appU8z7k7vyymmPbK
   :table_name: Cities
 :employees:
-  :bases: appJi1ucZpPmznBLP
+  :bases: appU8z7k7vyymmPbK
   :table_name: Employees
 :portal_modules:
-  :bases: appJi1ucZpPmznBLP
+  :bases: appU8z7k7vyymmPbK
   :table_name: PortalModules
 :possibility_profiles:
-  :table_name: Results
-  :bases: app8PZoqiK1HF4xAD
+  :table_name: "Results"
+  :bases: "appZtPWlnmPD8vJKP"
 :quotes:
-  :bases: appJi1ucZpPmznBLP
+  :bases: appU8z7k7vyymmPbK
   :table_name: Quotes
 :redirects:
-  :bases: appJi1ucZpPmznBLP
+  :bases: appU8z7k7vyymmPbK
   :table_name: Redirects
 :schools:
-  :bases: appJi1ucZpPmznBLP
+  :bases: appU8z7k7vyymmPbK
   :table_name: Schools
-:task_employees:
-  :bases: appsSbGeUL5na71it
-  :table_name: People
 :tasks:
-  :bases: appsSbGeUL5na71it
-  :table_name: Commitments
+  :bases: appU8z7k7vyymmPbK
+  :table_name: tasks
+:task_employees:
+  :bases: appU8z7k7vyymmPbK
+  :table_name: Employees
 :commitments:
   :table_name: "Commitments"
   :bases:
-    "DC": "appPlrx8TnvXDshRP"
-    "DT": "app5JhBE1kshvv5Cj"
-    "NHV": "appil5KLJUJgqkqWg"
-    "NYC": "appigsqPHEMnGyQh9"
-    "NWK": "appuA4jfoyAytczEp"
-    "PHL": "appf9Is4s2yLCfSp4"
-    "SF": "appntYpIBVav5pUOT"
+    "NYC": "appU8z7k7vyymmPbK"
 :students:
-  :table_name: "People"
+  :table_name: "Students"
   :bases:
-    "DC": "appPlrx8TnvXDshRP"
-    "DT": "app5JhBE1kshvv5Cj"
-    "NHV": "appil5KLJUJgqkqWg"
-    "NYC": "appigsqPHEMnGyQh9"
-    "NWK": "appuA4jfoyAytczEp"
-    "PHL": "appf9Is4s2yLCfSp4"
-    "SF": "appntYpIBVav5pUOT"
+    "NYC": "appU8z7k7vyymmPbK"
+#:commitments:
+  #:table_name: "Commitments"
+  #:bases:
+    #"DC": "appPlrx8TnvXDshRP"
+    #"DT": "app5BKrRtkoskmPHh"
+    #"NHV": "appil5KLJUJgqkqWg"
+    #"NYC": "appigsqPHEMnGyQh9"
+    #"NWK": "appuA4jfoyAytczEp"
+    #"PHL": "appf9Is4s2yLCfSp4"
+    #"SF": "appntYpIBVav5pUOT"
