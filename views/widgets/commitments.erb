@@ -44,7 +44,7 @@
       <div class="calendar">
         <% day = day.blank? ? Date.today : Date.parse(day) %>
         <header class="<%= "overdue" if day <= Date.today %>">
-          <%= day.strftime("%a, %b %d")  %>
+          <%= day.strftime("%a, %b %d %Y")  %>
         </header>
         <% commitments.group_by{|t| t["Who"] }.each do |person, stuff| %>
           <div class="student-tasks">

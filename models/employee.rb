@@ -66,7 +66,7 @@ class Employee < Airmodel::Model
   def student_commitments
     shard_id = goddamn_city == "HQ" ? nil : goddamn_city
     App.cache.fetch("student_commitments_#{self.cache_key}", 86400) {
-      filters = ["{By When} > '#{Date.today - 1.week}'", "NOT({Complete?})", "NOT(NOT({WHO}))"]
+      filters = ["NOT(NOT({By When}))", "NOT({Complete?})", "NOT(NOT({WHO}))"]
       filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
       Commitment.some(
         shard: shard_id,
