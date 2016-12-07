@@ -39,6 +39,9 @@ class App < Sinatra::Base
 
     # define Airtable schema
     Airmodel.bases "#{App.root}/config/db/production.yml"
+
+    #force SSL in production
+    use Rack::SSL
   end
 
   configure :development, :test do

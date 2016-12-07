@@ -19,6 +19,7 @@ gem "activesupport", require: "active_support/all"
 gem "sendgrid-ruby"
 gem "raygun4ruby"
 gem 'namely'
+gem 'rack-ssl', require: 'rack/ssl'
 
 group :development, :test do
   gem "rspec"
