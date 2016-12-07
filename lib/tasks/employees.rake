@@ -30,4 +30,26 @@ namespace :employees do
       end
     end
   end
+
+  task :port_tfpids => :environment do
+    puts "pulling employees from airtable"
+    airtable_employees = Employee.all
+    puts "pulling employees from namely"
+    namely_employees = NamelyClient.employees
+    airtable_employees.each do |x|
+      namely_employee = namely_employees.find{|y| y.email == x.email }
+      if namely_employee
+        puts "updating #{namely_employee[:first_name]}"
+        namely_employee.update tfpid: x.goddamn_tfpid
+      end
+    end
+  end
+
+  task :sync_projects => :environment do
+    puts "pulling employees from airtable"
+    airtable_employees = TaskEmployee.all
+    puts "pulling employees from namely"
+    namely_employees = NamelyClient.employees
+  end
+
 end
