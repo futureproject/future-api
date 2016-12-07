@@ -39,8 +39,12 @@ namespace :employees do
     airtable_employees.each do |x|
       namely_employee = namely_employees.find{|y| y.email == x.email }
       if namely_employee
-        puts "updating #{namely_employee[:first_name]}"
-        namely_employee.update tfpid: x.goddamn_tfpid
+        begin
+          puts "updating #{namely_employee[:first_name]}"
+          namely_employee.update tfpid: x.goddamn_tfpid
+        rescue Namely::FailedRequestError
+          puts "failed to update #{namely_employee[:first_name]}"
+        end
       end
     end
   end
