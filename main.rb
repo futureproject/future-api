@@ -13,6 +13,7 @@ class App < Sinatra::Base
   require "sinatra/json"
 
   configure do
+    set :views, "#{root}/app/views"
     use Rack::Session::Cookie, expire_after: 259200, secret: ENV["SESSION_SECRET"]
     use Rack::Cache
     use Rack::Deflater
@@ -38,7 +39,7 @@ class App < Sinatra::Base
     set :static_cache_control, [:public, :max_age => 7200]
 
     # define Airtable schema
-    Airmodel.bases "#{App.root}/config/db/production.yml"
+    Airmodel.bases "#{root}/config/db/production.yml"
 
     #force SSL in production
     use Rack::SSL
@@ -49,16 +50,16 @@ class App < Sinatra::Base
     Dir["#{settings.root}/debug/*.rb"].each{|f| require f}
 
     # define Airtable schema
-    Airmodel.bases ENV['AIRTABLE_CONFIG_PATH'] || "#{App.root}/config/db/development.yml"
+    Airmodel.bases ENV['AIRTABLE_CONFIG_PATH'] || "#{root}/config/db/development.yml"
   end
 
 
   # all the good stuff
-  Dir["#{settings.root}/{lib,helpers,models}/*.rb"].each{|f| require f}
+  Dir["#{root}/app/{lib,helpers,models}/*.rb"].each{|f| require f}
 
 end
 
 class ApplicationController < App
-  Dir["#{settings.root}/controllers/*.rb"].each{|f| require f}
+  Dir["#{root}/app/controllers/*.rb"].each{|f| require f}
 end
 

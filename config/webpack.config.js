@@ -9,7 +9,7 @@ const css_output_template = prod ? "[name]-[hash].css" : "[name].css";
 const js_output_template = prod ? "[name]-[hash].js" : "[name].js";
 
 module.exports = {
-  context: __dirname + "/../assets",
+  context: __dirname + "/../app/assets",
 
   entry: {
     application: ["./javascripts/application.js", "./stylesheets/screen.scss"],
@@ -50,7 +50,7 @@ module.exports = {
       // output the fingerprint
       this.plugin("done", function(stats) {
         let output = "ASSET_FINGERPRINT = \"" + stats.hash + "\""
-        fs.writeFileSync("lib/fingerprint.rb", output, "utf8");
+        fs.writeFileSync("app/lib/fingerprint.rb", output, "utf8");
       });
     }
   ],
