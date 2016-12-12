@@ -20,7 +20,7 @@ module Mailer
     subject = 'Your Possibility Profile Results'
     to = Email.new('email': profile.email_address)
     @profile = profile
-    template = File.read("#{App.root}/views/mailers/possibility_profile.erb")
+    template = File.read("#{App.root}/app/views/mailers/possibility_profile.erb")
     body = ERB.new(template).result(binding)
     content = Content.new(
       type: 'text/html',
