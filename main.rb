@@ -31,6 +31,9 @@ class App < Sinatra::Base
       config.api_key = ENV['RAYGUN_APIKEY']
     end
     use Raygun::Middleware::RackExceptionInterceptor
+
+    # parse webpack-generated asset fingerprint
+    ASSET_FINGERPRINT=File.read("#{root}/public/assets/fingerprint.txt")
   end
 
   configure :production do
@@ -51,8 +54,10 @@ class App < Sinatra::Base
 
     # define Airtable schema
     Airmodel.bases ENV['AIRTABLE_CONFIG_PATH'] || "#{root}/config/db/development.yml"
-  end
 
+    # compile assets
+    system 'npm run build-dev'
+  end
 
   # all the good stuff
   Dir["#{root}/app/{lib,helpers,models}/*.rb"].each{|f| require f}

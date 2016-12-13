@@ -13,7 +13,6 @@ feature "As a Dream Director I can" do
     end
   end
 
-
   #scenario "search for student profiles"
 
   #scenario "add a commitment from a student profiles"

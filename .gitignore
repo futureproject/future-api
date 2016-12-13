@@ -5,3 +5,4 @@ development.sqlite
 /node_modules
 npm-debug*
 spec/fixtures/vcr_cassettes/*
+public/assets/fingerprint.txt

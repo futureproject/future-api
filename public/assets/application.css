@@ -588,7 +588,8 @@ a[data-method=delete], a[href*="destroy"], .error {
 
 .module {
   background: white;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); }
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 2px; }
   .module iframe {
     border-left: none;
     border-right: none; }

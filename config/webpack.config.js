@@ -49,8 +49,8 @@ module.exports = {
     function() {
       // output the fingerprint
       this.plugin("done", function(stats) {
-        let output = "ASSET_FINGERPRINT = \"" + stats.hash + "\""
-        fs.writeFileSync("app/lib/fingerprint.rb", output, "utf8");
+        let output = stats.hash;
+        fs.writeFileSync("public/assets/fingerprint.txt", output, "utf8");
       });
     }
   ],
