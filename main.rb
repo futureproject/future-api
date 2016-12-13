@@ -32,8 +32,6 @@ class App < Sinatra::Base
     end
     use Raygun::Middleware::RackExceptionInterceptor
 
-    # parse webpack-generated asset fingerprint
-    ASSET_FINGERPRINT=File.read("#{root}/public/assets/fingerprint.txt")
   end
 
   configure :production do
