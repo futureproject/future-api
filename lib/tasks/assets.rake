@@ -4,7 +4,7 @@ namespace :assets do
   desc 'Precompile assets'
   task :precompile do
    FileUtils.rm_rf("#{App.root}/public/assets")
-   `npm run build`
+   system 'npm run build'
   end
 end
 
