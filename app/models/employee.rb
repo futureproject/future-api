@@ -24,22 +24,19 @@ class Employee < Airmodel::Model
   end
 
 
-  # look in Memcache for this user
-  # if the user isn't in memcache, they haven't passed auth
-  # so deny them access
+  # look first in Memcache for this user
+  # fall back to airtable
   def self.find_by_auth_token(token)
     e = self.new(tfpid: token)
-    App.cache.get(e.cache_key)
+    App.cache.fetch(e.cache_key) {
+      self.find_by('TFPID': token)
+    }
   end
 
   def self.find_by_slack_id(id)
     App.cache.fetch("slack_user_#{id}", 31536000) {
       self.find_by("slack_id": id)
     }
-  end
-
-  def cache_key
-    "#{self.class.table_name}_#{goddamn_tfpid}"
   end
 
   # all Tasks assigned to this user in the city dashboard

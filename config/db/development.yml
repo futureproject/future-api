@@ -1,41 +1,40 @@
 :cities:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: Cities
 :employees:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: Employees
 :portal_modules:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: PortalModules
 :possibility_profiles:
   :table_name: "Results"
-  :bases: "appZtPWlnmPD8vJKP"
+  :base_id: "appZtPWlnmPD8vJKP"
 :quotes:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: Quotes
 :redirects:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: Redirects
 :schools:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: Schools
 :tasks:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: tasks
 :task_employees:
-  :bases: appU8z7k7vyymmPbK
+  :base_id: appU8z7k7vyymmPbK
   :table_name: Employees
 :commitments:
   :table_name: "Commitments"
-  :bases:
+  :base_id:
     "NYC": "appU8z7k7vyymmPbK"
 :students:
-  :table_name: "People"
-  :bases:
-    "NYC": "appU8z7k7vyymmPbK"
+  :table_name: "Students"
+  :base_id: "appU8z7k7vyymmPbK"
 #:commitments:
   #:table_name: "Commitments"
-  #:bases:
+  #:base_id:
     #"DC": "appPlrx8TnvXDshRP"
     #"DT": "app5BKrRtkoskmPHh"
     #"NHV": "appil5KLJUJgqkqWg"
