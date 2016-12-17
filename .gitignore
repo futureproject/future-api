@@ -2,8 +2,10 @@ development.sqlite
 .bundle
 .env
 .sass-cache
+.sass-cache/*
 /node_modules
 npm-debug*
 spec/fixtures/vcr_cassettes/*
 public/assets/
+
 
