@@ -9,7 +9,7 @@ gem "pg"
 gem "omniauth-google-oauth2"
 gem "require_all"
 gem "sass"
-gem "airmodel", "~> 0.0.2"
+gem "airmodel", path: '~/airmodel'
 gem "memcachier"
 gem "dalli"
 gem "rack-cache"

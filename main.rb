@@ -1,4 +1,5 @@
 require "sinatra/base"
+require "sinatra/json"
 require "bundler/setup"
 
 class App < Sinatra::Base
@@ -9,8 +10,6 @@ class App < Sinatra::Base
   configure :test, :development do
     Dotenv.load
   end
-
-  require "sinatra/json"
 
   configure do
     set :views, "#{root}/app/views"
@@ -52,8 +51,10 @@ class App < Sinatra::Base
 
     # define Airtable schema
     Airmodel.bases ENV['AIRTABLE_CONFIG_PATH'] || "#{root}/config/db/development.yml"
+  end
 
-    # compile assets
+  configure :development do
+    # compile assets on startup in dev mode
     system 'npm run build-dev'
   end
 
@@ -63,6 +64,6 @@ class App < Sinatra::Base
 end
 
 class ApplicationController < App
-  Dir["#{root}/app/controllers/*.rb"].each{|f| require f}
+  Dir["#{root}/app/{controllers,controllers/api}/*.rb"].each{|f| require f}
 end
 

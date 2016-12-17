@@ -13,7 +13,7 @@ module AuthHelper
     if ENV["AUTH_HACK"]
       Employee.find_by("TFPID": ENV["AUTH_HACK"])
     else
-      token = session[:auth_token]
+      token = params[:token] || session[:auth_token]
       token ? Employee.find_by_auth_token(token) : nil
     end
   end
