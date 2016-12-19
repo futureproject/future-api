@@ -50,9 +50,9 @@ feature "I can manage student commitments" do
     click_button "Add New"
     within '#new-commitment' do
       who = first('.selectize-input input[type=text]')
-      q = "Elwin"
-      who.set(q)
-      option = find('div[data-selectable]', text: q, match: :first)
+      query = "elwin"
+      who.set query
+      option = find('div[data-selectable]', text: query, match: :first)
       option.click
       fill_in("record[Commitment]", with: "pass this test")
       check "record[For a Project?]"

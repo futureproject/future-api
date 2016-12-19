@@ -6,14 +6,9 @@ feature "viewing Possibility Profiles" do
     widget = find("#module-possibility-profiles")
     VCR.use_cassette 'possibility_profiles' do
       widget.click
-      within(widget) do
-        click_link "Dinette Boomer"
-      end
-    end
-    VCR.use_cassette 'dinette_boomer' do
-      within_window "Dinette Boomer" do
+      profile = window_opened_by { click_link "Dinette Boomer" }
+      within_window(profile) do
         expect(page).to have_text "Personal Growth"
-        expect(page).to have_text "You value continued personal development"
       end
     end
 

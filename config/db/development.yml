@@ -30,7 +30,7 @@
   :bases:
     "NYC": "appU8z7k7vyymmPbK"
 :students:
-  :table_name: "Students"
+  :table_name: "People"
   :bases:
     "NYC": "appU8z7k7vyymmPbK"
 #:commitments:

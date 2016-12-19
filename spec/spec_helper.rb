@@ -11,8 +11,9 @@ require_all "#{Dir.pwd}/spec/support"
 Capybara.app = Rack::Builder.parse_file(File.expand_path('../../config.ru', __FILE__)).first
 
 Capybara.default_selector = :css
-Capybara.javascript_driver = :webkit
-Capybara.default_driver = :webkit
+Capybara.javascript_driver = :poltergeist
+Capybara.default_driver = :poltergeist
+Capybara.default_max_wait_time = 5
 
 #Capybara.register_server :thin do |app, port, host|
   #require 'rack/handler/thin'
