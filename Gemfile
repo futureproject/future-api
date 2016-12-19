@@ -5,7 +5,6 @@ gem "sinatra-contrib", require: false
 gem "rack-contrib"
 gem "puma"
 gem "rake"
-gem "pg"
 gem "omniauth-google-oauth2"
 gem "require_all"
 gem "sass"
