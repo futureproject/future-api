@@ -103,9 +103,35 @@
   }
 }
 
+#airtable-forms {
+  margin: 0 -1rem 2rem;
+  nav {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    label {
+      font-weight: normal;
+    }
+    * {
+      padding: 1rem .5rem;
+      display: inline-block;
+    }
+    a {
+      border-left: 1px solid lightgray;
+      font-weight: bold;
+      &:last-child {
+        border-right: 1px solid lightgray;
+      }
+    }
+  }
+}
+
 @media (min-width: 555px) {
   .portal-modules {
     margin: -1rem 0 0;
+  }
+  #airtable-forms {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 @media (min-width: 768px) {
@@ -148,4 +174,3 @@
   box-sizing: border-box;
   font-weight: bold;
 }
-

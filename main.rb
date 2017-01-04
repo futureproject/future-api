@@ -47,14 +47,13 @@ class App < Sinatra::Base
   end
 
   configure :development, :test do
-    # debug modules, move to next group if you need them while running tests
+    set :assets_compiled, false
+    # debug modules, not loaded in production
     Dir["#{settings.root}/debug/*.rb"].each{|f| require f}
 
     # define Airtable schema
     Airmodel.bases ENV['AIRTABLE_CONFIG_PATH'] || "#{root}/config/db/development.yml"
 
-    # compile assets
-    system 'npm run build-dev'
   end
 
   # all the good stuff

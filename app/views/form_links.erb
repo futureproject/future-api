@@ -1,0 +1,14 @@
+<% if links %>
+  <div id="airtable-forms">
+    <nav>
+      <label>+</label>
+      <% links.each do |label, form_id| %>
+        <a href="https://airtable.com/embed/<%= form_id %>" target="_blank">
+          <%= label %>
+        </a>
+      <% end %>
+    </nav>
+    <div class="form-target">
+    </div>
+  </div>
+<% end %>

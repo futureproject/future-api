@@ -279,9 +279,28 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   margin: 0;
   padding: 0; }
 
+#airtable-forms {
+  margin: 0 -1rem 2rem; }
+  #airtable-forms nav {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray; }
+    #airtable-forms nav label {
+      font-weight: normal; }
+    #airtable-forms nav * {
+      padding: 1rem .5rem;
+      display: inline-block; }
+    #airtable-forms nav a {
+      border-left: 1px solid lightgray;
+      font-weight: bold; }
+      #airtable-forms nav a:last-child {
+        border-right: 1px solid lightgray; }
+
 @media (min-width: 555px) {
   .portal-modules {
-    margin: -1rem 0 0; } }
+    margin: -1rem 0 0; }
+  #airtable-forms {
+    margin-left: 0;
+    margin-right: 0; } }
 
 @media (min-width: 768px) {
   .embed ul, .text ul {

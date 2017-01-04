@@ -13,6 +13,10 @@ module AppHelper
     if settings.production?
       "/assets/#{prefix}-#{@@asset_fingerprint}.#{extension}"
     else
+      if !App.assets_compiled
+        App.set :assets_compiled, true
+        system "npm run build-dev"
+      end
       "/assets/#{filename}"
     end
   end

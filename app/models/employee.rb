@@ -47,10 +47,6 @@ class Employee < Airmodel::Model
     Task.undone_for_user(goddamn_tfpid)
   end
 
-  def tasks_cached
-    Task.undone_for_user_cached(goddamn_tfpid)
-  end
-
   # students relevant to this user
   def students
     filters = []
@@ -64,16 +60,14 @@ class Employee < Airmodel::Model
 
   # upcoming commitments relevant to this user
   def student_commitments
-    shard_id = goddamn_city == "HQ" ? nil : goddamn_city
-    App.cache.fetch("student_commitments_#{self.cache_key}", 86400) {
-      filters = ["NOT(NOT({By When}))", "NOT({Complete?})", "NOT(NOT({WHO}))"]
-      filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
-      Commitment.some(
-        shard: shard_id,
-        sort: ["By When", :asc],
-        filterByFormula: "AND(#{filters.join(',')})"
-      )
-    }
+    shard_id = goddamn_city
+    filters = ["NOT(NOT({By When}))", "NOT({Complete?})", "NOT(NOT({WHO}))"]
+    filters.push("{SCHOOL_TFPID} = '#{goddamn_school}'") if goddamn_school
+    Commitment.some(
+      shard: shard_id,
+      sort: ["By When", :asc],
+      filterByFormula: "AND(#{filters.join(',')})"
+    )
   end
 
   def portal_modules
