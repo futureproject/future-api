@@ -105,9 +105,9 @@
 
 #airtable-forms {
   margin: 0 -1rem 2rem;
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   nav {
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
     label {
       font-weight: normal;
     }
@@ -116,10 +116,10 @@
       display: inline-block;
     }
     a {
-      border-left: 1px solid lightgray;
+      border-left: 1px solid #f0f0f0;
       font-weight: bold;
       &:last-child {
-        border-right: 1px solid lightgray;
+        border-right: 1px solid #f0f0f0;
       }
     }
   }

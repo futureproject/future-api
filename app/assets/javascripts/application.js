@@ -4,7 +4,6 @@
 //= require_tree ./views
 //= require ./init
 //
-var Selectize = require("selectize");
 var Backbone = require("backbone");
 var tfp = require("./init");
 
