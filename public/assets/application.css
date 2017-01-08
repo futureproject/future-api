@@ -282,17 +282,48 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 #airtable-forms {
   margin: 0 -1rem 2rem;
   background-color: white;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); }
-  #airtable-forms nav label {
-    font-weight: normal; }
-  #airtable-forms nav * {
-    padding: 1rem .5rem;
-    display: inline-block; }
-  #airtable-forms nav a {
-    border-left: 1px solid #f0f0f0;
-    font-weight: bold; }
-    #airtable-forms nav a:last-child {
-      border-right: 1px solid #f0f0f0; }
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center; }
+  #airtable-forms.is-active label {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  #airtable-forms nav {
+    border-bottom: 1px solid lightgray; }
+    #airtable-forms nav::after {
+      clear: both;
+      content: "";
+      display: table; }
+    #airtable-forms nav label {
+      font-weight: normal; }
+    #airtable-forms nav > * {
+      padding: 1rem .5rem;
+      display: inline-block;
+      float: left; }
+    #airtable-forms nav a {
+      position: relative;
+      border-left: 1px solid #f0f0f0;
+      font-weight: bold; }
+      #airtable-forms nav a:last-child {
+        border-right: 1px solid #f0f0f0; }
+      #airtable-forms nav a.is-active {
+        color: black; }
+        #airtable-forms nav a.is-active:after {
+          position: absolute;
+          display: block;
+          content: '';
+          left: 0;
+          bottom: -2px;
+          right: 0;
+          height: 4px;
+          background: white; }
+  #airtable-forms iframe {
+    width: calc(100%);
+    height: 90vh;
+    max-height: 40rem;
+    border: none; }
 
 @media (min-width: 555px) {
   .portal-modules {

@@ -1,3 +1,4 @@
+<%= erb :"form_links", :locals => { links: FormManager.forms_for(current_user) } %>
 <div class="portal-modules">
   <% @portal_modules.each do |mod| %>
     <% if !mod["Kind"].empty? %>

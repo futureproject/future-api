@@ -6,10 +6,9 @@ module.exports = {
     widget_manager: require('./views/widget_manager'),
     flash: require('./views/flash'),
     commitments_form: require('./views/commitments_form'),
-    people_picker: require('./views/people_picker_view'),
     toggler: require('./views/toggler_view'),
-    flash: require('./views/flash'),
     embed: require('./views/embeds'),
+    airtable_form_view: require('./views/airtable_forms'),
   },
   widgets: {
   },
@@ -38,9 +37,15 @@ module.exports = {
         el: this
       })
     })
+
+    self.airtableFormView = new self.views.airtable_form_view({
+      el: '#airtable-forms'
+    })
+
     self.widgetManager = new self.views.widget_manager({
       widgets: self.widgets
     });
+
     self.flasher = new self.views.flash()
   }
 }

@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(128);
+	module.exports = __webpack_require__(129);
 
 
 /***/ },
@@ -54,12 +54,6 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {"use strict";
 
-	//= require_tree ./lib
-	//= require ./bower_components/underscore/underscore-min
-	//= require ./bower_components/backbone/backbone-min
-	//= require_tree ./views
-	//= require ./init
-	//
 	var Backbone = __webpack_require__(3);
 	var tfp = __webpack_require__(5);
 
@@ -13781,21 +13775,18 @@
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	var _views;
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	module.exports = {
-	  views: (_views = {
+	  views: {
 	    checklist: __webpack_require__(6),
 	    module: __webpack_require__(8),
 	    widget: __webpack_require__(9),
 	    widget_manager: __webpack_require__(10),
 	    flash: __webpack_require__(11),
 	    commitments_form: __webpack_require__(12),
-	    people_picker: __webpack_require__(13),
-	    toggler: __webpack_require__(7)
-	  }, _defineProperty(_views, 'flash', __webpack_require__(11)), _defineProperty(_views, 'embed', __webpack_require__(127)), _views),
+	    toggler: __webpack_require__(7),
+	    embed: __webpack_require__(127),
+	    airtable_form_view: __webpack_require__(128)
+	  },
 	  widgets: {},
 	  init: function init() {
 	    var self = this;
@@ -13822,9 +13813,15 @@
 	        el: this
 	      });
 	    });
+
+	    self.airtableFormView = new self.views.airtable_form_view({
+	      el: '#airtable-forms'
+	    });
+
 	    self.widgetManager = new self.views.widget_manager({
 	      widgets: self.widgets
 	    });
+
 	    self.flasher = new self.views.flash();
 	  }
 	};
@@ -13839,16 +13836,12 @@
 	var toggler = __webpack_require__(7);
 
 	module.exports = Backbone.View.extend({
-	  events: {
-	    "click .toggler-form-toggle": "toggleForm"
-	  },
 	  initialize: function initialize() {
 	    this.views = {
 	      checklist: new toggler({
 	        el: this.el.querySelector(".toggler-checklist")
 	      })
 	    };
-	    this.views.form.$el.hide();
 	  }
 	});
 
@@ -30197,6 +30190,40 @@
 
 /***/ },
 /* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {"use strict";
+
+	var Backbone = __webpack_require__(3);
+
+	var AirtableFormWidget = Backbone.View.extend({
+	  events: {
+	    "click a": "loadForm",
+	    "click label": "closeForms"
+	  },
+	  loadForm: function loadForm(event) {
+	    event.preventDefault();
+	    this.$el.addClass('is-active');
+	    var link = $(event.currentTarget);
+	    if (!link.hasClass('is-active')) {
+	      link.addClass('is-active').siblings().removeClass('is-active');
+	      var frame = document.createElement('iframe');
+	      frame.setAttribute('src', link.attr('href'));
+	      this.$el.find(".form-target").html(frame);
+	    }
+	  },
+	  closeForms: function closeForms() {
+	    this.$el.removeClass('is-active');
+	    this.$el.find(".form-target").empty();
+	    this.$el.find('a').removeClass('is-active');
+	  }
+	});
+
+	module.exports = AirtableFormWidget;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 129 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

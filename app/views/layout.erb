@@ -18,7 +18,6 @@
     </header>
 
     <main>
-      <%= erb :"form_links", :locals => { links: FormManager.forms_for(current_user) } %>
       <%= yield %>
     </main>
     <% if current_user %>

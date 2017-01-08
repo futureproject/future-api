@@ -17,22 +17,6 @@ feature "I can manage student commitments" do
     Commitment.find_by(id: original_task).update("Complete?": false)
   end
 
-  scenario "by adding" do
-    visit "/"
-    find("#module-got-it").click
-    complete_commitment_form
-    expect(page).to have_content "Commitment added!"
-
-    visit "/"
-    find("#module-got-it").click
-    within "#module-got-it" do
-      expect(page).to have_content "pass this test"
-    end
-
-    #clean up
-    Commitment.find_by("Commitment": "pass this test").destroy
-  end
-
   def find_first_task_on_page(element_id="#module-city-dashboard")
     widget = find(element_id)
     widget.click
@@ -46,19 +30,5 @@ feature "I can manage student commitments" do
     expect(widget).not_to have_css('input[disabled]')
   end
 
-  def complete_commitment_form
-    click_button "Add New"
-    within '#new-commitment' do
-      who = first('.selectize-input input[type=text]')
-      query = "elwin"
-      who.set query
-      option = find('div[data-selectable]', text: query, match: :first)
-      option.click
-      fill_in("record[Commitment]", with: "pass this test")
-      check "record[For a Project?]"
-      fill_in "record[Notes]", with: "This is pretty ambitious"
-      click_button "Got it."
-    end
-  end
 end
 
