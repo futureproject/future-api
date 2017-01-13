@@ -108,6 +108,7 @@
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   text-align: center;
+  overflow: auto;
   &.is-active {
     label {
       @include transform(rotate(45deg));
@@ -115,6 +116,8 @@
   }
   nav {
     border-bottom: 1px solid lightgray;
+    white-space: nowrap;
+    min-width: 60ch;
     @include clearfix;
     label {
       font-weight: normal;

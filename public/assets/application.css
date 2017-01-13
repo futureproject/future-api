@@ -283,7 +283,8 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   margin: 0 -1rem 2rem;
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  text-align: center; }
+  text-align: center;
+  overflow: auto; }
   #airtable-forms.is-active label {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -291,7 +292,9 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     -o-transform: rotate(45deg);
     transform: rotate(45deg); }
   #airtable-forms nav {
-    border-bottom: 1px solid lightgray; }
+    border-bottom: 1px solid lightgray;
+    white-space: nowrap;
+    min-width: 60ch; }
     #airtable-forms nav::after {
       clear: both;
       content: "";
