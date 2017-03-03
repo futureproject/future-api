@@ -29,6 +29,10 @@
   :table_name: "Commitments"
   :bases:
     "NYC": "appU8z7k7vyymmPbK"
+:projects:
+  :table_name: "Projects and Groups"
+  :bases:
+    "NYC": "appU8z7k7vyymmPbK"
 :students:
   :table_name: "People"
   :bases:

@@ -35,6 +35,16 @@
     "NWK": "appuA4jfoyAytczEp"
     "PHL": "appf9Is4s2yLCfSp4"
     "SF": "appntYpIBVav5pUOT"
+:projects:
+  :table_name: "Projects and Groups"
+  :bases:
+    "DC": "appPlrx8TnvXDshRP"
+    "DT": "app5JhBE1kshvv5Cj"
+    "NHV": "appil5KLJUJgqkqWg"
+    "NYC": "appigsqPHEMnGyQh9"
+    "NWK": "appuA4jfoyAytczEp"
+    "PHL": "appf9Is4s2yLCfSp4"
+    "SF": "appntYpIBVav5pUOT"
 :students:
   :table_name: "People"
   :bases:

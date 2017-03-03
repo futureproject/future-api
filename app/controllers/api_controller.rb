@@ -71,6 +71,12 @@ class ApiController < ApplicationController
     end
   end
 
+  get "/reports/:city_tfpid" do
+    @report = GotitReport.new(params[:city_tfpid])
+    json @report.stats
+  end
+
+
   # Updates a student commitment with params[:commitment]
   post "/commitments/:id" do
     if Commitment.patch(params[:id], record_params, params[:shard])
