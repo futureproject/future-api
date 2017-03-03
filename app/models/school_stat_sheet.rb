@@ -3,6 +3,8 @@ class SchoolStatSheet
   def initialize(args)
     @school = args[:school]
     @week = args[:week]
+    @commitments = @school.commitments
+    @students = @school.students
   end
 
   def stats
@@ -16,14 +18,11 @@ class SchoolStatSheet
   end
 
   def commitments_to_date
-    filters = ["{By When} < '#{@week}'", "{SCHOOL_TFPID}='#{@school.tfpid}'"]
-    Commitment.all(
-      filterByFormula: "AND(#{filters.join(',')})",
-    ).count
+    @commitments.count
   end
 
   def commitments_per_dt_member
-    dt = @school.dream_team
+    dt = @students.select{|s| s.dream_team == true }
     if dt.count > 0
       dt.map { |student| (student.commitments || []).count }.inject(:+).to_f.fdiv(dt.count).round(2)
     else
@@ -32,14 +31,14 @@ class SchoolStatSheet
   end
 
   def coaching_sessions_to_date
-    filters = ["{By When} < '#{@week}'", "{SCHOOL_TFPID}='#{@school.tfpid}'", "{Engagement Type} = 'Coaching Session (1 on 1)'"]
-    Commitment.all(
-      filterByFormula: "AND(#{filters.join(',')})",
-    ).count
+    @commitments.select{|c| c["Engagement Type"] == "Coaching Session (1 on 1)" }.count
   end
 
   def percent_dt_with_coaching_sessions
-    dt = @school.dream_team
+    dt = @students.select{|s| s.dream_team == true }
+    if @school.tfpid == "NYC-NEST"
+      binding.pry
+    end
     if dt.count > 0
       coaching_sessions = dt.select{ |dreamer| dreamer["# Coaching Sessions"].to_i > 0 }
       (coaching_sessions.count.fdiv(dt.count).round(2) * 100).to_i
@@ -49,8 +48,8 @@ class SchoolStatSheet
   end
 
   def engaged_students
-    s = @school.students.select do |student|
-      student["Total Projects"].to_i > 0 || student["Commitments Made (#)"].to_i > 0 || student["# Total Engagements"].to_i > 0
+    s = @students.select do |student|
+      student["Projects Count"].to_i > 0 || student["Commitments Count"].to_i > 0 || student["Engagements Count"].to_i > 0
     end
     s.count
   end
